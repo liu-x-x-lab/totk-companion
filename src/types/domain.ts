@@ -27,6 +27,28 @@ export interface MapLabel {
 }
 export interface GameCoordinates { x: number; y: number; z: number }
 
+export interface ShrineGuide {
+  actorId: string;
+  pointId: string;
+  name: string;
+  originalName: string;
+  puzzle: string;
+  layer: 'surface' | 'sky';
+  video: {
+    platform: 'bilibili'; bvid: string; page: number; cid: number;
+    title: string; author: string; durationSeconds: number; url: string;
+    status: 'title-matched'; checkedAt: string;
+  };
+  douyinVideo: null;
+}
+
+export interface KorokTaskEndpoint { sourceId: string; sourceObjectId: number; rawCoordinates: [number, number, number] }
+export interface KorokGuide {
+  pointId: string; code: string; name: string; layer: 'sky' | 'surface';
+  type: string; typeName: string; hint: string; rewardSeeds: 1 | 2;
+  pair: { start: KorokTaskEndpoint; destination: KorokTaskEndpoint; association: 'explicit-source-links' } | null;
+}
+
 export interface PointOfInterest {
   id: string;
   name: string;
@@ -42,6 +64,8 @@ export interface PointOfInterest {
   rawCoordinates?: [number, number, number];
   sourceObjectId?: number;
   contents?: string[];
+  shrineGuide?: ShrineGuide;
+  korokGuide?: KorokGuide;
   source: DataSource;
 }
 
@@ -95,6 +119,7 @@ export interface PlayerData {
   questProgress: QuestProgress[];
   armorPlans: ArmorUpgradePlan[];
   ownedMaterials: Record<string, number>;
+  completedPoints: string[];
 }
 
 export interface ArmorUpgradePlan { equipmentId: string; currentLevel: number; targetLevel: number }

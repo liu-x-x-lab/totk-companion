@@ -25,3 +25,13 @@ python3 scripts/sync-equipment-icons.py
 运行中的页面地址为本机 5178 端口；手机在同一局域网可访问该主机地址。运行 `node scripts/capture-preview.mjs` 保存 390 × 844 CSS px 的真实 Chromium 页面截图到 `docs/previews/`，包含地表、天空神庙、地底人马、装备和防具。`capture.json` 记录拍摄时间与视口。
 
 预览为本地开发服务，当前未发布公网站点。
+
+## 神庙与树根符号
+
+- 来源：`zeldamods/objmap-totk` 提交 `3c37e5317c5fce3b4edf1bb2daf49c5607871a8f`，`public/icons/shrine.svg` 与 `lightroot.svg`，Git blob 均核对通过。
+- 本地：`public/ui/map/shrine.svg`、`lightroot.svg`。保留形状路径、变换、填色与描边，移除模糊光晕及编辑器元数据，裁紧 viewBox。
+- 为社区绘制的游戏地图符号，不声称官方导出。GPL-3.0 许可随包保存在 `public/licenses/objmap-totk-GPL-3.0.txt`；来源和转换哈希见 `public/data/map-icons-manifest.json`。
+- 保留 44 px 点击范围，取消原圆底座；未点亮较暗，点亮恢复色彩并显示清楚的完成徽记。图标保持固定屏幕尺寸。
+- 同步：`python3 scripts/sync-map-icons.py`，离线复现加 `--offline`。
+
+用户要求塞尔达公主 App 图标：内置 imagegen 未返回可用文件，重试被绘图工具自动审核拒绝且未说明具体原因。当前保留原 App 图标，原创精灵公主替代方案等待用户选择，未声称已生成或接入。

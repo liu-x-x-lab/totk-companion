@@ -23,14 +23,17 @@ python3 scripts/serve-releases.py --port 8788  # 局域网 APK 下载页
 - 地表、天空、地底所有 2–7 级瓦片共 29,835 张保存在本机，第一次去任何区域也能离线放大。没有联网瓦片回退。
 - 730 个中文地名，缩放时文字保持可读，可开关、搜索；怪物过滤与地名显示独立。
 - 54,793 条固定地点，西诺克斯系列 69、人马 34（地表 15、地底 19）、神庙 152、树根 120；怪物、收集、洞窟、材料、装备拾取等分类与聚合。
+- 神庙、树根使用本地矢量地图符号，可手动点亮；其他地点可标记完成或撤销，按“只看未完成”筛选，刷新保留。
+- 152 座神庙的中文名、谜题名与 B 站对应攻略分集；抖音按名称搜索。目录离线可查，视频在外部平台联网播放。
+- 900 个呀哈哈任务按 24 类筛选，100 个搬运任务显示背包起点、朋友终点、坐标与方向连线，两端共用一条完成记录。
 - 搜名称、地区或坐标，查看和复制东/北/高与原始坐标，列表跳地图；完整地点 CSV 可导出。
 - 310 件基础装备及本地对应图标，攻击/防御、基础耐久、腐朽/无腐蚀、弓箭数与词条区间；保留全部 775 个历史 ID。
 - 135 件防具及 547 个等级记录，逐星强化材料、防御和卢比。多件升级范围自动合并，填写已有量，查看缺口，刷新保存。
 - 253 项任务目录，35 篇离线教程覆盖全部 23 主线和 12 项实用任务；接取、前置、准备、阶段操作、地图跳转与手动进度。218 项仅索引明确标注待整理。
-- 收藏、手动耐久、任务阶段、升级计划和材料数量统一备份；旧备份兼容，导入预览后确认替换。
+- 收藏、地点点亮与完成、手动耐久、任务阶段、升级计划和材料数量统一备份；旧备份兼容，导入预览后确认替换。
 - 玉石绿、纸色、金色刻线与原创古代圆环；紧凑而可读的手机文字，触控至少 44px。
 
-资料是社区固定放置记录，不表示当前游戏中的实时生成、等级、剧情状态或巨龙位置。装备耐久为基础值，实际剩余耐久手动填写；完整融合规则和主机存档读取不在本轮实现范围。任务教程为整理的行动摘要，未进行游戏内逐阶段实测。资料来源见 [sources.md](docs/sources.md)、[equipment-sources.md](docs/equipment-sources.md)、[quest-sources.md](docs/quest-sources.md)。
+资料是社区固定放置记录，不表示当前游戏中的实时生成、等级、剧情状态或巨龙位置。装备耐久为基础值，实际剩余耐久手动填写；完整融合规则和主机存档读取不在本轮实现范围。任务教程和克洛格类型提示为整理的行动摘要，未进行游戏内逐点实测。神庙视频核对了完整名称与分集标题，未逐集观看。资料来源见 [sources.md](docs/sources.md)、[equipment-sources.md](docs/equipment-sources.md)、[quest-sources.md](docs/quest-sources.md)、[shrine-video-sources.md](docs/shrine-video-sources.md)、[korok-sources.md](docs/korok-sources.md)。
 
 安卓容器不申请网络或共享存储权限；备份和 CSV 用系统文件选择器，复制坐标用本机剪贴板。外部参考链接由手机浏览器打开，需联网。浏览器自动化、原生编译和 APK 签名/资产验证已纳入交付流程；当前环境未连接安卓真机，安装与文件选择器仍待手机实测。
 
@@ -39,6 +42,8 @@ python3 scripts/serve-releases.py --port 8788  # 局域网 APK 下载页
 截图来自运行中的 React App，390 × 844 CSS px，使用 `node scripts/capture-preview.mjs` 更新。
 
 [满屏地图](docs/previews/map-mobile.png) · [沉浸地图](docs/previews/map-immersive-mobile.png) · [装备](docs/previews/equipment-mobile.png) · [任务手册](docs/previews/quests-mobile.png) · [阶段教程](docs/previews/quest-guide-mobile.png) · [升级计划](docs/previews/armor-planner-mobile.png) · [合并材料](docs/previews/armor-materials-mobile.png)
+
+[神庙点亮](docs/previews/map-shrine-lit-mobile.png) · [神庙视频入口](docs/previews/map-shrine-video-mobile.png) · [搬运克洛格](docs/previews/map-korok-carry-mobile.png)
 
 ## 项目结构
 
@@ -67,6 +72,9 @@ python3 scripts/sync-map-tiles.py
 python3 scripts/sync-equipment.py
 python3 scripts/sync-equipment-icons.py
 python3 scripts/sync-quests.py
+python3 scripts/sync-map-icons.py
+python3 scripts/sync-shrine-guides.py
+python3 scripts/sync-korok-guides.py
 ```
 
 地图资源脚本使用 Pillow 校验图片与完整边界；其余生成脚本主要使用 Python 标准库。原始快照在 `.cache/`，输出保留 SHA-256。来源变动导致断言失败时先核对资料，不直接放宽完整性条件。React、TypeScript 和 Vite 前端，不需要后端。

@@ -1,6 +1,6 @@
 {
   "name": "totk-companion",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "type": "module",
   "engines": {
@@ -11,8 +11,8 @@
     "typecheck": "tsc --noEmit",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 0.0.0.0 --port 4178",
-    "test": "node --experimental-strip-types --experimental-test-isolation=none --test src/data/player-data.test.ts src/features/map/geometry.test.ts src/features/map/labels.test.ts src/features/map/rendering.test.ts src/data/world-data.test.ts src/data/equipment-data.test.ts src/features/equipment/armor-planner.test.ts src/data/quest-data.test.ts",
-    "test:watch": "node --experimental-strip-types --experimental-test-isolation=none --test --watch src/data/player-data.test.ts src/features/map/geometry.test.ts src/features/map/labels.test.ts src/features/map/rendering.test.ts src/data/world-data.test.ts src/data/equipment-data.test.ts src/features/equipment/armor-planner.test.ts src/data/quest-data.test.ts",
+    "test": "node --experimental-strip-types --experimental-test-isolation=none --test src/data/player-data.test.ts src/features/map/geometry.test.ts src/features/map/labels.test.ts src/features/map/rendering.test.ts src/data/world-data.test.ts src/data/equipment-data.test.ts src/features/equipment/armor-planner.test.ts src/data/quest-data.test.ts src/data/shrine-guides.test.ts src/data/korok-guides.test.ts",
+    "test:watch": "node --experimental-strip-types --experimental-test-isolation=none --test --watch src/data/player-data.test.ts src/features/map/geometry.test.ts src/features/map/labels.test.ts src/features/map/rendering.test.ts src/data/world-data.test.ts src/data/equipment-data.test.ts src/features/equipment/armor-planner.test.ts src/data/quest-data.test.ts src/data/shrine-guides.test.ts src/data/korok-guides.test.ts",
     "test:offline": "npm run build && node scripts/verify-offline.mjs",
     "build:android": "python3 scripts/build-android.py",
     "test:e2e": "playwright test",

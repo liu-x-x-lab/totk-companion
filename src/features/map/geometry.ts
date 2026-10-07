@@ -51,3 +51,24 @@ export function focusCamera(point: MapPoint, viewport: Viewport, zoom = 16, anch
   const scale = baseScale(viewport) * Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoom));
   return constrainCamera({ x: anchor.x - point.x * WORLD_SIZE * scale, y: anchor.y - point.y * WORLD_HEIGHT * scale, scale }, viewport);
 }
+
+export function focusPairCamera(a: MapPoint, b: MapPoint, viewport: Viewport, top = 0, bottom = viewport.height): Camera {
+  const available = bottom - top;
+  const areaTop=available>=44?top:0,areaBottom=available>=44?bottom:viewport.height;
+  const minX=Math.min(a.x,b.x)*WORLD_SIZE,maxX=Math.max(a.x,b.x)*WORLD_SIZE;
+  const minY=Math.min(a.y,b.y)*WORLD_HEIGHT,maxY=Math.max(a.y,b.y)*WORLD_HEIGHT;
+  // Fit the endpoints and the whole viewport simultaneously. Near a world edge,
+  // covering the viewport imposes a minimum scale that a midpoint-only fit misses.
+  for(const padding of [20,8,0]){
+    const left=44,right=Math.max(left+1,viewport.width-44),upper=areaTop+padding,lower=areaBottom-padding;
+    if(lower<=upper)continue;
+    const maximum=Math.min(baseScale(viewport)*16,(right-left)/Math.max(.001,maxX-minX),(lower-upper)/Math.max(.001,maxY-minY));
+    const minimum=Math.max(baseScale(viewport),left/Math.max(.001,minX),(viewport.width-right)/Math.max(.001,WORLD_SIZE-maxX),upper/Math.max(.001,minY),(viewport.height-lower)/Math.max(.001,WORLD_HEIGHT-maxY));
+    if(minimum>maximum)continue;
+    const scale=maximum;
+    const xMin=Math.max(viewport.width-WORLD_SIZE*scale,left-minX*scale),xMax=Math.min(0,right-maxX*scale);
+    const yMin=Math.max(viewport.height-WORLD_HEIGHT*scale,upper-minY*scale),yMax=Math.min(0,lower-maxY*scale);
+    return {scale,x:Math.max(xMin,Math.min(xMax,viewport.width/2-(minX+maxX)*scale/2)),y:Math.max(yMin,Math.min(yMax,(areaTop+areaBottom)/2-(minY+maxY)*scale/2))};
+  }
+  return focusCamera(midpoint(a,b),viewport,1,{x:viewport.width/2,y:(areaTop+areaBottom)/2});
+}

@@ -14,6 +14,18 @@ describe('玩家备份', () => {
       armorPlans: [{ equipmentId: 'Armor_001_Head', currentLevel: 2, targetLevel: 4 }], ownedMaterials: { 'actor:Item_Ore_F': 50, 'currency:rupees': 700 } };
     assert.deepEqual(parsePlayerData(serializeBackup(data)), data);
   });
+  it('地点点亮/完成记录往返保存，旧备份默认未完成，未知地点 ID 保留', () => {
+    const data = { ...emptyPlayerData(), completedPoints: ['loc:0x3370bc5cc790fa0d', 'future-point'] };
+    assert.deepEqual(parsePlayerData(serializeBackup(data)).completedPoints, data.completedPoints);
+    const old = { schemaVersion: 1, favorites: ['poi:old'], durabilityRecords: [record], ownedMaterials: { 'currency:rupees': 20 } };
+    assert.deepEqual(parsePlayerData(JSON.stringify(old)).completedPoints, []);
+    assert.equal(parsePlayerData(JSON.stringify(old)).ownedMaterials['currency:rupees'],20);
+  });
+  it('拒绝重复、超长、空值、非字符串及异常结构的完成记录', () => {
+    for(const completedPoints of [['a','a'],[''],['x'.repeat(201)],[4],null,{},Array(100001).fill('x')]) {
+      assert.throws(()=>parsePlayerData(JSON.stringify({...emptyPlayerData(),completedPoints})),/完成记录/);
+    }
+  });
   it('拒绝重复计划、非法升级范围、任务阶段和已有材料数量', () => {
     const plan = { equipmentId: 'Armor_001_Head', currentLevel: 0, targetLevel: 4 };
     for (const armorPlans of [[plan, plan], [{ ...plan, targetLevel: 5 }], [{ ...plan, currentLevel: 4 }]]) assert.throws(() => parsePlayerData(JSON.stringify({ ...emptyPlayerData(), armorPlans })));

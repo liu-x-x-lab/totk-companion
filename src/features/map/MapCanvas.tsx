@@ -1,9 +1,10 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { PointerEvent as ReactPointerEvent } from 'react';
-import type { MapLabel, MapLayer, MapPoint, PointOfInterest } from '../../types/domain';
+import type { KorokGuide, MapLabel, MapLayer, MapPoint, PointOfInterest } from '../../types/domain';
 import { Icon } from '../../components/Icon';
 import { formatCoordinates, pointDefinition } from '../../data/catalog';
-import { baseScale, constrainCamera, coverCamera, focusCamera, MAX_ZOOM, MIN_ZOOM, pinchCamera, resizeCamera, WORLD_HEIGHT, WORLD_SIZE, zoomCamera } from './geometry';
+import { baseScale, constrainCamera, coverCamera, focusCamera, focusPairCamera, MAX_ZOOM, MIN_ZOOM, pinchCamera, resizeCamera, WORLD_HEIGHT, WORLD_SIZE, zoomCamera } from './geometry';
+import { korokMapPosition } from '../../data/korok-guides';
 import type { Camera, Viewport } from './geometry';
 import { clusterPoints, createPointIndex } from './clustering';
 import { CameraMotion } from './camera-motion';
@@ -11,10 +12,10 @@ import { Tiles } from './Tiles';
 import type { TilesHandle } from './Tiles';
 import { MapLabels } from './MapLabels';
 
-interface Props { layer: MapLayer; points: readonly PointOfInterest[]; labels: readonly MapLabel[]; selectedId: string | null; onSelect: (id: string) => void; focusTarget: { point: PointOfInterest; token: number } | null }
+interface Props { layer: MapLayer; points: readonly PointOfInterest[]; labels: readonly MapLabel[]; selectedPoint: PointOfInterest|null; completedPointIds: ReadonlySet<string>; selectedId: string | null; onSelect: (id: string) => void; focusTarget: { point: PointOfInterest; token: number; endpoint?:'start'|'destination' } | null }
 interface OverlayAnchor { element: HTMLElement; x: number; y: number; offset: number; width: number; height: number }
 
-export function MapCanvas({ layer, points, labels, selectedId, onSelect, focusTarget }: Props) {
+export function MapCanvas({ layer, points, labels, selectedPoint, completedPointIds, selectedId, onSelect, focusTarget }: Props) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
   const terrainRef = useRef<TilesHandle>(null);
@@ -36,6 +37,11 @@ export function MapCanvas({ layer, points, labels, selectedId, onSelect, focusTa
   const [showLabels, setShowLabels] = useState(true);
   const previousViewport = useRef(viewport);
   const lastLayout = useRef(0);
+  const routeRef=useRef<SVGLineElement>(null);
+  const pairRef=useRef<KorokGuide['pair']>(null);
+  const pair=selectedPoint?.korokGuide?.pair??null;
+  const start=pair?korokMapPosition(pair.start.rawCoordinates):null;
+  const destination=pair?korokMapPosition(pair.destination.rawCoordinates):null;
   const paintRef = useRef<(camera: Camera) => void>(() => {});
   const pointIndex = useMemo(() => createPointIndex(points), [points]);
   const clusters = useMemo(() => clusterPoints(pointIndex.query(camera, viewport), camera, viewport, selectedId), [pointIndex, camera, viewport, selectedId]);
@@ -57,6 +63,14 @@ export function MapCanvas({ layer, points, labels, selectedId, onSelect, focusTa
         const x = Math.round((anchor.x * WORLD_SIZE * next.scale + next.x - anchor.width / 2) * ratio) / ratio;
         const y = Math.round((anchor.y * WORLD_HEIGHT * next.scale + next.y + anchor.offset - anchor.height / 2) * ratio) / ratio;
         anchor.element.style.transform = `translate(${x}px, ${y}px)`;
+      }
+      const currentPair=pairRef.current,line=routeRef.current;
+      if(currentPair&&line){
+        for(const [index,endpoint]of [currentPair.start,currentPair.destination].entries()){
+          const point=korokMapPosition(endpoint.rawCoordinates);
+          line.setAttribute(`x${index+1}`,String(Math.round((point.x*WORLD_SIZE*next.scale+next.x)*ratio)/ratio));
+          line.setAttribute(`y${index+1}`,String(Math.round((point.y*WORLD_HEIGHT*next.scale+next.y)*ratio)/ratio));
+        }
       }
       const zoom = next.scale / baseScale(viewport), destination = motion.destination.scale / baseScale(viewport);
       if (zoomRef.current) zoomRef.current.textContent = `${Math.round(zoom * 100)}%`;
@@ -86,13 +100,14 @@ export function MapCanvas({ layer, points, labels, selectedId, onSelect, focusTa
   useEffect(() => { pointers.current.clear(); starts.current.clear(); gestureRect.current = null; setClusterItems([]); motion.flush(); }, [layer]);
 
   useLayoutEffect(() => {
+    pairRef.current=pair;
     anchors.current = [...(overlayRef.current?.querySelectorAll<HTMLElement>('[data-map-x]') ?? [])].map((element) => ({
       element, x: Number(element.dataset.mapX), y: Number(element.dataset.mapY), offset: Number(element.dataset.mapOffset ?? 0),
       width: element.offsetWidth, height: element.offsetHeight,
     }));
     // Newly created markers immediately catch up with the live camera, not the layout snapshot.
     paintRef.current(motion.camera);
-  }, [clusters, layerLabels, showLabels, camera, layer]);
+  }, [clusters, layerLabels, showLabels, camera, layer, pair]);
 
   function jump(next: Camera) { motion.move(next); motion.flush(); }
   function animate(next: Camera) { motion.animate(next, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 180); }
@@ -105,7 +120,9 @@ export function MapCanvas({ layer, points, labels, selectedId, onSelect, focusTa
     const top = frame && toolbar ? toolbar.bottom - frame.top + 12 : 0;
     const bottom = frame && sheet ? Math.min(sheet.top, controls?.top ?? sheet.top) - frame.top - 12 : viewport.height;
     const anchor = { x: viewport.width / 2, y: bottom - top >= 24 ? (top + bottom) / 2 : viewport.height / 2 };
-    jump(focusCamera(focusTarget.point.mapPosition, viewport, 16, anchor));
+    const taskPair=focusTarget.point.korokGuide?.pair;
+    const pairBottom=frame&&sheet?sheet.top-frame.top-12:viewport.height;
+    jump(taskPair&&!focusTarget.endpoint?focusPairCamera(korokMapPosition(taskPair.start.rawCoordinates),korokMapPosition(taskPair.destination.rawCoordinates),viewport,top,pairBottom):focusCamera(focusTarget.point.mapPosition, viewport, 16, anchor));
   }, [focusTarget?.token, focusTarget?.point.id, layer]);
 
   useEffect(() => {
@@ -162,18 +179,26 @@ export function MapCanvas({ layer, points, labels, selectedId, onSelect, focusTa
       onClickCapture={(event) => { if (dragged.current && event.detail !== 0) { event.preventDefault(); event.stopPropagation(); dragged.current = false; } }}>
       <Tiles ref={terrainRef} key={layer} layer={layer} />
       <div ref={overlayRef} className="map-overlay">
+        {pair&&start&&destination&&selectedPoint&&<>
+          <svg className="korok-route" aria-hidden="true" data-testid="korok-route"><defs><marker id="korok-route-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 10 5 0 10z" fill="#f2d384"/></marker></defs><line ref={routeRef} stroke="#f2d384" strokeWidth="2.5" strokeDasharray="7 5" markerEnd="url(#korok-route-arrow)"/></svg>
+          <button className={`map-marker korok-start-marker ${completedPointIds.has(selectedPoint.id)?'is-completed':''}`} data-testid="korok-start-marker" data-map-x={start.x} data-map-y={start.y} aria-label={`查看${selectedPoint.korokGuide!.code}背包克洛格起点`} onClick={()=>onSelect(selectedPoint.id)}><span><Icon name="leaf" size={22}/></span>{completedPointIds.has(selectedPoint.id)&&<i className="completion-marker"><Icon name="check" size={11}/></i>}</button>
+          <span className="korok-endpoint-label" data-map-x={start.x} data-map-y={start.y} data-map-offset="-34">起点 · 背包</span>
+          <span className="korok-endpoint-label" data-map-x={destination.x} data-map-y={destination.y} data-map-offset="30">终点 · 朋友</span>
+        </>}
         {showLabels && <MapLabels labels={layerLabels} camera={camera} viewport={viewport} markers={clusters} />}
         {clusters.map((cluster) => {
           const point = cluster.points[0], definition = pointDefinition(point), isGroup = cluster.points.length > 1;
-          return <button key={isGroup ? cluster.id : point.id} className={`map-marker ${isGroup ? 'cluster-marker' : ''} ${selectedId === point.id && !isGroup ? 'selected' : ''}`}
+          const gameSymbol = !isGroup && (point.category === 'shrine' || point.category === 'root');
+          const completed = cluster.points.every(item=>completedPointIds.has(item.id));
+          return <button key={isGroup ? cluster.id : point.id} className={`map-marker ${isGroup ? 'cluster-marker' : ''} ${gameSymbol ? 'game-symbol-marker' : ''} ${completed?'is-completed':''} ${selectedId === point.id && !isGroup ? 'selected' : ''}`}
             data-map-x={cluster.x} data-map-y={cluster.y}
-            aria-label={isGroup ? `放大查看${cluster.points.length}个地点` : `查看${point.name}，坐标${formatCoordinates(point)}`} aria-pressed={!isGroup && selectedId === point.id}
+            aria-label={isGroup ? `放大查看${cluster.points.length}个地点` : `查看${point.name}，坐标${formatCoordinates(point)}${completed?'，已完成':''}`} aria-pressed={!isGroup && selectedId === point.id}
             onClick={() => {
               if (!isGroup) { onSelect(point.id); return; }
               const liveZoom = motion.camera.scale / baseScale(viewport);
               if (liveZoom < MAX_ZOOM - .01) animate(focusCamera({ x: cluster.x, y: cluster.y }, viewport, Math.min(MAX_ZOOM, liveZoom * 2)));
               else setClusterItems(cluster.points);
-            }}><span style={{ background: isGroup ? '#294e3a' : definition.color }}>{isGroup ? cluster.points.length : definition.glyph ?? <Icon name={definition.icon} size={19} />}</span></button>;
+            }}><span style={{ background: gameSymbol ? undefined : isGroup ? '#294e3a' : definition.color }}>{isGroup ? cluster.points.length : definition.glyph ?? <Icon name={definition.icon} size={gameSymbol ? 32 : 19} />}</span>{completed&&<i className="completion-marker"><Icon name="check" size={11}/></i>}</button>;
         })}
       </div>
     </div>

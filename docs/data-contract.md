@@ -91,3 +91,13 @@ interface DataSource {
 升级范围为整数 `0 <= currentLevel < targetLevel <= 4`，每件基础防具最多一个计划，别名/不可强化防具不进入计算。只累加 `currentLevel < level <= targetLevel` 的记录；缺失等级不输出部分总数。材料优先以 `actor:<ID>` 合并，无 ID 时以 `name:<规范化原始名>` 合并，卢比用 `currency:rupees`。持有量为 0–999999 整数，缺口取 `max(0, 总需求 - 已有)`，费用保留全身防具的整体值。
 
 导入限制最多 200 个计划、1000 个任务、每任务 100 个阶段和 2000 个持有数量键；拒绝重复 ID、非法范围、非整数数量和异常结构。导入前预览全部记录数量并由用户确认替换。任务进度与材料持有量不代表 Switch 实时存档。
+
+## 神庙视频
+
+`shrine-guides.json` 包含 152 个 Actor / 稳定地点 ID、中文名、英文名、谜题名和图层；不按名称猜地点。`video` 保存 BVID、页码、CID、标题、作者、时长及核对日期，`title-matched` 仅为神庙完整名称与分集标题匹配，未逐集观看。`douyinVideo: null` 表示尚无核验直接视频；名称搜索与直接攻略明确区分。目录离线可查，视频外链需要网络。版本与来源见 `shrine-video-sources.md`。
+
+## 克洛格任务与完成记录
+
+`korok-guides.json` 保存 900 个原任务 ID、24 类和中文提示。100 个搬运任务有 `pair.start/destination` 的原始坐标、源 ID、对象 ID及 `association: explicit-source-links`。静态标记是终点，起点通过源链接匹配，不按距离推断，不增加主地点数。800 个单果实与 100 个双果实任务总计 1000 颗；59 个天空任务含 2 个搬运任务。来源见 `korok-sources.md`。
+
+玩家记录新增 `completedPoints: string[]`，原存储键和 `schemaVersion: 1` 不变；旧备份补 `[]`。最多 100000 个 ID，每个 1–200 字符，拒绝重复、空值、错误类型及异常数量；未知 ID 保留。搬运起终点只写同一任务 ID。它独立于收藏与任务阶段，纯手动状态。导出与导入预览包含完成记录，错误导入不修改已有记录。

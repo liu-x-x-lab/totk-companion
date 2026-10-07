@@ -46,6 +46,21 @@ try {
   await expect(page.getByTestId('filtered-count')).toHaveText('32 处');
   await capture('sky-mobile.png');
 
+  await layers.getByRole('button', { name: '地表', exact: true }).click();
+  await quick.getByRole('button', { name: '神庙', exact: true }).click();
+  await page.getByRole('searchbox', { name: '搜索地图地点' }).fill('塔吉卡兹神庙');
+  await page.locator('.location-list').getByRole('button').first().click();
+  await page.getByTestId('point-completion').click();
+  await capture('map-shrine-lit-mobile.png');
+  await page.getByTestId('shrine-video-guide').evaluate(element=>element.scrollIntoView({block:'start',behavior:'instant'}));
+  await capture('map-shrine-video-mobile.png');
+  await quick.getByRole('button', { name: '呀哈哈', exact: true }).click();
+  await page.getByRole('searchbox', { name: '搜索地图地点' }).fill('RP38');
+  await page.locator('.location-list').getByRole('button').first().click();
+  await page.getByTestId('korok-task-guide').evaluate(element=>element.scrollIntoView({block:'start',behavior:'instant'}));
+  await capture('map-korok-carry-mobile.png');
+  await page.getByRole('searchbox', { name: '搜索地图地点' }).fill('');
+
   await layers.getByRole('button', { name: '地底', exact: true }).click();
   await quick.getByRole('button', { name: '人马', exact: true }).click();
   await expect(page.getByTestId('filtered-count')).toHaveText('19 处');

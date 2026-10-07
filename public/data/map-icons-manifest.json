@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-07T15:58:37.875145+00:00",
+  "source": "https://github.com/zeldamods/objmap-totk",
+  "snapshot": "3c37e5317c5fce3b4edf1bb2daf49c5607871a8f",
+  "license": "GPL-3.0",
+  "licenseFile": "/licenses/objmap-totk-GPL-3.0.txt",
+  "verification": "Original SVG bytes matched fixed Git blobs; shrine and lightroot shape paths, transforms, fills and strokes preserved. Blurred CSS shadows and editor metadata removed, viewBox trimmed. Community representations of game map symbols, not official exported game assets.",
+  "total": 2,
+  "icons": [
+    {
+      "name": "shrine",
+      "file": "/ui/map/shrine.svg",
+      "sourcePath": "public/icons/shrine.svg",
+      "sourceUrl": "https://raw.githubusercontent.com/zeldamods/objmap-totk/3c37e5317c5fce3b4edf1bb2daf49c5607871a8f/public/icons/shrine.svg",
+      "gitBlob": "339926032fca3e5c447ad6c92974d55db0d70542",
+      "sourceSha256": "5e9d97a2c27ce413f121708fd182b850ecc99e89e7c02ebe767cc4a4a8cfc86a",
+      "sha256": "a7a67a63b19d2e50e4982788109b82d1ddf4ffbfa48ef97d9df68462fbcddebe",
+      "bytes": 1234,
+      "format": "svg",
+      "viewBox": "3 4 18.5 19.5"
+    },
+    {
+      "name": "lightroot",
+      "file": "/ui/map/lightroot.svg",
+      "sourcePath": "public/icons/lightroot.svg",
+      "sourceUrl": "https://raw.githubusercontent.com/zeldamods/objmap-totk/3c37e5317c5fce3b4edf1bb2daf49c5607871a8f/public/icons/lightroot.svg",
+      "gitBlob": "22b462e22c33bc8e8ebe128a17e675457efb58af",
+      "sourceSha256": "16a91907a17af4fb1b85e0990b92dd5082b1835065c298fe1143acead0889036",
+      "sha256": "14be27218d77de077d9e012b5157f927b2d90adad93222bf609dfc9cc8d3f4a0",
+      "bytes": 1765,
+      "format": "svg",
+      "viewBox": "4 2 18 17"
+    }
+  ]
+}

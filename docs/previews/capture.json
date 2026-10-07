@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-07T15:36:20.151Z",
+  "capturedAt": "2026-10-07T17:06:39.214Z",
   "viewport": {
     "width": 390,
     "height": 844
@@ -11,6 +11,9 @@
     "map-immersive-mobile.png",
     "hinox-mobile.png",
     "sky-mobile.png",
+    "map-shrine-lit-mobile.png",
+    "map-shrine-video-mobile.png",
+    "map-korok-carry-mobile.png",
     "depths-mobile.png",
     "equipment-mobile.png",
     "armor-mobile.png",

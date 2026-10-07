@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react';
 
-export type IconName = 'map' | 'sword' | 'monster' | 'bookmark' | 'search' | 'plus' | 'minus' | 'target' | 'layers' | 'chevron' | 'close' | 'mountain' | 'shrine' | 'tower' | 'cave' | 'arrow' | 'download' | 'upload' | 'shield' | 'bow' | 'spark' | 'check' | 'journal';
-const paths: Record<IconName, string[]> = {
+export type IconName = 'map' | 'sword' | 'monster' | 'bookmark' | 'search' | 'plus' | 'minus' | 'target' | 'layers' | 'chevron' | 'close' | 'mountain' | 'shrine' | 'lightroot' | 'tower' | 'cave' | 'arrow' | 'download' | 'upload' | 'shield' | 'bow' | 'spark' | 'check' | 'journal' | 'play' | 'leaf';
+const paths: Record<Exclude<IconName,'shrine'|'lightroot'>, string[]> = {
   journal: ['M5 3h14v18H5z', 'M5 7H3m2 5H3m2 5H3M9 7h6M9 11h6M9 15h4'],
   map: ['m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3z', 'M9 3v15M15 6v15'],
   sword: ['m14 3 7-1-1 7-9 9-5-5z', 'm4 15 5 5M6 18l-4 4M3 21l1 1'],
@@ -15,7 +15,8 @@ const paths: Record<IconName, string[]> = {
   chevron: ['m9 5 7 7-7 7'],
   close: ['m6 6 12 12M6 18 18 6'],
   mountain: ['m2 20 8-15 4 7 2-4 6 12z', 'm8 9 2 3 2-3'],
-  shrine: ['m12 3 9 18H3z', 'm12 10 5 8H7z'],
+  play: ['m9 5 11 7-11 7z'],
+  leaf: ['M12 2c3 4 7 5 8 10s-2 9-8 9-9-4-8-9 5-6 8-10z','M12 13v8M7 10l3 2m7-2-3 2'],
   tower: ['M9 21V9H6l6-6 6 6h-3v12M6 21h12M9 14h6'],
   cave: ['m2 21 3-12 7-6 7 6 3 12z', 'M8 21v-6a4 4 0 0 1 8 0v6'],
   arrow: ['M4 12h16m-6-6 6 6-6 6'],
@@ -28,5 +29,6 @@ const paths: Record<IconName, string[]> = {
 };
 
 export function Icon({ name, size = 20, style }: { name: IconName; size?: number; style?: CSSProperties }) {
+  if(name==='shrine'||name==='lightroot') return <img aria-hidden="true" className="game-map-icon" src={`/ui/map/${name}.svg`} width={size} height={size} alt="" draggable={false} style={style}/>;
   return <svg aria-hidden="true" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" style={style}>{paths[name].map((d, i) => <path key={i} d={d} />)}</svg>;
 }

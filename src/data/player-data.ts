@@ -1,7 +1,7 @@
 import type { ArmorUpgradePlan, DurabilityRecord, PlayerData, QuestProgress } from '../types/domain';
 
 export const STORAGE_KEY = 'totk-companion:player:v1';
-export const emptyPlayerData = (): PlayerData => ({ schemaVersion: 1, favorites: [], durabilityRecords: [], questProgress: [], armorPlans: [], ownedMaterials: {} });
+export const emptyPlayerData = (): PlayerData => ({ schemaVersion: 1, favorites: [], durabilityRecords: [], questProgress: [], armorPlans: [], ownedMaterials: {}, completedPoints: [] });
 
 function validId(value: unknown): value is string { return typeof value === 'string' && value.length > 0 && value.length <= 200; }
 function level(value: unknown): value is number { return typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= 4; }
@@ -42,6 +42,9 @@ export function parsePlayerData(text: string): PlayerData {
   const plans = data.armorPlans === undefined ? [] : data.armorPlans;
   const progress = data.questProgress === undefined ? [] : data.questProgress;
   const owned = data.ownedMaterials === undefined ? {} : data.ownedMaterials;
+  const completed = data.completedPoints === undefined ? [] : data.completedPoints;
+  if (!Array.isArray(completed) || completed.length > 100000 || !completed.every(validId)
+    || new Set(completed).size !== completed.length) throw new Error('备份中的地点完成记录不正确。');
   if (!Array.isArray(plans) || plans.length > 200 || !plans.every(isPlan)
     || new Set(plans.map((plan) => plan.equipmentId)).size !== plans.length) throw new Error('备份中的防具升级计划不正确。');
   if (!Array.isArray(progress) || progress.length > 1000 || !progress.every(isProgress)
@@ -58,6 +61,7 @@ export function parsePlayerData(text: string): PlayerData {
     armorPlans: plans.map(({ equipmentId, currentLevel, targetLevel }) => ({ equipmentId, currentLevel, targetLevel })),
     questProgress: progress.map(({ questId, completedStageIds }) => ({ questId, completedStageIds: [...completedStageIds] })),
     ownedMaterials: Object.fromEntries(Object.entries(owned)) as Record<string, number>,
+    completedPoints: [...completed] as string[],
   };
 }
 

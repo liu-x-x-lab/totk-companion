@@ -6,7 +6,7 @@ export interface MarkerDefinition { id: string; label: string; group: string; ca
 export const BOSS_KEYS = ['hinox','stalnox','lynel','talus','gleeok','flux','frox','molduga'];
 const exploration = ['shrine','root','tower','cave','well','chasm','korok','tear','chest','sages-will','old-map','settlement','stable','shop','lab','dispenser','landmark'];
 const resource = ['plant','fruit','mushroom','material','monster-material','ore','fish','insect','animal'];
-const symbols: Partial<Record<PoiCategory,IconName>> = { shrine:'shrine',root:'spark',tower:'tower',cave:'cave',well:'cave',chasm:'layers',korok:'spark',tear:'spark',chest:'bookmark',weapon:'sword',dispenser:'layers',animal:'mountain',ore:'spark',zonai:'layers' };
+const symbols: Partial<Record<PoiCategory,IconName>> = { shrine:'shrine',root:'lightroot',tower:'tower',cave:'cave',well:'cave',chasm:'layers',korok:'leaf',tear:'spark',chest:'bookmark',weapon:'sword',dispenser:'layers',animal:'mountain',ore:'spark',zonai:'layers' };
 const bossSymbols:Record<string,[string,string]>={hinox:['西','#9b643d'],stalnox:['骷','#7b7968'],lynel:['马','#87553c'],talus:['岩','#687657'],gleeok:['龙','#94813e'],flux:['方','#3d8077'],frox:['巨','#735e81'],molduga:['沙','#a27b3c']};
 export const markerCatalog: MarkerDefinition[] = [
   ...Object.entries(MONSTER_LABELS).map(([id,label]) => ({ id,label,group:BOSS_KEYS.includes(id)?'大型怪物':'其他怪物',category:'monster' as const,monsterType:id as MonsterType,icon:'monster' as const,color:bossSymbols[id]?.[1]??'#9b7e5a',glyph:bossSymbols[id]?.[0] })),

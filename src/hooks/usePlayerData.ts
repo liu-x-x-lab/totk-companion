@@ -29,6 +29,9 @@ export function usePlayerData() {
   return {
     data,
     storageWarning,
+    togglePointCompleted: (id: string) => setData((current) => ({ ...current,
+      completedPoints: current.completedPoints.includes(id) ? current.completedPoints.filter(pointId => pointId !== id) : [...current.completedPoints, id],
+    })),
     isFavorite: (key: string) => data.favorites.includes(key),
     toggleFavorite: (key: string) => setData((current) => ({
       ...current,

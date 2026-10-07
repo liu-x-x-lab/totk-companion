@@ -52,7 +52,7 @@ def verify_resources(directory):
         path = directory / item["file"].lstrip("/")
         if sha(path.read_bytes()) != item["sha256"]:
             raise ValueError(f"Equipment icon integrity failed: {path.name}")
-    for filename in ("points.json", "equipment.json", "manifest.json", "map-labels.json", "quests.json", "coordinates.csv", "equipment.csv"):
+    for filename in ("points.json", "equipment.json", "manifest.json", "map-labels.json", "quests.json", "shrine-guides.json", "korok-guides.json", "map-icons-manifest.json", "coordinates.csv", "equipment.csv"):
         if not (directory / "data" / filename).is_file():
             raise ValueError(f"Missing packaged data: {filename}")
     print(f"Verified {len(records):,} local map tiles and {len(icons['icons'])} equipment icons", flush=True)
@@ -60,6 +60,19 @@ def verify_resources(directory):
     labels = json.loads((directory / "data/map-labels.json").read_text())
     if quests["total"] != 253 or quests["tutorialTotal"] != 35 or labels["total"] != 730:
         raise ValueError("Quest tutorials or Chinese map labels are incomplete")
+    map_icons = json.loads((directory / "data/map-icons-manifest.json").read_text())
+    if map_icons["total"] != 2 or not (directory / map_icons["licenseFile"].lstrip("/")).is_file():
+        raise ValueError("Map symbols or their source license are incomplete")
+    for icon in map_icons["icons"]:
+        if sha((directory / icon["file"].lstrip("/")).read_bytes()) != icon["sha256"]:
+            raise ValueError(f"Map symbol integrity failed: {icon['name']}")
+    shrines = json.loads((directory / "data/shrine-guides.json").read_text())
+    koroks = json.loads((directory / "data/korok-guides.json").read_text())
+    if shrines["total"] != 152 or len(shrines["guides"]) != 152 or shrines["videoTotal"] != 152:
+        raise ValueError("Shrine video directory is incomplete")
+    if koroks["total"] != 900 or len(koroks["guides"]) != 900 or sum(bool(guide["pair"]) for guide in koroks["guides"]) != 100:
+        raise ValueError("Korok tasks or carry pairs are incomplete")
+    print("Verified 152 shrine video chapters, 900 Korok tasks, 100 carry pairs and 2 local vector symbols", flush=True)
     return manifest
 
 
@@ -150,7 +163,7 @@ def main():
             if path.is_file():
                 archive.write(path, path.relative_to(ROOT / "dist").as_posix())
         archive.write(ROOT / "docs/offline-install.md", "离线使用说明.md")
-        for name in ("sources.md", "equipment-sources.md", "quest-sources.md", "ui-assets.md"):
+        for name in ("sources.md", "equipment-sources.md", "quest-sources.md", "shrine-video-sources.md", "korok-sources.md", "ui-assets.md"):
             archive.write(ROOT / "docs" / name, "sources/" + name)
         archive.write(ROOT / "scripts/serve-offline.py", "serve-offline.py")
     shutil.copyfile(ROOT / "docs/offline-install.md", release / "安卓安装说明.md")
@@ -158,6 +171,8 @@ def main():
               "minimumAndroidApi": MIN_API, "targetAndroidApi": TARGET_API, "permissions": [],
               "mapTiles": manifest["total"], "mapTileBytes": manifest["bytes"], "mapLevels": manifest["levels"],
               "chineseMapLabels": 730, "questCatalogue": 253, "offlineQuestTutorials": 35,
+              "shrineVideoChapters": 152, "verifiedDouyinDirectVideos": 0, "korokTasks": 900, "korokCarryPairs": 100,
+              "manualPointCompletion": True, "videoFilesIncluded": False,
               "artifacts": [{"file": path.name, "bytes": path.stat().st_size, "sha256": sha(path.read_bytes())}
                             for path in (apk, bundle)]}
     (release / "package-manifest.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
@@ -169,6 +184,8 @@ def main():
 <style>*{{box-sizing:border-box}}body{{margin:0;background:#173e37;color:#263e35;font:15px/1.8 system-ui,sans-serif}}main{{max-width:540px;margin:36px auto;padding:30px 24px;background:#f5f0e2;border:1px solid #baa36a;border-radius:8px}}h1{{font:700 25px/1.4 serif;color:#244a3a;margin:0 0 12px}}p{{margin:12px 0}}small{{color:#657461}}.download{{display:block;padding:16px;text-align:center;background:#275e46;color:#f8efce;border:1px solid #b5a871;border-radius:5px;text-decoration:none;font-weight:600;margin:22px 0}}a{{color:#3c7050}}code{{font-size:11px;overflow-wrap:anywhere}}.note{{padding:12px;background:#e5ebdc;border:1px solid #c5ceb5;border-radius:4px}}</style></head>
 <body><main><small>王国之泪 · 随身探索助手</small><h1>海拉鲁探险手册</h1><p>三层离线地图、中文地名、装备耐久、阶段任务和防具升级备料。</p>
 <p>地图优化：逐帧缩放、高清瓦片预取、加载时保留地形，地名和图标保持固定清晰尺寸。</p>
+<p>新增：手动点亮与完成记录、只看未完成、神庙与树根矢量符号。900 个呀哈哈任务按类型筛选，100 个搬运克洛格任务显示起点、朋友位置和方向连线。</p>
+<p>152 座神庙各有对应的 B 站攻略分集，并提供抖音名称搜索；视频需联网，在外部平台播放。</p>
 <a class="download" href="/{apk.name}" download>下载安卓离线 APK · {apk_record['bytes'] / 1024 / 1024:.1f} MiB</a>
 <p><small>版本 {version} · Android 8.0 及以上</small></p><div class="note">手机连接同一局域网后下载。直接打开 APK 覆盖安装可保留记录，请保留原应用。首次安装如有提示，允许当前浏览器或文件管理器安装应用。安装后可以开启飞行模式使用。</div>
 <p>已通过高分屏手机浏览器、完全断网、签名和包内资源校验；新版没有连接安卓设备复测，手势体验仍需真机确认。</p>

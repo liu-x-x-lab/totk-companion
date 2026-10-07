@@ -90,6 +90,26 @@ try {
   await expect(page.getByRole('article', { name: '地点详情' })).toContainText('卡卡利科村');
   await expect(page.getByTestId('point-coordinates')).toHaveText('1817, -988, 224');
   await expect(page.getByTestId('zoom-level')).toHaveText('1600%');
+  await page.getByRole('group', { name: '地图快捷筛选' }).getByRole('button', { name: '神庙', exact: true }).click();
+  await page.getByRole('searchbox', { name: '搜索地图地点' }).fill('塔吉卡兹神庙');
+  await page.locator('.location-list').getByRole('button').filter({ has: page.getByText('塔吉卡兹神庙', { exact: true }) }).click();
+  const shrineGuide = page.getByTestId('shrine-video-guide');
+  await expect(shrineGuide).toContainText('平衡之形');
+  await expect(shrineGuide.getByRole('link', { name: /^观看/ })).toHaveAttribute('href', 'https://www.bilibili.com/video/BV1Ru41147ca/?p=27');
+  await expect(shrineGuide.getByRole('link', { name: '抖音搜索', exact: true })).toHaveAttribute('href', /^https:\/\/www\.douyin\.com\/search\//);
+  await expect.poll(()=>page.locator('.map-marker.selected img.game-map-icon').evaluate(image=>image.complete&&image.naturalWidth>0)).toBe(true);
+  await expect(shrineGuide).toContainText('视频需联网');
+  await page.getByTestId('point-completion').click();
+  await expect(page.locator('.map-marker.selected')).toHaveClass(/is-completed/);
+  await page.getByRole('group', { name: '地图快捷筛选' }).getByRole('button', { name: '呀哈哈', exact: true }).click();
+  await page.getByRole('searchbox', { name: '搜索地图地点' }).fill('RP38');
+  await page.locator('.location-list').getByRole('button').first().click();
+  await expect(page.getByTestId('korok-start-coordinates')).toHaveText('-4260, 2175, 95');
+  await expect(page.getByTestId('korok-destination-coordinates')).toHaveText('-4116, 2416, 92');
+  await expect(page.getByTestId('korok-start-marker')).toBeInViewport();
+  await expect(page.getByTestId('korok-route').locator('line')).not.toHaveAttribute('x1', '0');
+  await page.getByTestId('point-completion').click();
+  await expect(page.getByTestId('korok-start-marker')).toHaveClass(/is-completed/);
   await navigation.getByRole('button', { name: '怪物', exact: true }).click();
   await page.getByLabel('筛选怪物图层').selectOption('depths');
   await page.getByLabel('筛选怪物种类').selectOption('lynel');
@@ -119,6 +139,8 @@ try {
   await page.getByRole('button', { name: '地图定位', exact: true }).click();
   await expect(page.getByRole('article', { name: '地点详情' })).toContainText('监视堡垒');
   await page.reload(); await expect(page.locator('.demo-banner')).toContainText('已载入');
+  await navigation.getByRole('button', { name: '收藏', exact: true }).click();
+  await expect(page.getByTestId('completed-points-count')).toContainText('2 个地点');
   await navigation.getByRole('button', { name: '装备', exact: true }).click();
   await expect(page.getByLabel('已有琥珀', { exact: true })).toHaveValue('60');
   await navigation.getByRole('button', { name: '任务', exact: true }).click();
@@ -129,7 +151,7 @@ try {
   if (external.length || errors.length) throw new Error(JSON.stringify({ external, errors }));
   const report = { checkedAt: new Date().toISOString(), browserOffline: true, origin, mapTiles: resources.total,
     devicePixelRatio: 3, renderer: 'viewport-clipped native image tiles, decoded cache and unscaled DOM overlays',
-    tested: ['All three layers and four corners at native level 7', 'Decoded image coverage at DPR 3 including every viewport edge', 'Offline Chinese labels and place search', 'Depths Lynel filter and coordinates', 'Fixed equipment durability and local icon', 'Three-piece armor material aggregation, owned quantities and persistence', 'Offline quest tutorials, stage progress, map links and persistence'],
+    tested: ['All three layers and four corners at native level 7', 'Decoded image coverage at DPR 3 including every viewport edge', 'Offline Chinese labels and place search', 'Offline Chinese shrine catalog, specific video chapter metadata, search links and local vector symbol (video viewing requires network)', 'Offline Korok carry start/destination coordinates and direction line', 'Manual shrine and Korok completion badges survive reload', 'Depths Lynel filter and coordinates', 'Fixed equipment durability and local icon', 'Three-piece armor material aggregation, owned quantities and persistence', 'Offline quest tutorials, stage progress, map links and persistence'],
     distinctAssetsRequested: loaded.size, externalRequests: external, errors,
     nativeDeviceTest: 'No Android device attached; native installation and document chooser not yet tested on a device' };
   await mkdir(resolve(root, '.cache/verification'), { recursive: true });
