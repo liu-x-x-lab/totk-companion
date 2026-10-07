@@ -1,0 +1,13 @@
+{
+  "id": "/",
+  "name": "海拉鲁探险手册 · 王国之泪",
+  "short_name": "探险手册",
+  "lang": "zh-CN",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f7f7f0",
+  "theme_color": "#183c32",
+  "icons": [{ "src": "/icons/app.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

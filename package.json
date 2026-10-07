@@ -1,0 +1,30 @@
+{
+  "name": "totk-companion",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.12.0" },
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5178",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 4178",
+    "test": "node --experimental-strip-types --experimental-test-isolation=none --test src/data/player-data.test.ts src/features/map/geometry.test.ts src/data/world-data.test.ts",
+    "test:watch": "node --experimental-strip-types --experimental-test-isolation=none --test --watch src/data/player-data.test.ts src/features/map/geometry.test.ts src/data/world-data.test.ts",
+    "test:e2e": "playwright test",
+    "check": "npm run typecheck && npm run test && npm run build"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^22.15.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.1.1",
+    "typescript": "~5.9.3",
+    "vite": "^7.3.1"
+  }
+}
