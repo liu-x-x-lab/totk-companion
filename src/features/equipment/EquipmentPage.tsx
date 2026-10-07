@@ -6,6 +6,9 @@ import type { PlayerStore } from '../../hooks/usePlayerData';
 import { createRecordId } from '../../data/player-data';
 import { Icon } from '../../components/Icon';
 import { EquipmentArt } from '../../components/EquipmentArt';
+import { saveBundledFile } from '../../platform/offline';
+import { ArmorPlanner } from './ArmorPlanner';
+import { canUpgrade } from './armor-planner';
 
 const variantLabels = { standard: '普通', pristine: '无腐蚀', decayed: '腐朽' };
 const modifierLabels = { attackUp: '攻击提升', attackUpPlus: '攻击提升＋', guardUp: '盾防御提升', guardUpPlus: '盾防御提升＋', durabilityUp: '耐久提升', durabilityUpPlus: '耐久提升＋' };
@@ -88,6 +91,7 @@ export function EquipmentPage({ equipment, store, focusId }: { equipment: readon
   const [variant, setVariant] = useState<'all' | 'pristine' | 'decayed'>('all');
   const [recordingId, setRecordingId] = useState<string | null>(null);
   const [limit,setLimit]=useState(24);
+  const [plannerOpen, setPlannerOpen] = useState(store.data.armorPlans.length > 0);
   useEffect(()=>setLimit(24),[category,search,variant]);
   useEffect(() => {
     const focused = equipment.find((item) => item.id === focusId);
@@ -102,6 +106,7 @@ export function EquipmentPage({ equipment, store, focusId }: { equipment: readon
   return <div className="page">
     <div className="page-heading"><div><p className="eyebrow">KNOW YOUR GEAR</p><h1>装备图鉴</h1></div><span className="heading-icon"><Icon name="sword" size={26}/></span></div>
     <p className="page-intro">查装备，记耐久，为下一次战斗做好准备。</p>
+    <ArmorPlanner equipment={equipment} store={store} open={plannerOpen} onOpen={setPlannerOpen}/>
     <label className="search-field"><Icon name="search"/><input type="search" aria-label="搜索装备" placeholder="搜索武器、弓、盾、防具…" value={search} onChange={(event) => setSearch(event.target.value)}/></label>
     <div className="filter-row" role="group" aria-label="装备分类"><button className={`filter-chip ${category === 'all' ? 'active' : ''}`} aria-pressed={category === 'all'} onClick={() => setCategory('all')}>全部</button>{(Object.keys(EQUIPMENT_LABELS) as EquipmentCategory[]).map((type) => <button key={type} className={`filter-chip ${category === type ? 'active' : ''}`} aria-pressed={category === type} onClick={() => setCategory(type)}>{EQUIPMENT_LABELS[type]}</button>)}</div>
     <div className="equipment-toolbar"><span data-testid="equipment-count">{visible.length} / {catalogCount} 件</span><label>武器形态<select aria-label="筛选武器形态" value={variant} onChange={(event) => setVariant(event.target.value as typeof variant)}><option value="all">全部形态</option><option value="pristine">无腐蚀</option><option value="decayed">腐朽</option></select></label></div>
@@ -118,6 +123,11 @@ export function EquipmentPage({ equipment, store, focusId }: { equipment: readon
         {item.durabilityNote && <p className="gear-special-note">{item.durabilityNote}</p>}
         <p className="equipment-description">{item.description}</p>
         <EquipmentFacts item={item}/>
+        {canUpgrade(item) && <button className="outline-button record-trigger" onClick={() => {
+          if (!store.data.armorPlans.some((plan) => plan.equipmentId === item.id)) store.setArmorPlan({ equipmentId: item.id, currentLevel: 0, targetLevel: 4 });
+          setPlannerOpen(true);
+          document.getElementById('armor-planner')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }}><Icon name="shield" size={16}/>加入备料清单</button>}
         {records.map((record, index) => <div key={record.id} className="durability-record" aria-label={`手动耐久记录 ${index + 1}`}>
           <div className="record-heading"><span>手动记录 {index + 1}</span><output aria-label="记录剩余耐久">{record.current} <small>/ {record.maximum}</small></output></div>
           <input type="range" min="0" max={record.maximum} value={record.current} aria-label={`调整${item.name}的手动耐久`} onChange={(event) => store.updateRecord(record.id, Number(event.target.value))}/>
@@ -129,6 +139,6 @@ export function EquipmentPage({ equipment, store, focusId }: { equipment: readon
     })}</div>
     {visible.length>limit&&<button className="outline-button load-more" onClick={()=>setLimit((value)=>value+24)}>显示更多（已显示 {limit} / {visible.length}）</button>}
     {!visible.length && <div className="empty-state"><Icon name="search" size={32}/><h2>没有找到装备</h2><p>试试其他名称或切换分类。</p></div>}
-    <a className="outline-button gear-download" href="/data/equipment.csv" download><Icon name="download" size={16}/>下载装备属性 CSV</a>
+    <a className="outline-button gear-download" href="/data/equipment.csv" download onClick={event => { if (saveBundledFile('/data/equipment.csv')) event.preventDefault(); }}><Icon name="download" size={16}/>下载装备属性 CSV</a>
   </div>;
 }

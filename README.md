@@ -1,94 +1,72 @@
 # 海拉鲁探险手册 · 王国之泪辅助 App
 
-为手机使用开发的《塞尔达传说：王国之泪》辅助项目。已接入天空、地表、地底真实底图和社区固定地点资料，支持分类筛选、坐标查看、拖动和双指放大。
+主要在安卓手机使用的中文探索助手。地图、地点、装备和已有任务教程全部随离线 APK 打包，无需账号或服务器。
 
-## 启动
-
-环境：Node.js 22.12+、npm。
+## 启动与构建
 
 ```bash
 cd /data/totk-companion
 npm ci
-npm run dev
+npm run dev                # 0.0.0.0:5178，手机局域网预览
+npm run check              # 类型、业务测试、生产构建
+npm run test:e2e           # 手机布局与手势
+npm run test:offline       # 生产资源完全断网验证
+npm run build:android      # Android SDK / JDK 17 本机打包
+python3 scripts/serve-releases.py --port 8788  # 局域网 APK 下载页
 ```
 
-开发服务器默认端口为 `5178`，监听 `0.0.0.0`。同一局域网中的手机可访问开发电脑的 IP 和该端口；远程环境需要相应的端口转发或预览入口。
+环境：Node.js 22.12+。浏览器测试首次使用需 `npx playwright install chromium`；安卓构建需 platform 35、build-tools 34.0.0 和 JDK 17。支持 Android 8.0+，安装说明见 [offline-install.md](docs/offline-install.md)。APK、离线网页 ZIP 和校验文件生成在 `releases/`，密钥在忽略的 `.cache/android/signing/`，后续覆盖更新需保留密钥。
 
-```bash
-npm run check       # 类型检查、业务测试和生产构建
-npm run test:e2e    # 移动界面和地图交互测试
-npm run preview    # 预览 dist/，默认端口 4178
-```
+## 功能与覆盖
 
-首次运行浏览器测试，需要执行 `npx playwright install chromium`；需要 WebKit 时执行 `npx playwright install webkit`。
+- 地图铺满导航上方的屏幕，最小缩放覆盖视口，四向拖动不露出留白；支持双指、按钮、1–64 倍、横竖屏与视野保留。
+- 地表、天空、地底所有 2–7 级瓦片共 29,835 张保存在本机，第一次去任何区域也能离线放大。没有联网瓦片回退。
+- 730 个中文地名，缩放时文字保持可读，可开关、搜索；怪物过滤与地名显示独立。
+- 54,793 条固定地点，西诺克斯系列 69、人马 34（地表 15、地底 19）、神庙 152、树根 120；怪物、收集、洞窟、材料、装备拾取等分类与聚合。
+- 搜名称、地区或坐标，查看和复制东/北/高与原始坐标，列表跳地图；完整地点 CSV 可导出。
+- 310 件基础装备及本地对应图标，攻击/防御、基础耐久、腐朽/无腐蚀、弓箭数与词条区间；保留全部 775 个历史 ID。
+- 135 件防具及 547 个等级记录，逐星强化材料、防御和卢比。多件升级范围自动合并，填写已有量，查看缺口，刷新保存。
+- 253 项任务目录，35 篇离线教程覆盖全部 23 主线和 12 项实用任务；接取、前置、准备、阶段操作、地图跳转与手动进度。218 项仅索引明确标注待整理。
+- 收藏、手动耐久、任务阶段、升级计划和材料数量统一备份；旧备份兼容，导入预览后确认替换。
+- 玉石绿、纸色、金色刻线与原创古代圆环；紧凑而可读的手机文字，触控至少 44px。
 
-## 当前功能
+资料是社区固定放置记录，不表示当前游戏中的实时生成、等级、剧情状态或巨龙位置。装备耐久为基础值，实际剩余耐久手动填写；完整融合规则和主机存档读取不在本轮实现范围。任务教程为整理的行动摘要，未进行游戏内逐阶段实测。资料来源见 [sources.md](docs/sources.md)、[equipment-sources.md](docs/equipment-sources.md)、[quest-sources.md](docs/quest-sources.md)。
 
-- 手机优先的中文界面，底部地图 / 装备 / 怪物 / 收藏导航。
-- 海拉鲁探险手册主题：玉石绿、暖纸色、金色刻线和原创古代圆环；310 件基础装备使用对应的本地物品图标。
-- 天空、地表、地底切换，拖动、双指缩放、最高 64 倍放大与复位。
-- 西诺克斯（含骷髅）69 个、人马 34 个固定对象记录，其他怪物按种类标记与筛选。
-- 神庙、树根、呀哈哈、洞窟入口、水井入口、深穴、龙之泪、贤者的遗志、古旧地图、宝箱等探索分类。
-- 材料、矿物、动物、装备拾取点、人物和左纳乌装置分类；共 54,793 条地点记录。
-- 密集标记聚合，放大展开，最大倍数下可选择重合对象。
-- 名称、地区和坐标搜索；坐标详情、复制、原始坐标与来源查询。
-- 完整地点坐标 CSV：`public/data/coordinates.csv`，可在收藏页下载。
-- 310 件基础装备的中文图鉴，包含攻击 / 防御、基础耐久、腐朽 / 无腐蚀形态、弓的箭数和词条区间。
-- 135 件基础防具的强化防御、材料与卢比费用；保留旧强化装备 ID 以兼容收藏。
-- 按基础耐久预填手动记录；仍可按词条、融合和实际使用情况调整。
-- 本地保存收藏和耐久记录；数据导出与导入。
-- App 图标、Web App Manifest；安装适配与完整离线地图列入后续计划。
+安卓容器不申请网络或共享存储权限；备份和 CSV 用系统文件选择器，复制坐标用本机剪贴板。外部参考链接由手机浏览器打开，需联网。浏览器自动化、原生编译和 APK 签名/资产验证已纳入交付流程；当前环境未连接安卓真机，安装与文件选择器仍待手机实测。
 
-资料是三层世界的固定放置对象及上游探索索引，来源和核验规则见 `docs/sources.md`。剧情变体、实际等级、动态生成和实时巨龙路线不代表当前游戏状态。概览底图与资料已保存在项目，高清瓦片在线加载；完整离线地图下载尚未实现。
+## 效果截图
 
-装备基础属性已接入并对照两份原始数据表，详细来源见 `docs/equipment-sources.md`。双手武器与长枪采用游戏显示攻击值；魔王之弓显示红心条件范围，大师之剑标注特殊状态。基础耐久不包含词条与融合增加值，完整融合计算尚未实现。没有独立属性资料的旧剧情 / NPC 名称只用于保留历史收藏，不纳入 310 件基础图鉴。
+截图来自运行中的 React App，390 × 844 CSS px，使用 `node scripts/capture-preview.mjs` 更新。
 
-装备属性 CSV 位于 `public/data/equipment.csv`，可在装备页下载。当前剩余耐久继续由用户手动记录。
+[满屏地图](docs/previews/map-mobile.png) · [沉浸地图](docs/previews/map-immersive-mobile.png) · [装备](docs/previews/equipment-mobile.png) · [任务手册](docs/previews/quests-mobile.png) · [阶段教程](docs/previews/quest-guide-mobile.png) · [升级计划](docs/previews/armor-planner-mobile.png) · [合并材料](docs/previews/armor-materials-mobile.png)
 
-手机实际截图：[地表地图](docs/previews/map-mobile.png)、[天空神庙](docs/previews/sky-mobile.png)、[地底人马](docs/previews/depths-mobile.png)、[装备图鉴](docs/previews/equipment-mobile.png)。视觉资源来源与核验方式见 [ui-assets.md](docs/ui-assets.md)。开发服务运行时可用 `node scripts/capture-preview.mjs` 更新截图。
-
-## 目录
+## 项目结构
 
 ```text
-src/
-  app/               应用壳、底部导航和页面状态
-  components/        图标、空状态等共用组件
-  features/
-    map/             地图视图、手势和坐标变换
-    equipment/       装备图鉴与手动耐久记录
-    monsters/        怪物列表与地图定位
-    saved/           收藏、备份和数据恢复
-  data/              分类目录、资料仓库与玩家记录
-  hooks/             本地持久化与复用逻辑
-  types/             领域模型
-  styles/            手机优先样式
-public/
-  maps/              三层真实概览瓦片
-  data/              完整坐标索引、来源清单与 CSV
-  icons/             项目自有图标
-  ui/                原创圆环与几何刻线 SVG
-  images/equipment/  按 Actor ID 核验的本地装备图标
-docs/
-  requirements.md    需求基线与验收标准
-  data-contract.md   资料格式、来源与核验规则
-  roadmap.md         分阶段研发计划
-  sources.md         来源、范围、投影与更新方式
-  plans/             设计与实现计划
-  previews/          真实手机页面截图
-tests/
-  e2e/               手机交互测试
+src/app/                 应用壳与五栏导航
+src/features/map/        满屏地图、地名、手势与坐标
+src/features/equipment/  固定图鉴、手动耐久与防具备料
+src/features/quests/     目录、阶段教程与地图关联
+src/features/monsters/   怪物分布列表
+src/features/saved/      收藏、统一备份与兼容恢复
+src/data/                本地资料解析和玩家记录
+public/maps/             三层完整离线瓦片
+public/data/             来源清单、JSON 和 CSV
+android/                 本机 WebView 容器与系统文件接口
+scripts/                 资料更新、离线验证、截图和 APK 构建
+docs/                    需求、来源、设计与安装说明
 ```
-
-技术方案使用 React、TypeScript 和 Vite。当前不需要后端；地图与装备资料通过数据仓库读取，不与页面组件绑定。
 
 ## 更新资料
 
 ```bash
+python3 -m pip install -r scripts/requirements-tools.txt
 python3 scripts/sync-data.py --tiles
+python3 scripts/sync-map-labels.py
+python3 scripts/sync-map-tiles.py
 python3 scripts/sync-equipment.py
 python3 scripts/sync-equipment-icons.py
+python3 scripts/sync-quests.py
 ```
 
-仅使用 Python 标准库。脚本下载公开资料、保存 SHA-256 清单，生成地点索引、坐标 CSV 和装备属性库，并校验关键数量与数值。装备更新会下载原始数据表与名称资料；原始快照保存在 `.cache/equipment/`，可用 `python3 scripts/sync-equipment.py --offline` 重建。来源变更导致断言失败时，先核对数据再更新基线。
-
-验证覆盖 Node 业务测试和 Android Chrome 手机视口，iOS 真机与安装流程仍需后续验证。
+地图资源脚本使用 Pillow 校验图片与完整边界；其余生成脚本主要使用 Python 标准库。原始快照在 `.cache/`，输出保留 SHA-256。来源变动导致断言失败时先核对资料，不直接放宽完整性条件。React、TypeScript 和 Vite 前端，不需要后端。

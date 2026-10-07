@@ -25,7 +25,7 @@ export function Tiles({layer,camera,viewport}:{layer:MapLayer;camera:Camera;view
   const baseSize=WORLD_SIZE*256/750;
   return <>
     <div className="map-overview" data-layer={layer}>{Array.from({length:9},(_,i)=>{const x=i%3,y=Math.floor(i/3);return <img key={`${folder}:${i}`} alt="" draggable={false} src={`/maps/${folder}/2/${x}/${y}.webp`} style={{left:x*baseSize,top:y*baseSize,width:baseSize+.1,height:baseSize+.1}}/>;})}</div>
-    {level>2&&<div className="map-detail-tiles">{tiles.map((tile)=><img key={`${folder}:${level}:${tile.x}:${tile.y}`} alt="" draggable={false} src={`https://objmap-totk.zeldamods.org/game_files/map/${folder}/maptex/${level}/${tile.x}/${tile.y}.webp`} data-testid="detail-tile" style={{left:tile.x*tile.size,top:tile.y*tile.size,width:tile.size+.05,height:tile.size+.05}} onError={()=>setFailed(true)}/>)}</div>}
-    {failed&&<span className="tile-fallback-status" role="status">部分高清瓦片未加载，保留本地概览</span>}
+    {level>2&&<div className="map-detail-tiles">{tiles.map((tile)=><img key={`${folder}:${level}:${tile.x}:${tile.y}`} alt="" draggable={false} src={`/maps/${folder}/${level}/${tile.x}/${tile.y}.webp`} data-testid="detail-tile" style={{left:tile.x*tile.size,top:tile.y*tile.size,width:tile.size+.05,height:tile.size+.05}} onError={()=>setFailed(true)}/>)}</div>}
+    {failed&&<span className="tile-fallback-status" role="status">离线高清资源缺失，请重新安装完整包</span>}
   </>;
 }

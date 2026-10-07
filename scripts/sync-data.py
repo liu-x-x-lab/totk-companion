@@ -80,9 +80,11 @@ def marker_layer(group, marker):
     if group == 'CheckPoint': return 'depths'
     if marker.get('map_name') == 'Sky': return 'sky'
     if marker.get('map_name') == 'Surface': return 'surface'
+    message = str(marker.get('MessageID', ''))
+    if message.endswith('_Sky') or message.startswith('SkyIslands_'): return 'sky'
     y = marker['Translate']['Y']
     if y < -50: return 'depths'
-    if y > 1000: return 'sky'
+    if y >= 1000: return 'sky'
     return 'surface'
 
 def main():

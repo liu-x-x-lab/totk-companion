@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import type { DurabilityRecord, PlayerData } from '../types/domain';
+import type { ArmorUpgradePlan, DurabilityRecord, PlayerData } from '../types/domain';
 import { emptyPlayerData, parsePlayerData, STORAGE_KEY } from '../data/player-data';
 
 function readStoredData(): { data: PlayerData; warning: string | null } {
@@ -40,6 +40,19 @@ export function usePlayerData() {
       durabilityRecords: current.durabilityRecords.map((record) => record.id === id ? { ...record, current: Math.max(0, Math.min(record.maximum, value)) } : record),
     })),
     removeRecord: (id: string) => setData((current) => ({ ...current, durabilityRecords: current.durabilityRecords.filter((record) => record.id !== id) })),
+    setArmorPlan: (plan: ArmorUpgradePlan) => setData((current) => ({ ...current,
+      armorPlans: [...current.armorPlans.filter((entry) => entry.equipmentId !== plan.equipmentId), plan],
+    })),
+    removeArmorPlan: (id: string) => setData((current) => ({ ...current, armorPlans: current.armorPlans.filter((plan) => plan.equipmentId !== id) })),
+    setOwnedMaterial: (key: string, value: number) => {
+      if (!Number.isInteger(value) || value < 0 || value > 999999) return;
+      setData((current) => ({ ...current, ownedMaterials: { ...current.ownedMaterials, [key]: value } }));
+    },
+    toggleQuestStage: (questId: string, stageId: string) => setData((current) => {
+      const completed = current.questProgress.find((entry) => entry.questId === questId)?.completedStageIds ?? [];
+      const next = completed.includes(stageId) ? completed.filter((id) => id !== stageId) : [...completed, stageId];
+      return { ...current, questProgress: [...current.questProgress.filter((entry) => entry.questId !== questId), { questId, completedStageIds: next }] };
+    }),
     restore: (backup: PlayerData) => {
       setData(backup);
       // 手动恢复允许重新尝试持久化，读取异常不应阻断整个会话。

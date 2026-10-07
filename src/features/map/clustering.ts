@@ -3,7 +3,14 @@ import type { Camera, Viewport } from './geometry';
 import { WORLD_HEIGHT, WORLD_SIZE } from './geometry.ts';
 
 export interface MarkerCluster { id: string; x: number; y: number; points: PointOfInterest[] }
-export function clusterPoints(points: readonly PointOfInterest[],camera:Camera,viewport:Viewport,selectedId:string|null,cellSize=48):MarkerCluster[] {
+function clusterCellSize(viewport: Viewport): number {
+  let size = 48;
+  const cells = (extent: number) => Math.floor((extent + 44) / size) - Math.floor(-44 / size) + 1;
+  while (cells(viewport.width) * cells(viewport.height) + 1 >= 150) size += 8;
+  return size;
+}
+
+export function clusterPoints(points: readonly PointOfInterest[],camera:Camera,viewport:Viewport,selectedId:string|null,cellSize=clusterCellSize(viewport)):MarkerCluster[] {
   const groups = new Map<string,MarkerCluster>();
   for(const point of points){
     const x = point.mapPosition.x*WORLD_SIZE*camera.scale+camera.x;

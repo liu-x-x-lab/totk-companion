@@ -1,5 +1,5 @@
 export type MapLayer = 'sky' | 'surface' | 'depths';
-export type Page = 'map' | 'equipment' | 'monsters' | 'saved';
+export type Page = 'map' | 'equipment' | 'monsters' | 'quests' | 'saved';
 export type PoiCategory = 'monster' | 'shrine' | 'tower' | 'cave' | 'root' | 'well' | 'chasm' | 'korok' | 'tear' | 'chest' | 'sages-will' | 'old-map' | 'settlement' | 'stable' | 'shop' | 'lab' | 'dispenser' | 'landmark' | 'plant' | 'fruit' | 'mushroom' | 'material' | 'monster-material' | 'ore' | 'fish' | 'insect' | 'animal' | 'weapon' | 'arrow' | 'npc' | 'zonai' | 'other-object';
 export type EquipmentCategory = 'one-handed' | 'two-handed' | 'spear' | 'bow' | 'shield' | 'armor';
 export type MonsterType = keyof typeof MONSTER_LABELS;
@@ -13,6 +13,18 @@ export interface DataSource {
 }
 
 export interface MapPoint { x: number; y: number }
+export interface MapLabel {
+  id: string;
+  messageId: string;
+  name: string;
+  originalName: string;
+  layer: MapLayer;
+  kind: 'region' | 'town' | 'stable' | 'lab' | 'landmark';
+  showLevel: string;
+  mapPosition: MapPoint;
+  rawCoordinates: [number, number, number];
+  sourceIds: string[];
+}
 export interface GameCoordinates { x: number; y: number; z: number }
 
 export interface PointOfInterest {
@@ -80,7 +92,23 @@ export interface PlayerData {
   schemaVersion: 1;
   favorites: string[];
   durabilityRecords: DurabilityRecord[];
+  questProgress: QuestProgress[];
+  armorPlans: ArmorUpgradePlan[];
+  ownedMaterials: Record<string, number>;
 }
+
+export interface ArmorUpgradePlan { equipmentId: string; currentLevel: number; targetLevel: number }
+export interface QuestProgress { questId: string; completedStageIds: string[] }
+export type QuestCategory = 'main' | 'adventure' | 'shrine' | 'side';
+export interface QuestPlace { name: string; npc?: string; messageId?: string }
+export interface QuestStage { id: string; title: string; actions: string[]; messageId?: string }
+export interface Quest {
+  id: string; name: string; originalName: string; category: QuestCategory;
+  guideStatus: 'tutorial' | 'index'; referenceUrl: string; sourceStageIds: string[]; textSha256: string;
+  order?: number; chapter?: string; start?: QuestPlace; prerequisites?: string[];
+  preparations?: string[]; nextQuestIds?: string[]; stages?: QuestStage[];
+}
+export const QUEST_LABELS: Record<QuestCategory, string> = { main: '主线', adventure: '情节挑战', shrine: '神庙挑战', side: '支线任务' };
 
 export const LAYER_LABELS: Record<MapLayer, string> = { sky: '天空', surface: '地表', depths: '地底' };
 export const CATEGORY_LABELS: Record<PoiCategory, string> = { monster:'怪物',shrine:'神庙',tower:'鸟望台',cave:'洞窟入口',root:'树根',well:'水井入口',chasm:'深穴',korok:'呀哈哈',tear:'龙之泪',chest:'普通宝箱','sages-will':'贤者的遗志','old-map':'古旧地图',settlement:'城镇与聚落',stable:'驿站',shop:'商店',lab:'研究所',dispenser:'扭蛋机',landmark:'地名与遗迹',plant:'植物',fruit:'水果',mushroom:'蘑菇',material:'其他材料','monster-material':'怪物材料',ore:'矿床与矿石',fish:'鱼类',insect:'昆虫与小动物',animal:'野生动物',weapon:'装备拾取点',arrow:'箭',npc:'人物',zonai:'左纳乌装置','other-object':'其他对象' };

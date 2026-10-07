@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { catalogById,formatCoordinates } from './catalog.ts';
 import { matchesPoint } from './search.ts';
 import { clusterPoints } from '../features/map/clustering.ts';
-import { baseScale,fitCamera } from '../features/map/geometry.ts';
+import { baseScale,coverCamera,WORLD_SIZE,WORLD_HEIGHT } from '../features/map/geometry.ts';
 import type { PointOfInterest } from '../types/domain';
 
 const pack=JSON.parse(readFileSync(new URL('../../public/data/points.json',import.meta.url),'utf8'))as{rows:[string,number,string,string,number,number,number,number,number,number|null][];strings:string[]};
@@ -29,10 +29,27 @@ describe('真实世界资料与地图投影',()=>{
   });
   it('聚合保留所有对象，离开视野的对象不创建标记，选中对象独立显示',()=>{
     const points=Array.from({length:1000},(_,i)=>({...point,id:`point-${i}`,mapPosition:{x:.5,y:.5}}));
-    const viewport={width:360,height:450},camera=fitCamera(viewport);
+    const viewport={width:360,height:450},camera=coverCamera(viewport);
     const groups=clusterPoints(points,camera,viewport,null);assert.equal(groups.length,1);assert.equal(groups[0].points.length,1000);
     const selected=clusterPoints(points,camera,viewport,'point-1');assert.equal(selected.length,2);assert.equal(selected.reduce((sum,group)=>sum+group.points.length,0),1000);
     const zoomed={scale:baseScale(viewport)*64,x:-50000,y:-50000};assert.equal(clusterPoints(points,zoomed,viewport,null).length,0);
+  });
+  it('全屏视口密集标记少于 150 个，视野内的对象全部保留',()=>{
+    const points=Array.from({length:10000},(_,i)=>({...point,id:`dense-${i}`,mapPosition:{x:(i%100)/99,y:Math.floor(i/100)/99}}));
+    for(const viewport of [{width:390,height:770},{width:844,height:316},{width:1280,height:826}]){
+      const camera=coverCamera(viewport);
+      const selected=points.find((entry)=>entry.mapPosition.x>.49&&entry.mapPosition.x<.51&&entry.mapPosition.y>.49&&entry.mapPosition.y<.51)!;
+      const groups=clusterPoints(points,camera,viewport,selected.id);
+      assert.ok(groups.length<150,`${viewport.width}×${viewport.height}: ${groups.length} 个标记`);
+      const visible=points.filter((entry)=>{
+        const x=entry.mapPosition.x*WORLD_SIZE*camera.scale+camera.x,y=entry.mapPosition.y*WORLD_HEIGHT*camera.scale+camera.y;
+        return x>=-44&&x<=viewport.width+44&&y>=-44&&y<=viewport.height+44;
+      });
+      const retained=new Set(groups.flatMap((group)=>group.points.map((entry)=>entry.id)));
+      assert.equal(retained.size,visible.length);
+      assert.ok(visible.every((entry)=>retained.has(entry.id)));
+      assert.equal(groups.find((group)=>group.points.some((entry)=>entry.id===selected.id))!.points.length,1);
+    }
   });
   it('三层本地概览瓦片已保存，路径与图层一致',()=>{
     for(const layer of ['Ground','Sky','Depths'])for(let x=0;x<3;x++)for(let y=0;y<3;y++){

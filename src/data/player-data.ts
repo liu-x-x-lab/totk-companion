@@ -1,7 +1,18 @@
-import type { DurabilityRecord, PlayerData } from '../types/domain';
+import type { ArmorUpgradePlan, DurabilityRecord, PlayerData, QuestProgress } from '../types/domain';
 
 export const STORAGE_KEY = 'totk-companion:player:v1';
-export const emptyPlayerData = (): PlayerData => ({ schemaVersion: 1, favorites: [], durabilityRecords: [] });
+export const emptyPlayerData = (): PlayerData => ({ schemaVersion: 1, favorites: [], durabilityRecords: [], questProgress: [], armorPlans: [], ownedMaterials: {} });
+
+function validId(value: unknown): value is string { return typeof value === 'string' && value.length > 0 && value.length <= 200; }
+function level(value: unknown): value is number { return typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= 4; }
+function isPlan(value: unknown): value is ArmorUpgradePlan {
+  return isObject(value) && validId(value.equipmentId) && level(value.currentLevel) && level(value.targetLevel) && value.currentLevel < value.targetLevel;
+}
+function isProgress(value: unknown): value is QuestProgress {
+  return isObject(value) && validId(value.questId) && Array.isArray(value.completedStageIds)
+    && value.completedStageIds.length <= 100 && value.completedStageIds.every(validId)
+    && new Set(value.completedStageIds).size === value.completedStageIds.length;
+}
 
 function isObject(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -28,6 +39,15 @@ export function parsePlayerData(text: string): PlayerData {
   if (new Set(data.favorites).size !== data.favorites.length) throw new Error('备份包含重复的收藏。');
   if (!data.durabilityRecords.every(isRecord)) throw new Error('备份中的耐久记录不正确。');
   if (new Set(data.durabilityRecords.map((record) => record.id)).size !== data.durabilityRecords.length) throw new Error('备份包含重复的耐久记录。');
+  const plans = data.armorPlans === undefined ? [] : data.armorPlans;
+  const progress = data.questProgress === undefined ? [] : data.questProgress;
+  const owned = data.ownedMaterials === undefined ? {} : data.ownedMaterials;
+  if (!Array.isArray(plans) || plans.length > 200 || !plans.every(isPlan)
+    || new Set(plans.map((plan) => plan.equipmentId)).size !== plans.length) throw new Error('备份中的防具升级计划不正确。');
+  if (!Array.isArray(progress) || progress.length > 1000 || !progress.every(isProgress)
+    || new Set(progress.map((entry) => entry.questId)).size !== progress.length) throw new Error('备份中的任务进度不正确。');
+  if (!isObject(owned) || Object.keys(owned).length > 2000 || !Object.entries(owned).every(([key, value]) =>
+    validId(key) && /^(actor:|name:|currency:)/.test(key) && typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= 999999)) throw new Error('备份中的持有材料数量不正确。');
   return {
     schemaVersion: 1,
     favorites: [...data.favorites] as string[],
@@ -35,6 +55,9 @@ export function parsePlayerData(text: string): PlayerData {
       id: record.id, equipmentId: record.equipmentId, maximum: record.maximum,
       current: record.current, createdAt: record.createdAt,
     })),
+    armorPlans: plans.map(({ equipmentId, currentLevel, targetLevel }) => ({ equipmentId, currentLevel, targetLevel })),
+    questProgress: progress.map(({ questId, completedStageIds }) => ({ questId, completedStageIds: [...completedStageIds] })),
+    ownedMaterials: Object.fromEntries(Object.entries(owned)) as Record<string, number>,
   };
 }
 

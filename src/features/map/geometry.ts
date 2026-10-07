@@ -8,10 +8,10 @@ export interface Camera { x: number; y: number; scale: number }
 export interface Viewport { width: number; height: number }
 
 export function baseScale(viewport: Viewport): number {
-  return Math.max(.001, Math.min(viewport.width / WORLD_SIZE, viewport.height / WORLD_HEIGHT));
+  return Math.max(.001, viewport.width / WORLD_SIZE, viewport.height / WORLD_HEIGHT);
 }
 
-export function fitCamera(viewport: Viewport): Camera {
+export function coverCamera(viewport: Viewport): Camera {
   const scale = baseScale(viewport);
   return { x: (viewport.width - WORLD_SIZE * scale) / 2, y: (viewport.height - WORLD_HEIGHT * scale) / 2, scale };
 }
@@ -34,13 +34,20 @@ export function pinchCamera(camera: Camera, before: [MapPoint, MapPoint], after:
 }
 
 export function constrainCamera(camera: Camera, viewport: Viewport): Camera {
+  const scale = Math.max(baseScale(viewport), camera.scale);
   function constrain(value: number, available: number, extent: number): number {
-    return extent <= available ? (available - extent) / 2 : Math.max(available - extent - 24, Math.min(24, value));
+    return Math.max(available - extent, Math.min(0, value));
   }
-  return { ...camera, x: constrain(camera.x, viewport.width, WORLD_SIZE * camera.scale), y: constrain(camera.y, viewport.height, WORLD_HEIGHT * camera.scale) };
+  return { scale, x: constrain(camera.x, viewport.width, WORLD_SIZE * scale), y: constrain(camera.y, viewport.height, WORLD_HEIGHT * scale) };
 }
 
-export function focusCamera(point: MapPoint, viewport: Viewport, zoom = 16): Camera {
+export function resizeCamera(camera: Camera, previous: Viewport, next: Viewport): Camera {
+  const center = { x: (previous.width / 2 - camera.x) / camera.scale, y: (previous.height / 2 - camera.y) / camera.scale };
+  const scale = baseScale(next) * camera.scale / baseScale(previous);
+  return constrainCamera({ scale, x: next.width / 2 - center.x * scale, y: next.height / 2 - center.y * scale }, next);
+}
+
+export function focusCamera(point: MapPoint, viewport: Viewport, zoom = 16, anchor: MapPoint = { x: viewport.width / 2, y: viewport.height / 2 }): Camera {
   const scale = baseScale(viewport) * Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoom));
-  return constrainCamera({ x: viewport.width / 2 - point.x * WORLD_SIZE * scale, y: viewport.height / 2 - point.y * WORLD_HEIGHT * scale, scale }, viewport);
+  return constrainCamera({ x: anchor.x - point.x * WORLD_SIZE * scale, y: anchor.y - point.y * WORLD_HEIGHT * scale, scale }, viewport);
 }

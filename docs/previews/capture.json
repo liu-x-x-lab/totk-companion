@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-07T12:19:34.438Z",
+  "capturedAt": "2026-10-07T14:17:24.276Z",
   "viewport": {
     "width": 390,
     "height": 844
@@ -8,10 +8,15 @@
   "source": "Live React app captured by Chromium; no mockups or synthetic overlays",
   "frames": [
     "map-mobile.png",
+    "map-immersive-mobile.png",
     "hinox-mobile.png",
     "sky-mobile.png",
     "depths-mobile.png",
     "equipment-mobile.png",
-    "armor-mobile.png"
+    "armor-mobile.png",
+    "armor-planner-mobile.png",
+    "armor-materials-mobile.png",
+    "quests-mobile.png",
+    "quest-guide-mobile.png"
   ]
 }

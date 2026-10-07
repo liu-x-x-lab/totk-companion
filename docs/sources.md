@@ -36,3 +36,19 @@ python3 scripts/sync-data.py --tiles
 ```
 
 脚本会联网更新资料和三层概览瓦片，完整保留来源。原始快照缓存在 `.cache/sources/`，不提交；生成地点索引、分类统计和 CSV。首轮断言保护关键怪物和探索标记数量，来源变动时需要先核对再调整基线。
+
+## 完整离线瓦片与中文地名
+
+三层地图所有 2–7 级共 29,835 张 WebP 均已保存，每层 9 / 30 / 120 / 480 / 1880 / 7426 张，原始图片合计约 62.8 MiB。`offline-map-manifest.json` 逐张记录尺寸、文件大小、上游路径和 SHA-256。`sync-map-tiles.py` 校验图片格式、原生 24000 × 20000 范围、完整行列及哈希，支持断点补齐；运行时只使用本机文件。
+
+```bash
+python3 -m pip install -r scripts/requirements-tools.txt
+python3 scripts/sync-map-tiles.py
+python3 scripts/sync-map-labels.py
+```
+
+中文地名来自 `https://github.com/sh0wer1ee/TotkText` 的 1.2.1 游戏文字，固定快照 `1c66ac1a02edf2d73d10b0dc6f0f2de29da7b119`，`LocationMsg/Location/0000.json`–`0014.json`。按上游固定标记的 MessageID 精确匹配，730 个显示标签（地表 581、天空 48、地底 101），映射 911 个原始地点 ID。重复标签只在显示层去重；原始坐标和稳定 ID 保留。
+
+天空地名高度恰好为 1000 的边界按上游 MessageID 判定。相同源哈希在地表与地底魔人像复用时，使用实际 xyz 对应记录，不能只凭哈希覆盖图层。源 `Bargainer` 图标不当作村镇；村镇与地区优先排版，细小地名可移动避让，但不改变真实坐标。排版偏移只改变标签位置。
+
+离线生产验证在完全断网的浏览器中按 APK 相同本机源请求实际 `dist/` 文件，访问三层第 7 级四个未浏览角落、中文搜索、装备图标、教程与材料计划。APK 构建随后逐个比对资产与生产文件，避免完整网页包与安装包不一致。

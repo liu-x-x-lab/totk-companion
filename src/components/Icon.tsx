@@ -1,7 +1,8 @@
 import type { CSSProperties } from 'react';
 
-export type IconName = 'map' | 'sword' | 'monster' | 'bookmark' | 'search' | 'plus' | 'minus' | 'target' | 'layers' | 'chevron' | 'close' | 'mountain' | 'shrine' | 'tower' | 'cave' | 'arrow' | 'download' | 'upload' | 'shield' | 'bow' | 'spark' | 'check';
+export type IconName = 'map' | 'sword' | 'monster' | 'bookmark' | 'search' | 'plus' | 'minus' | 'target' | 'layers' | 'chevron' | 'close' | 'mountain' | 'shrine' | 'tower' | 'cave' | 'arrow' | 'download' | 'upload' | 'shield' | 'bow' | 'spark' | 'check' | 'journal';
 const paths: Record<IconName, string[]> = {
+  journal: ['M5 3h14v18H5z', 'M5 7H3m2 5H3m2 5H3M9 7h6M9 11h6M9 15h4'],
   map: ['m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3z', 'M9 3v15M15 6v15'],
   sword: ['m14 3 7-1-1 7-9 9-5-5z', 'm4 15 5 5M6 18l-4 4M3 21l1 1'],
   monster: ['m4 9-1-6 5 3m12 3 1-6-5 3', 'M5 7h14l2 6-2 7H5l-2-7z', 'm7 11 3 2m7-2-3 2M9 17h6'],

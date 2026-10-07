@@ -1,0 +1,1667 @@
+[
+  {
+    "id": "MainChallenge",
+    "order": 1,
+    "chapter": "序章与贯穿主线",
+    "start": {
+      "name": "初始空岛 · 时之神殿",
+      "npc": "劳鲁",
+      "messageId": "BeginningIsland"
+    },
+    "prerequisites": [
+      "完成开场并醒来，取得普尔亚平板"
+    ],
+    "preparations": [
+      "料理、备用武器；雪地区域准备耐寒食物"
+    ],
+    "nextQuestIds": [
+      "LookingForLightSpot",
+      "GOToTheCastleOfHyrule"
+    ],
+    "stages": [
+      {
+        "id": "island",
+        "title": "找到紧闭的大门",
+        "actions": [
+          "沿初始空岛道路前往时之神殿，调查大门，与劳鲁交谈。",
+          "打开“紧闭之门”教程，完成究极手、余料建造和通天术三座教学神庙。"
+        ],
+        "messageId": "AncientTimeShrine"
+      },
+      {
+        "id": "recall",
+        "title": "取得倒转乾坤",
+        "actions": [
+          "返回时之神殿，触碰殿内遗物取得倒转乾坤。",
+          "对转动的齿轮使用倒转乾坤，搭乘齿轮前往神殿内部。"
+        ]
+      },
+      {
+        "id": "fourth-shrine",
+        "title": "完成第四座神庙",
+        "actions": [
+          "尝试开启内侧门后按劳鲁提示传送回觉醒室附近。",
+          "使用通天术与倒转乾坤通过齿轮路线，完成纳裘亚哈神庙。",
+          "在女神像处把四个祝福之光换成一颗心，再回到大门。"
+        ],
+        "messageId": "BeginningIsland"
+      },
+      {
+        "id": "leave-island",
+        "title": "从空岛前往地表",
+        "actions": [
+          "开启需要四颗基础红心的大门，使用通天术通过断路，调查神殿尽头。",
+          "从空岛跃下落入水中，转入“前往海拉鲁大地”。"
+        ]
+      },
+      {
+        "id": "world-clues",
+        "title": "在海拉鲁收集线索",
+        "actions": [
+          "完成四地区的贤者调查；地上图画与龙之泪可在旅途中逐步调查。",
+          "处理城堡后续事件，寻找第五位贤者；需要剑的线索时可走克洛格森林支线。"
+        ]
+      },
+      {
+        "id": "final",
+        "title": "最终行动",
+        "actions": [
+          "准备好装备和恢复道具后，按“讨伐加侬多夫”教程推进最终战。",
+          "最终战后的救援环节才结束这条贯穿全流程的任务，不在离开初始空岛时标记整条完成。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "LookingForLightSpot",
+    "order": 2,
+    "chapter": "序章 · 能力教学",
+    "start": {
+      "name": "初始空岛 · 时之神殿",
+      "npc": "劳鲁",
+      "messageId": "AncientTimeShrine"
+    },
+    "prerequisites": [
+      "调查时之神殿大门"
+    ],
+    "preparations": [
+      "采集暖暖草果并烹饪耐寒料理"
+    ],
+    "nextQuestIds": [
+      "MainChallenge"
+    ],
+    "stages": [
+      {
+        "id": "ultrahand",
+        "title": "乌可乌候神庙：究极手",
+        "actions": [
+          "到时之神殿西侧高地上的第一座神庙。",
+          "把木板接成长桥通过缺口；用钩子和木板做能挂在轨道上的平台。",
+          "完成神庙后可在外面用木材做桥或船继续前进。"
+        ]
+      },
+      {
+        "id": "fuse",
+        "title": "伊恩伊萨神庙：余料建造",
+        "actions": [
+          "沿岛的西侧路线到第二座神庙。",
+          "将大石头与武器融合破坏石墙，把火焰果装到箭上点燃高处藤蔓。",
+          "取得钥匙并击败守卫，收下祝福之光。"
+        ]
+      },
+      {
+        "id": "ascend",
+        "title": "古塔恩巴奇神庙：通天术",
+        "actions": [
+          "穿过岛东侧雪地，保持耐寒效果；可沿没有冰面的树根攀上神庙高地。",
+          "站到可穿透的顶面下方，用通天术上升，通过神庙教学。"
+        ]
+      },
+      {
+        "id": "return",
+        "title": "回时之神殿",
+        "actions": [
+          "返回时之神殿，与劳鲁交谈并再次调查大门。",
+          "下一步在“寻找塞尔达”教程中继续取得倒转乾坤和第四个祝福之光。"
+        ],
+        "messageId": "AncientTimeShrine"
+      }
+    ]
+  },
+  {
+    "id": "GOToTheCastleOfHyrule",
+    "order": 3,
+    "chapter": "地表启程",
+    "start": {
+      "name": "中央海拉鲁",
+      "npc": "普尔亚",
+      "messageId": "City_BaseCamp"
+    },
+    "prerequisites": [
+      "离开初始空岛"
+    ],
+    "preparations": [
+      "沿路收集武器和料理；尚未获得滑翔伞时先走地面"
+    ],
+    "nextQuestIds": [
+      "HyruleCastleIncident"
+    ],
+    "stages": [
+      {
+        "id": "landing",
+        "title": "进入监视堡垒",
+        "actions": [
+          "从降落水域向海拉鲁城堡方向走，到城堡南侧的监视堡垒。",
+          "在研究设施找到普尔亚并交谈，交代城堡地下发生的事情。"
+        ],
+        "messageId": "City_BaseCamp"
+      },
+      {
+        "id": "report",
+        "title": "接上城堡调查",
+        "actions": [
+          "按普尔亚指示，前往城堡南侧的搜索队。",
+          "打开“海拉鲁城堡的异变”，继续取得滑翔伞和首座鸟望台地图。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "HyruleCastleIncident",
+    "order": 4,
+    "chapter": "贯穿主线 · 分三个时期",
+    "start": {
+      "name": "监视堡垒",
+      "npc": "普尔亚",
+      "messageId": "City_BaseCamp"
+    },
+    "prerequisites": [
+      "完成“前往海拉鲁大地”；中后阶段需要先完成四地区调查"
+    ],
+    "preparations": [
+      "本任务跨越多个时期，前期取到滑翔伞后可先去做其他主线"
+    ],
+    "nextQuestIds": [
+      "SurveyOfFourVillages",
+      "ClueTotheSixthSage"
+    ],
+    "stages": [
+      {
+        "id": "search-team",
+        "title": "前期：会合搜索队",
+        "actions": [
+          "到城堡南侧与霍司塔交谈，跟随剧情确认塞尔达的目击线索。",
+          "回监视堡垒向普尔亚报告。"
+        ]
+      },
+      {
+        "id": "tower",
+        "title": "前期：取得滑翔伞",
+        "actions": [
+          "在监视堡垒按普尔亚提示调查鸟望台终端。",
+          "拿到滑翔伞后进入发射装置，完成地图扫描并回地面交谈。"
+        ],
+        "messageId": "City_BaseCamp"
+      },
+      {
+        "id": "regions",
+        "title": "中期：先调查四地区",
+        "actions": [
+          "分别完成风、火、水、雷四条贤者主线。",
+          "四条都结束后回监视堡垒，听取城堡里的新目击消息。"
+        ]
+      },
+      {
+        "id": "castle-chase",
+        "title": "中期：城堡追踪",
+        "actions": [
+          "前往悬浮城堡，逐个跟随任务地图上的目标点。",
+          "每次出现敌人先清理战斗；目标会依次移动，不只在主殿等候。",
+          "到最终汇合处击败成组的幻影加侬，留意武器切换与瘴气伤害。"
+        ],
+        "messageId": "HyruleCastle_Hall_0"
+      },
+      {
+        "id": "fifth-sage",
+        "title": "后期：第五位贤者",
+        "actions": [
+          "回监视堡垒报告真实情况，接上“寻找第五位贤者”。",
+          "第五位贤者线完成后再次向普尔亚报告，这条任务才会进入结束阶段。"
+        ],
+        "messageId": "City_BaseCamp"
+      }
+    ]
+  },
+  {
+    "id": "GetCamera",
+    "order": 5,
+    "chapter": "能力解锁 · 地底摄影",
+    "start": {
+      "name": "监视堡垒",
+      "npc": "乔舒亚、洛贝利",
+      "messageId": "City_BaseCamp"
+    },
+    "prerequisites": [
+      "获得滑翔伞，能与乔舒亚交谈"
+    ],
+    "preparations": [
+      "光亮花种子、弓箭、恢复料理"
+    ],
+    "nextQuestIds": [
+      "DeepHoleSurvey2",
+      "FindWithSensors"
+    ],
+    "stages": [
+      {
+        "id": "chasm",
+        "title": "从指定深穴下到地底",
+        "actions": [
+          "在监视堡垒与乔舒亚、洛贝利交谈。",
+          "去海拉鲁平原的指定深穴，用滑翔伞减速落地；激活附近树根作为传送点。"
+        ]
+      },
+      {
+        "id": "robbie",
+        "title": "找到洛贝利",
+        "actions": [
+          "沿营火和研究队的指引向下一棵树根前进，随手投掷或射出光亮花照路。",
+          "在目的地树根附近与洛贝利交谈，解锁照相机与海拉鲁图鉴。"
+        ]
+      },
+      {
+        "id": "photo",
+        "title": "拍摄并回报",
+        "actions": [
+          "按洛贝利指示拍摄带有举手姿态的地底石像，确认照片被任务识别。",
+          "传送回监视堡垒，把照片展示给乔舒亚。"
+        ],
+        "messageId": "City_BaseCamp"
+      }
+    ]
+  },
+  {
+    "id": "SurveyOfFourVillages",
+    "order": 6,
+    "chapter": "四地区 · 可自由选择顺序",
+    "start": {
+      "name": "监视堡垒",
+      "npc": "普尔亚",
+      "messageId": "City_BaseCamp"
+    },
+    "prerequisites": [
+      "解锁监视堡垒鸟望台和滑翔伞"
+    ],
+    "preparations": [
+      "建议先走利特线取得风能力；四地区没有强制固定顺序"
+    ],
+    "nextQuestIds": [
+      "SageOfWind",
+      "SageOfFire",
+      "SageOfZora",
+      "SageOfGerudo",
+      "HyruleCastleIncident"
+    ],
+    "stages": [
+      {
+        "id": "wind",
+        "title": "风：利特村",
+        "actions": [
+          "到西北方利特村，与村民和特巴一家交谈。",
+          "完成“利特村的丘栗”，通关风之神殿。"
+        ],
+        "messageId": "Rito"
+      },
+      {
+        "id": "fire",
+        "title": "火：鼓隆城",
+        "actions": [
+          "前往奥尔汀地区的鼓隆城，调查美味岩石问题。",
+          "完成“鼓隆城的阿沅”，通关火之神殿。"
+        ],
+        "messageId": "Goron"
+      },
+      {
+        "id": "water",
+        "title": "水：卓拉领地",
+        "actions": [
+          "到东部卓拉领地，处理石像淤泥并找到希多。",
+          "完成卓拉铠甲、石碑与天空线索等关联任务，通关水之神殿。"
+        ],
+        "messageId": "WhiteZora"
+      },
+      {
+        "id": "lightning",
+        "title": "雷：格鲁德小镇",
+        "actions": [
+          "前往西南部格鲁德小镇，进入地下街会合。",
+          "完成“格鲁德小镇的露珠”，通关雷之神殿。"
+        ],
+        "messageId": "Gerudo"
+      },
+      {
+        "id": "report",
+        "title": "四条全部完成后回报",
+        "actions": [
+          "四位贤者都完成后回到监视堡垒，与普尔亚交谈。",
+          "继续“海拉鲁城堡的异变”的中期追踪，不把四地区任务完成当作全部主线结束。"
+        ],
+        "messageId": "City_BaseCamp"
+      }
+    ]
+  },
+  {
+    "id": "GroundPaintingAir01",
+    "order": 7,
+    "chapter": "记忆线 · 第一幅地上图画",
+    "start": {
+      "name": "新玛丽塔驿站附近的地上图画",
+      "npc": "英帕",
+      "messageId": "NewHyruleWestHatago"
+    },
+    "prerequisites": [
+      "已到达海拉鲁地表"
+    ],
+    "preparations": [
+      "火源；建议先取得滑翔伞"
+    ],
+    "nextQuestIds": [
+      "MemoryOfTheDragon"
+    ],
+    "stages": [
+      {
+        "id": "balloon",
+        "title": "修好热气球",
+        "actions": [
+          "在新玛丽塔驿站附近找到英帕。",
+          "用究极手把气球装回吊篮，与英帕交谈后点燃热源升空。"
+        ]
+      },
+      {
+        "id": "tear",
+        "title": "从空中找真正的泪滴",
+        "actions": [
+          "观察图案中的泪滴，寻找填实的一枚；空心轮廓不是调查点。",
+          "落到填实泪滴的水池附近调查，观看第一段记忆。"
+        ]
+      },
+      {
+        "id": "temple",
+        "title": "听取下一步线索",
+        "actions": [
+          "再次与英帕交谈，前往忘却神殿调查其余图画的位置和顺序。",
+          "接上“龙之泪”教程；地上图画可用地图“龙之泪”分类查找。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "MemoryOfTheDragon",
+    "order": 8,
+    "chapter": "记忆线 · 跨地区收集",
+    "start": {
+      "name": "忘却神殿",
+      "npc": "英帕",
+      "messageId": "KingValley"
+    },
+    "prerequisites": [
+      "完成第一幅地上图画的调查"
+    ],
+    "preparations": [
+      "地图记录各图案；按神殿墙面提示的顺序观看更容易理解剧情"
+    ],
+    "nextQuestIds": [
+      "GetMasterSword"
+    ],
+    "stages": [
+      {
+        "id": "temple-map",
+        "title": "在神殿确认图画地图",
+        "actions": [
+          "进忘却神殿深处，与英帕会合。",
+          "查看地面大地图和墙面图案，记录十一幅地上图画的位置与推荐记忆顺序。"
+        ]
+      },
+      {
+        "id": "eleven-tears",
+        "title": "逐处调查十一枚泪滴",
+        "actions": [
+          "在地图分类中开启龙之泪，到对应地上图画。",
+          "每幅图都找填实的泪滴水池，调查后检查任务进度；发现图案不等于调查了泪滴。"
+        ]
+      },
+      {
+        "id": "last-tear",
+        "title": "最后一枚泪滴",
+        "actions": [
+          "十一处全部调查后，观看新线索并前往阿卡莱东侧旋涡状半岛。",
+          "调查新增泪滴，结束这条收集线；需要取剑时继续“丢失的勇者之剑”。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SageOfWind",
+    "order": 10,
+    "chapter": "四地区 · 风",
+    "start": {
+      "name": "利特村",
+      "npc": "特巴、丘栗",
+      "messageId": "Rito"
+    },
+    "prerequisites": [
+      "已接到四地区调查"
+    ],
+    "preparations": [
+      "两级耐寒效果、弓箭、备用弓和恢复料理"
+    ],
+    "nextQuestIds": [
+      "SurveyOfFourVillages"
+    ],
+    "stages": [
+      {
+        "id": "hut",
+        "title": "到山间小屋打听",
+        "actions": [
+          "在利特村与特巴一家交谈。",
+          "去海布拉山的小屋找哈茨，再按提示进入山洞寻找丘栗。"
+        ]
+      },
+      {
+        "id": "tulin",
+        "title": "夺回丘栗的弓",
+        "actions": [
+          "在洞窟出口及独杉附近找到丘栗。",
+          "击落带走弓的飞行敌人，并清理后续袭来的怪物。",
+          "按哈茨指引往山顶方向走，与丘栗同行。"
+        ]
+      },
+      {
+        "id": "island-chain",
+        "title": "沿空岛链向云层上方攀升",
+        "actions": [
+          "借丘栗的水平风推进滑翔；利用船帆反弹与通天术不断向上。",
+          "激活途中的神庙传送点，保持耐寒时间，不从暴风中心底部硬飞。",
+          "爬到云层上方后从中心开口下降到风之神殿。"
+        ],
+        "messageId": "Rito_SkyHighIsland"
+      },
+      {
+        "id": "five-locks",
+        "title": "开启风之神殿五个锁",
+        "actions": [
+          "调查中央终端，把五个锁的位置显示在地图上。",
+          "探索甲板、侧面与下层；破开冰封入口或利用齿轮机关到达涡轮。",
+          "对每个涡轮发动丘栗的风，五个都启动后回中央终端。"
+        ]
+      },
+      {
+        "id": "boss",
+        "title": "击破冰弱点并收尾",
+        "actions": [
+          "对急冻盖拉的三个冰弱点攻击；可在空中穿过薄冰或用箭连续破冰。",
+          "避开冲撞和旋风，第二阶段继续击破全部弱点。",
+          "取得心之容器，调查秘石并看完贤者事件，回到四地区任务。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SageOfFire",
+    "order": 11,
+    "chapter": "四地区 · 火",
+    "start": {
+      "name": "鼓隆城",
+      "npc": "阿沅",
+      "messageId": "Goron"
+    },
+    "prerequisites": [
+      "已接到四地区调查"
+    ],
+    "preparations": [
+      "耐火装备或耐火药、抗高温的备用武器、弓箭和料理；耐热效果不能代替耐火"
+    ],
+    "nextQuestIds": [
+      "SurveyOfFourVillages"
+    ],
+    "stages": [
+      {
+        "id": "yunobo",
+        "title": "到阿沅组总部",
+        "actions": [
+          "在鼓隆城打听美味岩石，沿道路到阿沅组总部。",
+          "与异常状态的阿沅战斗：躲开翻滚，等其撞墙露出破绽后攻击面具。"
+        ]
+      },
+      {
+        "id": "mountain",
+        "title": "登上死亡之山",
+        "actions": [
+          "与阿沅同行，利用矿车线路向山顶前进。",
+          "在山顶使用可操控的飞行装置，让阿沅撞击盘踞火山口的怪物各个头部。"
+        ]
+      },
+      {
+        "id": "depths",
+        "title": "从火山口进入地底",
+        "actions": [
+          "跃入死亡之山深穴，用滑翔伞安全落地。",
+          "借光亮花、树根和任务标记向火之神殿前进；让阿沅撞碎挡路岩石。"
+        ]
+      },
+      {
+        "id": "five-gongs",
+        "title": "敲响五面锣",
+        "actions": [
+          "调查终端后按地图检查五个锁的位置。",
+          "切换矿车轨道与楼层；用消防栓制造岩板，搭斜坡让阿沅够到高处。",
+          "让阿沅撞击五面锣，再回终端打开中央区域。"
+        ]
+      },
+      {
+        "id": "boss",
+        "title": "击倒岩甲腿部",
+        "actions": [
+          "对巨砾哥马的岩石腿发动阿沅突击；倒地后爬上去攻击眼睛。",
+          "被岩石包围时用阿沅撞碎或用倒转乾坤移开；第二阶段利用场地弧面让阿沅击中上方。",
+          "调查秘石完成贤者事件。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CleanStatue",
+    "order": 12,
+    "chapter": "四地区 · 卓拉入口",
+    "start": {
+      "name": "卓拉领地中央广场",
+      "npc": "优娜",
+      "messageId": "WhiteZora"
+    },
+    "prerequisites": [
+      "到达卓拉领地"
+    ],
+    "preparations": [
+      "水之果或其他能产生水的道具"
+    ],
+    "nextQuestIds": [
+      "SageOfZora",
+      "RepairArmor"
+    ],
+    "stages": [
+      {
+        "id": "clean",
+        "title": "冲掉石像上的淤泥",
+        "actions": [
+          "在领地中央广场与优娜等人交谈。",
+          "把水之果投向石像，或把水之果附到箭上射向淤泥，使其被冲洗掉。"
+        ]
+      },
+      {
+        "id": "talk",
+        "title": "与优娜确认后续",
+        "actions": [
+          "再次与优娜交谈，听取希多的位置与卓拉铠甲修复信息。",
+          "接上“卓拉领地的希多”和“修复卓拉铠甲”。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "RepairArmor",
+    "order": 13,
+    "chapter": "四地区 · 攀瀑能力",
+    "start": {
+      "name": "卓拉领地",
+      "npc": "优娜",
+      "messageId": "WhiteZora"
+    },
+    "prerequisites": [
+      "与优娜谈到铠甲修复"
+    ],
+    "preparations": [
+      "一条远昔骨舌鱼"
+    ],
+    "nextQuestIds": [
+      "SageOfZora"
+    ],
+    "stages": [
+      {
+        "id": "fish",
+        "title": "找到远昔骨舌鱼",
+        "actions": [
+          "在天空岛水池寻找这种鱼；初始空岛的水域是可选地点。",
+          "使用地图鱼类筛选搜索 Ancient Arowana（远昔骨舌鱼），确认取得的是这种鱼。"
+        ]
+      },
+      {
+        "id": "armor",
+        "title": "交给优娜并穿上铠甲",
+        "actions": [
+          "回到卓拉领地，把远昔骨舌鱼交给优娜。",
+          "取得修好的卓拉铠甲，攀瀑之前记得装备上身。"
+        ],
+        "messageId": "WhiteZora"
+      }
+    ]
+  },
+  {
+    "id": "DividedSlate",
+    "order": 14,
+    "chapter": "四地区 · 卓拉石碑",
+    "start": {
+      "name": "托托湖",
+      "npc": "基奥托",
+      "messageId": "RosomaLake"
+    },
+    "prerequisites": [
+      "与希多交谈，收到调查石碑的线索"
+    ],
+    "preparations": [
+      "水之果；已解锁究极手"
+    ],
+    "nextQuestIds": [
+      "WaterBridgePlace"
+    ],
+    "stages": [
+      {
+        "id": "fragment",
+        "title": "找到洞外断片",
+        "actions": [
+          "到托托湖附近石碑洞窟，与基奥托交谈。",
+          "在洞外附近找到被淤泥覆盖的石碑断片，用水之果等水源洗干净。"
+        ]
+      },
+      {
+        "id": "repair",
+        "title": "补回石碑",
+        "actions": [
+          "用究极手搬动断片，旋转到与缺口吻合的方向，放回石碑。",
+          "听基奥托解读空鱼之地、王之证和水滴的谜面，打开“前往天空的线索”。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "WaterBridgePlace",
+    "order": 15,
+    "chapter": "四地区 · 空鱼谜题",
+    "start": {
+      "name": "托托湖与卓拉领地",
+      "npc": "基奥托、多雷凡大王",
+      "messageId": "RosomaLake"
+    },
+    "prerequisites": [
+      "修复断裂的石碑"
+    ],
+    "preparations": [
+      "弓箭、卓拉铠甲、水之果"
+    ],
+    "nextQuestIds": [
+      "SageOfZora"
+    ],
+    "stages": [
+      {
+        "id": "king",
+        "title": "寻找王之证",
+        "actions": [
+          "在卓拉领地绕到孩子们视线外的池边藏身处，偷听多雷凡大王藏身清流王居的线索。",
+          "寻找领地与雷兽山之间的清澈瀑布，进入瀑布后方秘道，会见大王取得卓拉王的鳞片。"
+        ],
+        "messageId": "WhiteZora"
+      },
+      {
+        "id": "sky-fish",
+        "title": "抵达空鱼之地",
+        "actions": [
+          "从米法公园附近登上形状像鱼的天空岛。",
+          "站在岛上调整观察角度，使散落空中的岩石拼成完整水滴轮廓；水滴是透视形状，不是拾取物品。"
+        ]
+      },
+      {
+        "id": "shoot",
+        "title": "用王的鳞片射穿水滴",
+        "actions": [
+          "在箭上附加卓拉王的鳞片，瞄准完整水滴的中间空隙射出。",
+          "确认东储水湖出现光柱，再回希多处推进后续。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SageOfZora",
+    "order": 16,
+    "chapter": "四地区 · 水",
+    "start": {
+      "name": "卓拉领地与米法公园",
+      "npc": "希多",
+      "messageId": "WhiteZora"
+    },
+    "prerequisites": [
+      "清洗领地石像；后续需卓拉铠甲、石碑与天空线索"
+    ],
+    "preparations": [
+      "卓拉铠甲、水之果、弓箭、恢复料理"
+    ],
+    "nextQuestIds": [
+      "SurveyOfFourVillages"
+    ],
+    "stages": [
+      {
+        "id": "meet",
+        "title": "在米法公园会合",
+        "actions": [
+          "在米法公园与希多交谈，按线索调查托托湖石碑。",
+          "依次完成“断裂的石碑”“前往天空的线索”；修好卓拉铠甲。"
+        ]
+      },
+      {
+        "id": "lake",
+        "title": "处理储水湖入口",
+        "actions": [
+          "回到希多身边，使用他的水护盾攻击和去污，击败淤泥莱克。",
+          "按希多指示到东储水湖，与他共同进入湖中漩涡。"
+        ]
+      },
+      {
+        "id": "waterworks",
+        "title": "疏通古代卓拉祭殿",
+        "actions": [
+          "在地下祭殿破坏堵住管道的岩石，让水位逐步升高。",
+          "到中央装置调查，激活通往天空的瀑布。",
+          "穿卓拉铠甲攀瀑，沿涌泉之岛的泡泡与低重力路线到达水之神殿。"
+        ]
+      },
+      {
+        "id": "four-faucets",
+        "title": "启动四个水栓",
+        "actions": [
+          "调查终端，查看四个水栓。",
+          "利用水泡、浮石与机关到达各处；启动希多水护盾后挥出水刃攻击水轮。",
+          "四个水栓全开后回中央终端。"
+        ]
+      },
+      {
+        "id": "boss",
+        "title": "破除淤泥并击败章鱼怪",
+        "actions": [
+          "用希多水刃、水之果或消防栓冲掉八爪怪身上的淤泥外壳。",
+          "追击暴露本体，第二阶段持续清理地上的淤泥，利用低重力跳射。",
+          "调查秘石完成贤者事件。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SageOfGerudo",
+    "order": 17,
+    "chapter": "四地区 · 雷",
+    "start": {
+      "name": "格鲁德小镇",
+      "npc": "露珠",
+      "messageId": "Gerudo"
+    },
+    "prerequisites": [
+      "已接到四地区调查"
+    ],
+    "preparations": [
+      "白天耐热、夜间耐寒；弓箭、水之果或其他元素攻击"
+    ],
+    "nextQuestIds": [
+      "SurveyOfFourVillages"
+    ],
+    "stages": [
+      {
+        "id": "find-riju",
+        "title": "在地下街打听露珠",
+        "actions": [
+          "进入格鲁德小镇地下街，与居民交谈，前往北侧遗迹训练场找露珠。",
+          "训练时等雷电范围覆盖目标，再用箭命中目标引雷。"
+        ]
+      },
+      {
+        "id": "defense",
+        "title": "集市与小镇防卫",
+        "actions": [
+          "和露珠一起支援卡拉卡拉集市。",
+          "回小镇安排守卫，先摧毁正在发光的吉波得巢穴，再清理敌人；用元素攻击去掉吉波得的抗性。"
+        ]
+      },
+      {
+        "id": "light-pillars",
+        "title": "解开三角光柱谜题",
+        "actions": [
+          "在王座后方读壁画，沿小镇后方沙漠找到第一座光柱塔。",
+          "破坏顶端遮挡，让光线指向下一塔；调整塔高、修好缺失部件并转动反射机构。",
+          "三束光形成三角后回中心，与露珠一同激活装置，让雷之神殿出现。"
+        ]
+      },
+      {
+        "id": "four-batteries",
+        "title": "给四个蓄电池充电",
+        "actions": [
+          "清理入口战斗后进入神殿，调查中央终端。",
+          "利用光线反射、镜子、风流和通天术进入各蓄电池房间。",
+          "用露珠雷电配合射箭为四个蓄电池充电，再乘升降机上去。"
+        ]
+      },
+      {
+        "id": "boss",
+        "title": "打破女王外壳",
+        "actions": [
+          "对吉波得女王发动元素攻击或露珠雷电，削去外壳后靠近输出。",
+          "第二阶段优先用露珠雷电破坏发光巢穴；利用照进来的光线清理普通吉波得。",
+          "击败女王并调查秘石。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "DeepHoleSurvey2",
+    "order": 18,
+    "chapter": "能力解锁 · 蓝图",
+    "start": {
+      "name": "监视堡垒",
+      "npc": "乔舒亚",
+      "messageId": "City_BaseCamp"
+    },
+    "prerequisites": [
+      "完成地底摄影，并完成至少一个地区的贤者主线以推进乔舒亚后续对话"
+    ],
+    "preparations": [
+      "光亮花、耐久足够的武器、料理"
+    ],
+    "nextQuestIds": [
+      "FindWithSensors",
+      "MinusYiga"
+    ],
+    "stages": [
+      {
+        "id": "statue-trail",
+        "title": "沿石像朝向追踪",
+        "actions": [
+          "与乔舒亚谈新线索，再进入拍照时的地底区域。",
+          "沿石像面朝的方向找下一座，逐步走向中央大废矿，途中开树根。"
+        ]
+      },
+      {
+        "id": "autobuild",
+        "title": "在大废矿取得蓝图",
+        "actions": [
+          "与中央大废矿的魔像交谈，调查蓝图终端。",
+          "按现场教学重建交通工具，随后击败可盖。"
+        ]
+      },
+      {
+        "id": "report",
+        "title": "回堡垒修好热气球",
+        "actions": [
+          "回监视堡垒向乔舒亚报告。",
+          "使用蓝图修复洛贝利的热气球，再与他交谈，开启哈特诺研究所后续。"
+        ],
+        "messageId": "City_BaseCamp"
+      }
+    ]
+  },
+  {
+    "id": "ClueTotheSixthSage",
+    "order": 19,
+    "chapter": "后期 · 第五位贤者",
+    "start": {
+      "name": "监视堡垒",
+      "npc": "普尔亚",
+      "messageId": "City_BaseCamp"
+    },
+    "prerequisites": [
+      "完成四地区以及城堡中期追踪事件"
+    ],
+    "preparations": [
+      "任务会串联环卡遗迹与魂之神殿；可从卡卡利科村开始"
+    ],
+    "nextQuestIds": [
+      "GotoFironeZonauRemains",
+      "SageOfSoul"
+    ],
+    "stages": [
+      {
+        "id": "kakariko",
+        "title": "调查神话时代遗迹",
+        "actions": [
+          "向普尔亚问清线索，前往卡卡利科村与帕雅、塔乌洛交谈。",
+          "告知城堡调查结果，解除环卡遗迹的禁入条件。"
+        ],
+        "messageId": "Kakariko"
+      },
+      {
+        "id": "ring-ruins",
+        "title": "完成环卡遗迹线",
+        "actions": [
+          "打开“环卡遗迹的秘密”，拍摄石板、调查费罗尼遗迹并到龙头岛。",
+          "这条线会将你引向左纳乌面具的搬运任务。"
+        ]
+      },
+      {
+        "id": "spirit",
+        "title": "完成太古指引",
+        "actions": [
+          "按“来自太古的指引”收集四个魔像部件，到魂之神殿完成战斗。",
+          "回监视堡垒向普尔亚报告与第五位贤者的会合。"
+        ],
+        "messageId": "City_BaseCamp"
+      }
+    ]
+  },
+  {
+    "id": "GotoFironeZonauRemains",
+    "order": 20,
+    "chapter": "后期 · 环卡与雷鸣之岛",
+    "start": {
+      "name": "卡卡利科村 · 环卡遗迹",
+      "npc": "帕雅、塔乌洛",
+      "messageId": "Kakariko"
+    },
+    "prerequisites": [
+      "完成城堡中期事件后，能够向帕雅说明塞尔达目击的真相"
+    ],
+    "preparations": [
+      "照相机、十颗基础红心；临时额外红心不能代替门的要求"
+    ],
+    "nextQuestIds": [
+      "SageOfSoul"
+    ],
+    "stages": [
+      {
+        "id": "photo",
+        "title": "拍摄环卡遗迹石板",
+        "actions": [
+          "与帕雅、塔乌洛交谈后，用通天术进入悬浮的环卡遗迹。",
+          "拍摄内部石板，把照片给塔乌洛。"
+        ],
+        "messageId": "Kakariko"
+      },
+      {
+        "id": "faron",
+        "title": "找到费罗尼调查队",
+        "actions": [
+          "到泡泡拉高地鸟望台找卡里尤，按指引去卡兹溜湖附近的龙之石像遗迹。",
+          "与塔乌洛交谈，听取雷光之衣和祭坛的提示。"
+        ]
+      },
+      {
+        "id": "charged-armor",
+        "title": "穿齐雷光套装并献能源",
+        "actions": [
+          "沿河道的龙之石像遗迹搜集雷光套装三件，穿齐。",
+          "到河道尾部对应祭坛，把一枚左纳乌能源放入台座触发雷云变化。"
+        ]
+      },
+      {
+        "id": "dragonhead",
+        "title": "到龙头岛开启大门",
+        "actions": [
+          "沿出现的天空路线前往龙头岛，激活附近神庙传送点。",
+          "用十颗基础红心开启大门，调查大厅中的左纳乌遗物。",
+          "带上发光的头部，跟随绿光指引到地面，接上“来自太古的指引”。"
+        ],
+        "messageId": "ZonauThunderSkyIsland"
+      }
+    ]
+  },
+  {
+    "id": "SageOfSoul",
+    "order": 21,
+    "chapter": "后期 · 魂",
+    "start": {
+      "name": "龙头岛与地底魔像制造房",
+      "npc": "神秘声音",
+      "messageId": "ZonauTriedForceSkyIsland"
+    },
+    "prerequisites": [
+      "在龙头岛调查发光头部；门要求十颗基础红心"
+    ],
+    "preparations": [
+      "光亮花、能源、弓箭和恢复道具"
+    ],
+    "nextQuestIds": [
+      "ClueTotheSixthSage",
+      "MasterSwordClues"
+    ],
+    "stages": [
+      {
+        "id": "head",
+        "title": "把头部送到指定装置",
+        "actions": [
+          "用翼、风扇等装置把头部沿绿光带到地面指定位置。",
+          "把头部放入装置，随通道进入地底的魔像制造房，再装入中央身体。"
+        ]
+      },
+      {
+        "id": "parts",
+        "title": "收集四肢部件",
+        "actions": [
+          "分别进入左臂、右臂、左脚、右脚工坊，先调查各自的终端取出部件箱。",
+          "每个工坊需把箱子运出，灵活用车轮、风扇、升降装置或通天术过障碍。",
+          "把四个部件都带回制造房，拆开箱子，将对应肢体装回身体。"
+        ],
+        "messageId": "ZonauCentralShrine"
+      },
+      {
+        "id": "spirit-temple",
+        "title": "乘魔像前往魂之神殿",
+        "actions": [
+          "操控组装好的魔像，把路上的武器或左纳乌装置装到双臂。",
+          "按绿光和任务标记前往魂之神殿；站在魔像上可跨越部分瘴气地面。"
+        ]
+      },
+      {
+        "id": "boss",
+        "title": "将敌人击退到电网",
+        "actions": [
+          "战斗中举盾挡住攻击，再用双臂连续击退被夺走的魔像。",
+          "把它打向场地周边电网才能造成有效伤害；第二阶段先打断空中攻势。",
+          "看完秘石事件，回普尔亚处报告。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "MasterSwordClues",
+    "order": 22,
+    "chapter": "勇者之剑 · 克洛格森林",
+    "start": {
+      "name": "海拉鲁大森林",
+      "npc": "德库树长老",
+      "messageId": "Cokiri"
+    },
+    "prerequisites": [
+      "已获得寻找大师之剑的线索；可与其他主线并行"
+    ],
+    "preparations": [
+      "弓箭、炸弹花、瘴气恢复料理；准备对付瘴气之手及后续敌人"
+    ],
+    "nextQuestIds": [
+      "GetMasterSword"
+    ],
+    "stages": [
+      {
+        "id": "forest",
+        "title": "从地底进入克洛格森林",
+        "actions": [
+          "从森林外的深穴进入地底，沿方向到森林正下方。",
+          "找到可通天术穿出的顶面，从地下上升进入克洛格森林；不能直接在地表迷雾中硬走。"
+        ],
+        "messageId": "Cokiri"
+      },
+      {
+        "id": "deku",
+        "title": "清除德库树体内瘴气",
+        "actions": [
+          "进入德库树体内，从深穴下降，击败瘴气之手及随后的幻影加侬。",
+          "返回与恢复的德库树长老交谈，获得大师之剑所在的移动目标。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "GetMasterSword",
+    "order": 23,
+    "chapter": "勇者之剑 · 取剑",
+    "start": {
+      "name": "克洛格森林的线索或龙之泪线",
+      "npc": "德库树长老",
+      "messageId": "Cokiri"
+    },
+    "prerequisites": [
+      "找到带着剑的白龙；可通过德库树或记忆线取得线索"
+    ],
+    "preparations": [
+      "两整圈基础精力；临时额外精力不能替代拔剑要求"
+    ],
+    "nextQuestIds": [
+      "DefeatGanondorf"
+    ],
+    "stages": [
+      {
+        "id": "find-dragon",
+        "title": "登上白龙",
+        "actions": [
+          "根据移动任务标记或天空中的龙找合适的鸟望台、空岛起飞。",
+          "滑翔到龙背并向头部移动；地图巨龙点为初始放置资料，不代表当前实时龙的位置。"
+        ]
+      },
+      {
+        "id": "draw-sword",
+        "title": "用基础精力拔剑",
+        "actions": [
+          "在龙头的剑处开始拔取，持续按住操作，直到两圈基础精力的要求被满足。",
+          "如果基础精力不够，先完成神庙换精力容器，再来拔剑。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "DefeatGanondorf",
+    "order": 24,
+    "chapter": "最终行动",
+    "start": {
+      "name": "海拉鲁城堡下方深穴",
+      "npc": "普尔亚、乔舒亚提供线索",
+      "messageId": "HyruleCastle_Hall_0"
+    },
+    "prerequisites": [
+      "已取得讨伐魔王的线索；推荐先完成五位贤者线"
+    ],
+    "preparations": [
+      "足够武器和盾、弓箭、向阳草料理与红心恢复料理；大师之剑很有帮助"
+    ],
+    "stages": [
+      {
+        "id": "prepare",
+        "title": "确认地下路线并整备",
+        "actions": [
+          "与普尔亚、乔舒亚交谈，需要地底追踪线索时可完成可盖系列。",
+          "补足武器和料理。城堡主殿定位只用于确认城堡所在，最终路线在城堡下方深穴。"
+        ]
+      },
+      {
+        "id": "descent",
+        "title": "沿城堡深穴不断向下",
+        "actions": [
+          "从城堡深穴进入地底，沿洞道、断路和更深的落差继续下行。",
+          "开附近树根作传送点，途中按需要避战或清理敌人，避免把武器都耗在路上。"
+        ]
+      },
+      {
+        "id": "army",
+        "title": "通过连续战斗",
+        "actions": [
+          "在最终区域清理魔王军。",
+          "未完成的贤者神殿可能使此处增加相应首领战，完成贤者线可以减少这些追加战斗。"
+        ]
+      },
+      {
+        "id": "ganondorf",
+        "title": "与魔王决战",
+        "actions": [
+          "观察不同武器的攻击节奏，使用闪避、盾和林克时间制造输出机会。",
+          "后续阶段留意魔王也会闪避反击；先回避其反攻，再抓新破绽。",
+          "按最后空战的提示破坏弱点，完成最终救援环节。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "FindWithSensors",
+    "order": 30,
+    "chapter": "普尔亚平板 · 功能解锁",
+    "start": {
+      "name": "哈特诺古代研究所",
+      "npc": "洛贝利",
+      "messageId": "HatenoLabo"
+    },
+    "prerequisites": [
+      "完成地底摄影和蓝图任务，并修好洛贝利热气球"
+    ],
+    "preparations": [
+      "可传送回哈特诺研究所"
+    ],
+    "nextQuestIds": [
+      "GetWarpMarker",
+      "GetWalker",
+      "GetSensorPlus"
+    ],
+    "stages": [
+      {
+        "id": "install",
+        "title": "找洛贝利安装感应器",
+        "actions": [
+          "到哈特诺村东侧高地的研究所，与洛贝利交谈。",
+          "安装后在室内按提示缓慢移动，确认神庙感应器有反应。"
+        ],
+        "messageId": "HatenoLabo"
+      },
+      {
+        "id": "nearby-shrine",
+        "title": "调查坡道下的神庙",
+        "actions": [
+          "离开研究所，沿感应器反应强的方向到坡道下方洞窟。",
+          "在洞内找到神庙，回研究所向洛贝利报告。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "GetWarpMarker",
+    "order": 31,
+    "chapter": "普尔亚平板 · 传送标记器",
+    "start": {
+      "name": "哈特诺古代研究所",
+      "npc": "洛贝利",
+      "messageId": "HatenoLabo"
+    },
+    "prerequisites": [
+      "完成“哈特诺村的研究所”"
+    ],
+    "preparations": [
+      "武器；准备去阿卡莱古代研究所"
+    ],
+    "stages": [
+      {
+        "id": "prototype",
+        "title": "取回试制标记器",
+        "actions": [
+          "到阿卡莱古代研究所，处理占据研究所的依盖队。",
+          "从研究所内的宝箱取出试制的传送标记器。"
+        ],
+        "messageId": "AncientLabo"
+      },
+      {
+        "id": "first",
+        "title": "交给洛贝利解锁第一个",
+        "actions": [
+          "回哈特诺研究所把试制品交给洛贝利。",
+          "在重要物品中使用标记器放置传送点，可以回收再放到其他地点。"
+        ],
+        "messageId": "HatenoLabo"
+      },
+      {
+        "id": "second",
+        "title": "十处地图数据：第二个",
+        "actions": [
+          "激活十座鸟望台并完成地图扫描。",
+          "回研究所请洛贝利增加标记器数量。"
+        ]
+      },
+      {
+        "id": "third",
+        "title": "十五处地图数据：第三个",
+        "actions": [
+          "全部十五座鸟望台完成地图扫描后，再回研究所交谈。",
+          "确认可持有三个传送标记器。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "GetWalker",
+    "order": 32,
+    "chapter": "普尔亚平板 · 足迹模式",
+    "start": {
+      "name": "哈特诺古代研究所",
+      "npc": "洛贝利",
+      "messageId": "HatenoLabo"
+    },
+    "prerequisites": [
+      "完成“哈特诺村的研究所”"
+    ],
+    "preparations": [
+      "十五座神庙的数据"
+    ],
+    "stages": [
+      {
+        "id": "shrines",
+        "title": "积累十五座神庙数据",
+        "actions": [
+          "找到并访问神庙，确保普尔亚平板已记录至少十五座神庙。",
+          "神庙数量不足时可用地图神庙筛选补找附近地点。"
+        ]
+      },
+      {
+        "id": "upgrade",
+        "title": "回研究所安装足迹模式",
+        "actions": [
+          "与洛贝利交谈选择足迹模式升级。",
+          "安装后在游戏地图中切换足迹显示；本 App 的勾选记录独立于游戏足迹。"
+        ],
+        "messageId": "HatenoLabo"
+      }
+    ]
+  },
+  {
+    "id": "GetSensorPlus",
+    "order": 33,
+    "chapter": "普尔亚平板 · 图鉴感应器",
+    "start": {
+      "name": "哈特诺古代研究所",
+      "npc": "洛贝利",
+      "messageId": "HatenoLabo"
+    },
+    "prerequisites": [
+      "完成“哈特诺村的研究所”，拥有照相机与图鉴"
+    ],
+    "preparations": [
+      "五种怪物的图鉴数据"
+    ],
+    "stages": [
+      {
+        "id": "photos",
+        "title": "记录五种怪物",
+        "actions": [
+          "用游戏照相机拍摄五种不同怪物，拍摄时确认名字与图鉴登记提示。",
+          "重复拍同一怪物不会增加怪物种类数量。"
+        ]
+      },
+      {
+        "id": "upgrade",
+        "title": "安装并指定感应目标",
+        "actions": [
+          "回研究所请洛贝利安装图鉴感应器。",
+          "在游戏图鉴中选择已记录的目标，用感应器寻找。"
+        ],
+        "messageId": "HatenoLabo"
+      }
+    ]
+  },
+  {
+    "id": "NewsPaper_Mitsuba",
+    "order": 40,
+    "chapter": "驿站新闻线 · 分十二处调查",
+    "start": {
+      "name": "白诘报社",
+      "npc": "三叶、沛恩",
+      "messageId": "NewspaperCompany"
+    },
+    "prerequisites": [
+      "到利特村东侧原驿站建筑找到白诘报社"
+    ],
+    "preparations": [
+      "各分支可能需要料理、载具、潜行或战斗；不要求一次做完"
+    ],
+    "stages": [
+      {
+        "id": "join",
+        "title": "加入报社调查",
+        "actions": [
+          "在白诘报社与三叶、沛恩交谈，正式接到公主传闻调查。",
+          "报社位于利特村东侧的原驿站建筑，地图定位可直接查看白诘报社。"
+        ]
+      },
+      {
+        "id": "stables",
+        "title": "到十二座驿站找沛恩",
+        "actions": [
+          "到各驿站与沛恩交谈；他可能在屋顶、建筑后方或附近道路。",
+          "先在任务日志追踪当前驿站分支，再按当地 NPC 的线索调查；这些分支都计入报社总任务。",
+          "每完成一处回与沛恩确认报告和报酬。"
+        ]
+      },
+      {
+        "id": "reward",
+        "title": "分阶段领奖并回报社收尾",
+        "actions": [
+          "完成一定数量后会依次得到蛙套装部件；最后一件需要十二处全部完成。",
+          "十二处报告完毕后回白诘报社找三叶领取最后报酬。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Tribune16",
+    "order": 41,
+    "chapter": "大妖精线 · 开启强化",
+    "start": {
+      "name": "森林驿站",
+      "npc": "沛恩、乐队",
+      "messageId": "ForestHatago"
+    },
+    "prerequisites": [
+      "先到白诘报社加入公主传闻调查"
+    ],
+    "preparations": [
+      "一匹登记过的马和拖曳挽具；拖曳挽具需在驿站积分奖励中取得（三积分）"
+    ],
+    "stages": [
+      {
+        "id": "cart",
+        "title": "修复乐队马车",
+        "actions": [
+          "在森林驿站与沛恩和乐队交谈。",
+          "用究极手把缺少的车轮装回马车，在驿站为马装上拖曳挽具，再把挽具连接车体。"
+        ]
+      },
+      {
+        "id": "serenade",
+        "title": "平稳运送乐队到大妖精",
+        "actions": [
+          "让乐队上车，沿上山道路缓慢拖到花蕾前，避免翻车。",
+          "听完演奏，开启第一处大妖精；后续乐队任务会解锁其他大妖精。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Hateno_Cheese",
+    "order": 42,
+    "chapter": "哈特诺选举线 · 奶酪前置",
+    "start": {
+      "name": "哈特诺村东侧牧场",
+      "npc": "托可优",
+      "messageId": "Hateno"
+    },
+    "prerequisites": [
+      "到牧场水池边与托可优交谈"
+    ],
+    "preparations": [
+      "究极手；岸边木材可制作浮台"
+    ],
+    "nextQuestIds": [
+      "Hateno_RevitalizeByNewSpeciality"
+    ],
+    "stages": [
+      {
+        "id": "bottle",
+        "title": "把漂流瓶取上岸",
+        "actions": [
+          "从岸边观察水池中的瓶子，用究极手尝试抓取。",
+          "够不到时把木材连接成浮台靠近，别直接推走瓶子。",
+          "把瓶子放到托可优面前。"
+        ]
+      },
+      {
+        "id": "cheese",
+        "title": "确认信件并获得奶酪",
+        "actions": [
+          "与托可优再次交谈，等待她读取信件并开放奶酪制作。",
+          "取得哈特诺奶酪后，可继续村长的新名产任务。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Hateno_RevitalizeByNewSpeciality",
+    "order": 43,
+    "chapter": "哈特诺选举线 · 新名产",
+    "start": {
+      "name": "哈特诺村",
+      "npc": "科沙尤西",
+      "messageId": "Hateno"
+    },
+    "prerequisites": [
+      "与村长交谈；先完成托可优的信件可取得奶酪"
+    ],
+    "preparations": [
+      "一份哈特诺奶酪"
+    ],
+    "stages": [
+      {
+        "id": "clue",
+        "title": "听取村长的食物线索",
+        "actions": [
+          "在村长家与科沙尤西交谈，记录他描述的新名产味道。",
+          "先到牧场完成“托可优的重要信件”，取得哈特诺奶酪。"
+        ]
+      },
+      {
+        "id": "deliver",
+        "title": "把奶酪交给村长",
+        "actions": [
+          "回村长家，把哈特诺奶酪交给科沙尤西。",
+          "再次交谈确认任务完成，这一步也是村长选举的前置之一。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Hateno_LetUsElection",
+    "order": 44,
+    "chapter": "哈特诺选举线 · 汇总阶段",
+    "start": {
+      "name": "哈特诺村服装店",
+      "npc": "萨格诺、索芙拉",
+      "messageId": "Hateno"
+    },
+    "prerequisites": [
+      "完成派别蘑菇分发、萨格诺的秘密、科沙尤西的秘密、新名产、托可优的信件"
+    ],
+    "preparations": [
+      "遇到对话不推进时先核对五条前置，而不是反复等时间"
+    ],
+    "stages": [
+      {
+        "id": "requirements",
+        "title": "核对五条前置",
+        "actions": [
+          "完成“你是萨格诺派？还是科沙尤西派？”的八人蘑菇分发。",
+          "完成两人的秘密调查，并把奶酪相关两条任务做完。"
+        ]
+      },
+      {
+        "id": "election",
+        "title": "找索芙拉举行选举",
+        "actions": [
+          "挑放晴的白天，到服装店前与索芙拉交谈，选择参加选举；雨天或夜间先等待天气与时间。",
+          "观看选举事件，再与萨格诺确认服装店后续与报酬。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Connect_FirstIsland",
+    "order": 45,
+    "chapter": "初始台地 · 四只眼睛搬运",
+    "start": {
+      "name": "初始台地城门与时之神殿遗迹",
+      "npc": "神秘声音",
+      "messageId": "TimesShrine"
+    },
+    "prerequisites": [
+      "在初始台地北侧城门排掉积水，调查露出的石像；起点是地表遗迹，不是天空神殿"
+    ],
+    "preparations": [
+      "光亮花、载具能源、耐寒手段"
+    ],
+    "stages": [
+      {
+        "id": "start",
+        "title": "让遗迹的声音指明四处深穴",
+        "actions": [
+          "先在初始台地北侧城门破坏挡住水流的岩石，调查水退后出现的石像。",
+          "去地表时之神殿遗迹与女神像交谈，接到四只眼睛的搬运要求。"
+        ]
+      },
+      {
+        "id": "four-eyes",
+        "title": "找到四眼并投入对应深穴",
+        "actions": [
+          "按任务标记去台地四处深穴，寻找水里、碎石、冰块或障碍后的眼睛。",
+          "每找到一只，用究极手把它投入旁边的深穴。",
+          "建议一眼一送；传送或离开太远后检查眼睛是否回到原位。"
+        ]
+      },
+      {
+        "id": "deliver",
+        "title": "在地底把每只眼送到巨像",
+        "actions": [
+          "从对应深穴下去，在落点附近找眼睛，借矿车、风扇或车轮向中央大废矿运送。",
+          "进入时之神殿遗迹正下方的巨型魔人像区域，把四只眼分别装进面部凹槽。"
+        ]
+      },
+      {
+        "id": "reward",
+        "title": "与完整巨像交谈",
+        "actions": [
+          "确认四个眼槽都已装入，与巨像交谈。",
+          "按自己的需要选择一颗心或一份精力奖励。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "CarryToShrine06",
+    "order": 50,
+    "chapter": "神庙挑战 · 海利亚湖水晶",
+    "start": {
+      "name": "海利亚湖漩涡洞窟",
+      "npc": "神庙终端",
+      "messageId": "LakeHylia"
+    },
+    "prerequisites": [
+      "已取得滑翔伞，能够到达海利亚湖上方空岛"
+    ],
+    "preparations": [
+      "足够的精力恢复料理；先开附近鸟望台或空岛神庙，方便往返"
+    ],
+    "stages": [
+      {
+        "id": "whirlpool",
+        "title": "从漩涡进入湖底洞窟",
+        "actions": [
+          "滑翔到海利亚湖的漩涡上方，落入漩涡进入湖底洞窟。",
+          "在洞内调查神庙终端接取水晶任务，观察绿色光束指向天空。"
+        ]
+      },
+      {
+        "id": "sky-crystal",
+        "title": "去湖上方空岛取水晶",
+        "messageId": "SkyIslands_Firone01",
+        "actions": [
+          "回到地面，根据光束方向确认湖上方空岛；可从初始空岛南侧滑翔过去。",
+          "远距离滑翔前补足精力或准备恢复料理；登岛后找到绿水晶，留意旁边的竖直洞口。"
+        ]
+      },
+      {
+        "id": "return",
+        "title": "把水晶从洞口投进漩涡",
+        "actions": [
+          "搬起水晶，从空岛上的洞口送下去，让它落入正下方湖面漩涡。",
+          "跟着下到湖底洞窟，把水晶搬回神庙底座。",
+          "进入出现的神庙，取得祝福之光完成任务。"
+        ]
+      }
+    ],
+    "referenceUrl": "https://www.ign.com/wikis/the-legend-of-zelda-tears-of-the-kingdom/En-oma_Shrine"
+  },
+  {
+    "id": "Hateno_FreshMilk",
+    "order": 60,
+    "chapter": "支线 · 牧场换鲜奶",
+    "start": {
+      "name": "哈特诺牧场",
+      "npc": "多当茨",
+      "messageId": "Hateno"
+    },
+    "prerequisites": [
+      "到牧场与多当茨交谈"
+    ],
+    "preparations": [
+      "三颗橡子"
+    ],
+    "stages": [
+      {
+        "id": "acorns",
+        "title": "收集牛的饲料",
+        "actions": [
+          "在树木附近或砍树时收集橡子，准备三颗。",
+          "不要把其他坚果当成橡子交付。"
+        ]
+      },
+      {
+        "id": "deliver",
+        "title": "交给多当茨",
+        "actions": [
+          "回到哈特诺牧场，把三颗橡子交给多当茨。",
+          "领取鲜奶并确认任务完成；之后可以继续按他的兑换条件换奶。"
+        ]
+      }
+    ]
+  }
+]

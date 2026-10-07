@@ -5,6 +5,21 @@ import { emptyPlayerData, parsePlayerData, serializeBackup } from './player-data
 const record = { id: 'instance-1', equipmentId: 'demo-sword', maximum: 30, current: 22, createdAt: '2026-10-07T00:00:00.000Z' };
 
 describe('玩家备份', () => {
+  it('旧版备份迁移新增记录为空，不丢失收藏或耐久', () => {
+    const old = { schemaVersion: 1, favorites: ['poi:old'], durabilityRecords: [record] };
+    assert.deepEqual(parsePlayerData(JSON.stringify(old)), { ...emptyPlayerData(), ...old });
+  });
+  it('备份往返保留任务阶段、多个防具计划与材料数量', () => {
+    const data = { ...emptyPlayerData(), questProgress: [{ questId: 'GetCamera', completedStageIds: ['descend'] }],
+      armorPlans: [{ equipmentId: 'Armor_001_Head', currentLevel: 2, targetLevel: 4 }], ownedMaterials: { 'actor:Item_Ore_F': 50, 'currency:rupees': 700 } };
+    assert.deepEqual(parsePlayerData(serializeBackup(data)), data);
+  });
+  it('拒绝重复计划、非法升级范围、任务阶段和已有材料数量', () => {
+    const plan = { equipmentId: 'Armor_001_Head', currentLevel: 0, targetLevel: 4 };
+    for (const armorPlans of [[plan, plan], [{ ...plan, targetLevel: 5 }], [{ ...plan, currentLevel: 4 }]]) assert.throws(() => parsePlayerData(JSON.stringify({ ...emptyPlayerData(), armorPlans })));
+    assert.throws(() => parsePlayerData(JSON.stringify({ ...emptyPlayerData(), questProgress: [{ questId: 'quest', completedStageIds: ['a', 'a'] }] })));
+    for (const ownedMaterials of [{ 'actor:Item_Ore_F': -1 }, { 'actor:Item_Ore_F': 1.5 }, { 'currency:rupees': 1000000 }, { unknown: 4 }]) assert.throws(() => parsePlayerData(JSON.stringify({ ...emptyPlayerData(), ownedMaterials })));
+  });
   it('往返恢复收藏和手动耐久', () => {
     const data = { ...emptyPlayerData(), favorites: ['poi:demo-bokoblin-camp', 'equipment:demo-sword'], durabilityRecords: [record] };
     assert.deepEqual(parsePlayerData(serializeBackup(data)), data);

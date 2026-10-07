@@ -11,3 +11,6 @@ test-results/
 *.tsbuildinfo
 .cache/
 __pycache__/
+releases/
+*.keystore
+*.p12
