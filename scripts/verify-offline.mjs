@@ -11,7 +11,7 @@ const resources = JSON.parse(await readFile(resolve(directory, 'data/offline-map
 if (resources.total !== 29835) throw new Error('The production offline map is incomplete');
 const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.png': 'image/png', '.csv': 'text/csv', '.webmanifest': 'application/manifest+json' };
 const browser = await chromium.launch();
-const context = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1, offline: true });
+const context = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 3, offline: true });
 const page = await context.newPage();
 const errors = [], external = [], loaded = new Set();
 page.on('pageerror', error => errors.push(error.message));
@@ -37,7 +37,22 @@ await context.route('**/*', async route => {
 const navigation = page.getByRole('navigation', { name: '主导航' });
 const layers = page.getByRole('group', { name: '地图图层' });
 async function readyTiles(folder) {
-  await expect.poll(() => page.getByTestId('detail-tile').evaluateAll((images, target) => images.length > 0 && images.every(image => image.complete && image.naturalWidth === 256 && image.getAttribute('src').includes(`/maps/${target}/7/`)), folder)).toBe(true);
+  const terrain = page.getByTestId('map-world');
+  await expect(terrain).toHaveAttribute('data-layer', { Ground: 'surface', Sky: 'sky', Depths: 'depths' }[folder]);
+  await expect(terrain).toHaveAttribute('data-tile-level', '7');
+  await expect(terrain).toHaveAttribute('data-tiles-ready', 'true');
+  const pixels = await terrain.evaluate(element => {
+    const bounds = element.getBoundingClientRect();
+    const rectangles = [...element.querySelectorAll('.map-tile')].flatMap(tile => {
+      const image = tile.querySelector('img'); return image?.complete && image.naturalWidth > 0 ? [tile.getBoundingClientRect()] : [];
+    });
+    let holes = 0;
+    const xs = [...Array.from({ length: Math.ceil(bounds.width / 11) }, (_, i) => i * 11), bounds.width - .001];
+    const ys = [...Array.from({ length: Math.ceil(bounds.height / 11) }, (_, i) => i * 11), bounds.height - .001];
+    for (const y of ys) for (const x of xs) if (!rectangles.some(r => x + bounds.x >= r.left - .001 && x + bounds.x < r.right + .001 && y + bounds.y >= r.top - .001 && y + bounds.y < r.bottom + .001)) holes++;
+    return { holes, width: bounds.width, height: bounds.height, images: rectangles.length };
+  });
+  if (pixels.holes || pixels.width !== 390 || pixels.height !== 770 || pixels.images === 0) throw new Error(`Incomplete high-DPR terrain: ${JSON.stringify(pixels)}`);
   await expect(page.getByText('离线高清资源缺失，请重新安装完整包')).toHaveCount(0);
   const world = await page.getByTestId('map-world').boundingBox();
   const frame = await page.getByTestId('map-viewport').boundingBox();
@@ -113,7 +128,8 @@ try {
   await expect(page.getByTestId('quest-progress')).toHaveText('1 / 3');
   if (external.length || errors.length) throw new Error(JSON.stringify({ external, errors }));
   const report = { checkedAt: new Date().toISOString(), browserOffline: true, origin, mapTiles: resources.total,
-    tested: ['All three layers and four corners at native level 7', 'No blank viewport edges', 'Offline Chinese labels and place search', 'Depths Lynel filter and coordinates', 'Fixed equipment durability and local icon', 'Three-piece armor material aggregation, owned quantities and persistence', 'Offline quest tutorials, stage progress, map links and persistence'],
+    devicePixelRatio: 3, renderer: 'viewport-clipped native image tiles, decoded cache and unscaled DOM overlays',
+    tested: ['All three layers and four corners at native level 7', 'Decoded image coverage at DPR 3 including every viewport edge', 'Offline Chinese labels and place search', 'Depths Lynel filter and coordinates', 'Fixed equipment durability and local icon', 'Three-piece armor material aggregation, owned quantities and persistence', 'Offline quest tutorials, stage progress, map links and persistence'],
     distinctAssetsRequested: loaded.size, externalRequests: external, errors,
     nativeDeviceTest: 'No Android device attached; native installation and document chooser not yet tested on a device' };
   await mkdir(resolve(root, '.cache/verification'), { recursive: true });

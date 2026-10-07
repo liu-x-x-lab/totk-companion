@@ -41,10 +41,10 @@ test('地图工具和地点面板可收起，展开详情不缩小地图，导�
   await page.locator('.location-list').getByRole('button').first().click();
   await expect(page.getByRole('article', { name: '地点详情' })).toBeVisible();
   expect(await viewport.boundingBox()).toEqual(bounds);
-  const camera = await page.getByTestId('map-world').getAttribute('style');
+  const camera = await page.getByTestId('map-world').getAttribute('data-camera');
   await page.getByRole('button', { name: '收起地点详情', exact: true }).click();
   await expect(page.getByRole('article', { name: '地点详情' })).toBeHidden();
-  await expect(page.getByTestId('map-world')).toHaveAttribute('style', camera!);
+  await expect(page.getByTestId('map-world')).toHaveAttribute('data-camera', camera!);
   await goTo(page, '装备'); await expect(page.getByRole('heading', { name: '装备图鉴', exact: true })).toBeVisible();
   await goTo(page, '地图'); expect(await viewport.boundingBox()).toEqual(bounds);
   expect(await page.evaluate(() => document.documentElement.scrollHeight <= innerHeight)).toBe(true);
@@ -66,7 +66,7 @@ test('三层真实底图与西诺克斯、人马完整筛选',async({page})=>{
   await layers.getByRole('button',{name:'地表',exact:true}).click();await expect(page.getByTestId('filtered-count')).toHaveText('15 处');
   await layers.getByRole('button',{name:'天空',exact:true}).click();await expect(page.getByTestId('filtered-count')).toHaveText('0 处');
   await expect(page.locator('.map-overview')).toHaveAttribute('data-layer','sky');
-  await expect.poll(()=>page.locator('.map-overview img').evaluateAll(images=>images.every(image=>(image as HTMLImageElement).naturalWidth>0))).toBe(true);
+  await expect(page.getByTestId('map-world')).toHaveAttribute('data-tiles-ready','true');
 });
 
 test('游戏元素分类覆盖天空神庙和地底树根，聚合限制手机标记数量',async({page})=>{
@@ -91,8 +91,8 @@ test('用真实坐标搜索并定位，详情保留原始坐标',async({page})=>
 test('地图放大、拖动、64倍边界及复位',async({page})=>{
   await loaded(page);const zoom=page.getByTestId('zoom-level');await expect(zoom).toHaveText('100%');await expect(page.getByRole('button',{name:'缩小地图',exact:true})).toBeDisabled();await page.getByRole('button',{name:'放大地图',exact:true}).click();await expect(zoom).toHaveText('150%');
   const area=page.getByTestId('map-viewport');await area.scrollIntoViewIfNeeded();const bounds=(await area.boundingBox())!;
-  const before=await page.getByTestId('map-world').getAttribute('style');
-  await page.mouse.move(bounds.x+8,bounds.y+bounds.height*.5);await page.mouse.down();await page.mouse.move(bounds.x+35,bounds.y+bounds.height*.55,{steps:6});await page.mouse.up();await expect(page.getByTestId('map-world')).not.toHaveAttribute('style',before!);
+  const before=await page.getByTestId('map-world').getAttribute('data-camera');
+  await page.mouse.move(bounds.x+8,bounds.y+bounds.height*.5);await page.mouse.down();await page.mouse.move(bounds.x+35,bounds.y+bounds.height*.55,{steps:6});await page.mouse.up();await expect(page.getByTestId('map-world')).not.toHaveAttribute('data-camera',before!);
   for(let i=0;i<10;i++)await page.getByRole('button',{name:'放大地图',exact:true}).click();await expect(zoom).toHaveText('6400%');await expect(page.getByRole('button',{name:'放大地图',exact:true})).toBeDisabled();
   await page.getByRole('button',{name:'恢复地图视野'}).click();await expect(zoom).toHaveText('100%');await expect(page.getByRole('button',{name:'缩小地图',exact:true})).toBeDisabled();
 });
@@ -128,10 +128,11 @@ test('缩小、四向拖动、图层切换和横竖屏变化都不露出画布�
   }
   await page.getByRole('button', { name: '展开地图工具', exact: true }).click();
   await page.getByRole('button', { name: '放大地图', exact: true }).click();
-  const camera = await page.getByTestId('map-world').getAttribute('style');
+  await expect(zoom).toHaveText('150%');
+  const camera = await page.getByTestId('map-world').getAttribute('data-camera');
   for (const label of ['天空', '地底', '地表']) {
     await page.getByRole('group', { name: '地图图层' }).getByRole('button', { name: label, exact: true }).click();
-    await expect(page.getByTestId('map-world')).toHaveAttribute('style', camera!);
+    await expect(page.getByTestId('map-world')).toHaveAttribute('data-camera', camera!);
     await covered();
   }
 });
@@ -357,7 +358,7 @@ test('三层最高精度底图由本地完整包提供',async({request})=>{
   const response=await request.get('/data/offline-map-manifest.json');expect(response.ok()).toBe(true);
   const manifest=await response.json();expect(manifest.total).toBe(29835);expect(manifest.levels).toEqual([2,3,4,5,6,7]);
 });
-test('保存手机真实地图视觉预览',async({page})=>{await loaded(page);await expect.poll(()=>page.locator('.map-overview img').evaluateAll(images=>images.every(image=>(image as HTMLImageElement).naturalWidth>0))).toBe(true);await page.screenshot({path:'test-results/mobile-map.png',fullPage:false});});
+test('保存手机真实地图视觉预览',async({page})=>{await loaded(page);await expect(page.getByTestId('map-world')).toHaveAttribute('data-tiles-ready','true');await page.screenshot({path:'test-results/mobile-map.png',fullPage:false});});
 
 test('360px 防具备料合并当前到目标范围，已有数量与计划刷新保存', async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 800 }); await loaded(page); await goTo(page, '装备');

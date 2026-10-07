@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { catalogById,formatCoordinates } from './catalog.ts';
 import { matchesPoint } from './search.ts';
-import { clusterPoints } from '../features/map/clustering.ts';
+import { clusterPoints, createPointIndex } from '../features/map/clustering.ts';
 import { baseScale,coverCamera,WORLD_SIZE,WORLD_HEIGHT } from '../features/map/geometry.ts';
 import type { PointOfInterest } from '../types/domain';
 
@@ -55,5 +55,13 @@ describe('真实世界资料与地图投影',()=>{
     for(const layer of ['Ground','Sky','Depths'])for(let x=0;x<3;x++)for(let y=0;y<3;y++){
       const tile=readFileSync(new URL(`../../public/maps/${layer}/2/${x}/${y}.webp`,import.meta.url));assert.equal(tile.subarray(0,4).toString(),'RIFF');assert.equal(tile.subarray(8,12).toString(),'WEBP');
     }
+  });
+  it('空间索引保留边界附近全部对象，没有相邻行索引碰撞或重复',()=>{
+    const coordinates=[-.02,0,.01,.5,.99,1,1.02];
+    const points=coordinates.flatMap((x,i)=>coordinates.map((y,j)=>({...point,id:`edge-${i}-${j}`,mapPosition:{x,y}})));
+    const viewport={width:1000,height:WORLD_HEIGHT},camera=coverCamera(viewport);
+    const direct=clusterPoints(points,camera,viewport,null).flatMap((group)=>group.points.map((entry)=>entry.id)).sort();
+    const indexed=clusterPoints(createPointIndex(points).query(camera,viewport),camera,viewport,null).flatMap((group)=>group.points.map((entry)=>entry.id)).sort();
+    assert.deepEqual(indexed,direct);assert.equal(new Set(indexed).size,indexed.length);
   });
 });

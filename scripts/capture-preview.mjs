@@ -17,8 +17,7 @@ page.on('response', response => {
 const frames = [];
 async function capture(filename, resetScroll = true) {
   await page.evaluate(() => document.fonts.ready);
-  await expect.poll(() => page.locator('.map-overview img').evaluateAll(images => images.every(image => image.complete && image.naturalWidth > 0))).toBe(true);
-  await expect.poll(() => page.getByTestId('detail-tile').evaluateAll(images => images.every(image => image.complete && image.naturalWidth > 0))).toBe(true);
+  if (await page.getByTestId('map-world').count()) await expect(page.getByTestId('map-world')).toHaveAttribute('data-tiles-ready', 'true');
   await expect.poll(() => page.locator('.equipment-art img:visible').evaluateAll(images => images.every(image => image.complete && image.naturalWidth > 0))).toBe(true);
   if (resetScroll) await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
   if (await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)) throw new Error(`Horizontal overflow in ${filename}`);

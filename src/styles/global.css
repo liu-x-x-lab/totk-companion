@@ -68,14 +68,17 @@ svg { display: block; }
 .inline-select { display: flex; align-items: center; gap: 16px; font-size: 12px; margin: 0 0 12px; }
 .inline-select select { flex: 1; }
 .map-frame { position: relative; border-radius: 6px; overflow: hidden; border: 2px solid #a99a68; box-shadow: 0 6px 18px #253b2720, 0 0 0 3px #e4ddc6; background: #c9d3ae; }
-.map-viewport { position: relative; height: clamp(300px, 40dvh, 470px); overflow: hidden; touch-action: none; user-select: none; cursor: grab; }
+.map-viewport { position: relative; isolation: isolate; height: clamp(300px, 40dvh, 470px); overflow: hidden; touch-action: none; user-select: none; cursor: grab; }
 .map-viewport:active { cursor: grabbing; }
-/* 向上取整到 1/64 CSS px，避免浏览器在 64 倍放大后把小数高度舍入成空隙。 */
-.map-world { width: 1000px; height: 833.34375px; overflow: hidden; position: absolute; left: 0; top: 0; transform-origin: 0 0; will-change: transform; }
+/* Native image tiles are clipped to the viewport; text and icons never inherit map scale. */
+.map-world { display: block; isolation: isolate; overflow: hidden; width: 100%; height: 100%; position: absolute; inset: 0; pointer-events: none; }
+.map-tile { position: absolute; left: 0; top: 0; overflow: hidden; contain: strict; will-change: transform; pointer-events: none; }
+.map-tile img { position: absolute; left: 0; top: 0; max-width: none; max-height: none; pointer-events: none; }
+.map-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
 .terrain { position: absolute; width: 100%; height: 100%; }
 .map-sky { background: #d8e7dc; border-color: #9aac96; }
 .map-depths { background: #243731; border-color: #749d86; }
-.map-marker { position: absolute; width: 44px; height: 44px; padding: 0; transform: translate(-50%, -50%) scale(var(--inverse-scale)); transform-origin: center; background: transparent; display: grid; place-items: center; z-index: 1; }
+.map-marker { position: absolute; left: 0; top: 0; width: 44px; height: 44px; padding: 0; background: transparent; display: grid; place-items: center; z-index: 1; pointer-events: auto; touch-action: none; }
 .map-marker > span { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; color: #fff9e5; background: #886140; border: 2px solid #f5edd1; box-shadow: 0 2px 5px #24392740; }
 .marker-shrine > span { background: #44785f; }
 .marker-tower > span { background: #638270; }
@@ -83,7 +86,7 @@ svg { display: block; }
 .map-marker.selected { z-index: 3; }
 .map-marker.selected > span { box-shadow: 0 0 0 4px #e5ce83, 0 2px 8px #24392740; }
 .map-label-layer { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
-.map-place-label { position: absolute; display: block; width: max-content; max-width: 260px; white-space: nowrap; transform: translate(-50%, -50%) scale(var(--inverse-scale)); transform-origin: center; line-height: 1.4; letter-spacing: .5px; font-family: 'Songti SC', 'STSong', 'Noto Serif CJK SC', serif; font-weight: 650; color: #fff1c7; text-shadow: -1px -1px 1px #1b2a20, 1px -1px 1px #1b2a20, -1px 1px 1px #1b2a20, 1px 1px 1px #1b2a20, 0 1px 4px #0e191a; }
+.map-place-label { position: absolute; left: 0; top: 0; display: block; width: max-content; max-width: 260px; white-space: nowrap; line-height: 1.4; letter-spacing: .5px; font-family: 'Songti SC', 'STSong', 'Noto Serif CJK SC', serif; font-weight: 650; color: #fff1c7; text-shadow: -1px -1px 0 #1b2a20, 1px -1px 0 #1b2a20, -1px 1px 0 #1b2a20, 1px 1px 0 #1b2a20, 0 1px 2px #0e191a; }
 .map-place-label.label-region { letter-spacing: 2px; color: #f1dc9e; font-weight: 700; }
 .map-place-label.label-town { color: #fff6d5; }
 .map-depths .map-place-label { color: #deebc4; }
@@ -224,7 +227,6 @@ svg { display: block; }
 .bottom-nav .active .nav-icon { background: #42634b; border-color: #c1b57b80; color: #a1edc6; }
 .nav-icon i { position: absolute; right: 15px; top: 5px; width: 6px; height: 6px; background: #d3bd71; border-radius: 50%; border: 1px solid #163b34; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-.map-overview img,.map-detail-tiles img { position:absolute; pointer-events:none; }
 .cluster-marker>span { font-size:11px; font-weight:650; min-width:32px; width:auto; padding:0 5px; }
 .cluster-panel { position:absolute; inset:auto 9px 46px; background:#fffcf2; border:1px solid #cedbc1; border-radius:9px; box-shadow:0 5px 15px #24392355; padding:9px 12px; z-index:5; }
 .cluster-panel>div+div { max-height:210px; overflow-y:auto; }
@@ -251,7 +253,7 @@ svg { display: block; }
 .marker-legend>span { display:flex; align-items:center; gap:5px; color:#748466; font-size:9px; }
 .marker-legend i { display:grid; place-items:center; width:17px; height:17px; color:#fffbe9; font-style:normal; border-radius:50%; font-size:9px; }
 .filter-chip:has(svg) { display:flex; align-items:center; gap:5px; }
-.tile-fallback-status { font-size:18px; color:#304727; background:#fcf9e5; }
+.tile-fallback-status, .map-loading-status { position: absolute; top: 45%; left: 16px; right: 16px; z-index: 4; margin: auto; max-width: 320px; padding: 10px 14px; border: 1px solid #c7b775; border-radius: 4px; font-size: 12px; color: #304727; background: #fcf9e5; pointer-events: none; text-align: center; }
 a { color:#557647; }
 .monster-title h2,.location-row strong,.saved-card h2,.equipment-title h2 { overflow-wrap:anywhere; }
 
