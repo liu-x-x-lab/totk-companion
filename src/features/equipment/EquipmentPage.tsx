@@ -5,9 +5,8 @@ import { EQUIPMENT_LABELS } from '../../types/domain';
 import type { PlayerStore } from '../../hooks/usePlayerData';
 import { createRecordId } from '../../data/player-data';
 import { Icon } from '../../components/Icon';
-import type { IconName } from '../../components/Icon';
+import { EquipmentArt } from '../../components/EquipmentArt';
 
-const equipmentIcons: Record<EquipmentCategory, IconName> = { 'one-handed': 'sword', 'two-handed': 'sword', spear: 'sword', bow: 'bow', shield: 'shield', armor: 'shield' };
 const variantLabels = { standard: '普通', pristine: '无腐蚀', decayed: '腐朽' };
 const modifierLabels = { attackUp: '攻击提升', attackUpPlus: '攻击提升＋', guardUp: '盾防御提升', guardUpPlus: '盾防御提升＋', durabilityUp: '耐久提升', durabilityUpPlus: '耐久提升＋' };
 const effectLabels: Record<string, string> = {
@@ -112,7 +111,7 @@ export function EquipmentPage({ equipment, store, focusId }: { equipment: readon
       const records = store.data.durabilityRecords.filter((record) => record.equipmentId === item.id);
       const armorMaximum = item.armorLevels ? item.armorLevels.length > 1 ? item.armorLevels.at(-1)!.defense : '无法强化' : '待核验';
       return <article key={item.id} data-testid={`equipment-${item.id}`} className="equipment-card" aria-label={item.name}>
-        <div className="card-heading"><div className="equipment-title"><span className={`equipment-art equipment-${item.category}`}><Icon name={equipmentIcons[item.category]} size={32}/></span><div><span className="small-label">{item.armorSlot === 'full' ? '全身防具' : EQUIPMENT_LABELS[item.category]}{item.variant && item.variant !== 'standard' ? ` · ${variantLabels[item.variant]}` : ''}</span><h2>{item.name}</h2>{item.originalName && <p className="gear-original-name">{item.originalName}</p>}</div></div><button className={`icon-button ${saved ? 'is-saved' : ''}`} aria-label={saved ? `取消收藏${item.name}` : `收藏${item.name}`} aria-pressed={saved} onClick={() => store.toggleFavorite(`equipment:${item.id}`)}><Icon name="bookmark"/></button></div>
+        <div className="card-heading"><div className="equipment-title"><EquipmentArt item={item}/><div><span className="small-label">{item.armorSlot === 'full' ? '全身防具' : EQUIPMENT_LABELS[item.category]}{item.variant && item.variant !== 'standard' ? ` · ${variantLabels[item.variant]}` : ''}</span><h2>{item.name}</h2>{item.originalName && <p className="gear-original-name">{item.originalName}</p>}</div></div><button className={`icon-button ${saved ? 'is-saved' : ''}`} aria-label={saved ? `取消收藏${item.name}` : `收藏${item.name}`} aria-pressed={saved} onClick={() => store.toggleFavorite(`equipment:${item.id}`)}><Icon name="bookmark"/></button></div>
         <div className="equipment-stats"><div><small>{item.category === 'shield' ? '盾防御力' : item.category === 'armor' ? item.upgradeLevel ? '当前星级防御' : '基础防御力' : item.category === 'bow' ? '基础攻击（每箭）' : '基础攻击力'}</small><strong data-testid="equipment-power">{item.attackRange ? item.attackRange.join('–') : (item.category === 'shield' || item.category === 'armor' ? item.defense : item.attack) ?? '待核验'}</strong></div><div><small>{item.category === 'armor' ? '最高强化防御' : '基础耐久'}</small><strong data-testid="equipment-durability">{item.category === 'armor' ? armorMaximum : item.baseDurability ?? '待核验'}</strong></div></div>
         {item.arrowsPerShot != null && <p className="bow-meta">每次 {item.arrowsPerShot} 支箭{item.bowRange != null ? ` · 射程参数 ${item.bowRange}` : ''}</p>}
         {item.attackNote && <p className="gear-special-note">{item.attackNote}</p>}

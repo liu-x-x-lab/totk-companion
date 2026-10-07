@@ -23,7 +23,7 @@ export function decodeEquipment(pack: EquipmentPack): Equipment[] {
       throw new Error('装备属性或稳定 ID 无效。');
     }
     ids.add(item.id);
-    return { ...item, catalogEntry: true, source: pack.source };
+    return { ...item, iconId: item.id, catalogEntry: true, source: pack.source };
   });
   const bases = new Map(equipment.map((item) => [item.id, item]));
   for (const alias of pack.aliases) {

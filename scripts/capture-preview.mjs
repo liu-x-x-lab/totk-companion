@@ -1,0 +1,65 @@
+import { chromium, devices, expect } from '@playwright/test';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+
+const baseURL = process.env.PREVIEW_URL ?? 'http://127.0.0.1:5178';
+const directory = fileURLToPath(new URL('../docs/previews/', import.meta.url));
+const manifest = JSON.parse(await readFile(new URL('../public/data/manifest.json', import.meta.url), 'utf8'));
+await mkdir(directory, { recursive: true });
+const browser = await chromium.launch();
+const context = await browser.newContext({ ...devices['Pixel 7'], viewport: { width: 390, height: 844 } });
+const page = await context.newPage();
+const errors = [];
+page.on('pageerror', error => errors.push(error.message));
+page.on('response', response => {
+  if (response.url().startsWith(baseURL) && response.status() >= 400) errors.push(`${response.status()} ${response.url()}`);
+});
+const frames = [];
+async function capture(filename) {
+  await page.evaluate(() => document.fonts.ready);
+  await expect.poll(() => page.locator('.map-overview img').evaluateAll(images => images.every(image => image.complete && image.naturalWidth > 0))).toBe(true);
+  await expect.poll(() => page.locator('.equipment-art img:visible').evaluateAll(images => images.every(image => image.complete && image.naturalWidth > 0))).toBe(true);
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+  if (await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)) throw new Error(`Horizontal overflow in ${filename}`);
+  await page.screenshot({ path: `${directory}/${filename}`, fullPage: false, scale: 'css' });
+  frames.push(filename);
+}
+
+try {
+  await page.goto(baseURL);
+  await expect(page.getByText(`已载入 ${manifest.total.toLocaleString()} 条地点`, { exact: false })).toBeVisible();
+  const quick = page.getByRole('group', { name: '地图快捷筛选' });
+  const layers = page.getByRole('group', { name: '地图图层' });
+  await capture('map-mobile.png');
+  await quick.getByRole('button', { name: '西诺克斯', exact: true }).click();
+  await expect(page.getByTestId('filtered-count')).toHaveText('40 处');
+  await capture('hinox-mobile.png');
+
+  await quick.getByRole('button', { name: '分类', exact: true }).click();
+  await page.getByRole('button', { name: '清空', exact: true }).click();
+  await page.getByRole('region', { name: '游戏元素分类' }).getByRole('checkbox', { name: /^神庙/ }).check();
+  await quick.getByRole('button', { name: '分类', exact: true }).click();
+  await layers.getByRole('button', { name: '天空', exact: true }).click();
+  await expect(page.getByTestId('filtered-count')).toHaveText('32 处');
+  await capture('sky-mobile.png');
+
+  await layers.getByRole('button', { name: '地底', exact: true }).click();
+  await quick.getByRole('button', { name: '人马', exact: true }).click();
+  await expect(page.getByTestId('filtered-count')).toHaveText('19 处');
+  await capture('depths-mobile.png');
+
+  const navigation = page.getByRole('navigation', { name: '主导航' });
+  await navigation.getByRole('button', { name: '装备', exact: true }).click();
+  await page.getByRole('searchbox', { name: '搜索装备' }).fill('海利亚盾');
+  await capture('equipment-mobile.png');
+  await page.getByRole('searchbox', { name: '搜索装备' }).fill('海利亚兜帽');
+  await capture('armor-mobile.png');
+  if (errors.length) throw new Error(errors.join('\n'));
+  await writeFile(`${directory}/capture.json`, JSON.stringify({
+    capturedAt: new Date().toISOString(), viewport: page.viewportSize(), scale: 'css',
+    source: 'Live React app captured by Chromium; no mockups or synthetic overlays', frames,
+  }, null, 2) + '\n');
+  console.log(`Saved ${frames.length} real mobile screenshots to ${directory}`);
+} finally {
+  await browser.close();
+}

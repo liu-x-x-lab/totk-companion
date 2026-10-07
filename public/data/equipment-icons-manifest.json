@@ -1,0 +1,2804 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "name": "TOTKSheet/TOTKImages",
+    "url": "https://github.com/TOTKSheet/TOTKImages",
+    "snapshot": "e0467418215e76bd93c3ec8b55bbf321e4cc43ae",
+    "treeSnapshot": "39c06147e075ba3fc4bdd41133e8153227d52502",
+    "checkedAt": "2026-10-07T12:17:06.664190+00:00",
+    "verification": "Exact Actor ID and unique path; Git blob SHA, PNG chunks, dimensions, and SHA-256 checked"
+  },
+  "total": 310,
+  "icons": [
+    {
+      "id": "Weapon_Sword_070",
+      "file": "/images/equipment/Weapon_Sword_070.png",
+      "sourcePath": "Weapons/Weapon_Sword_070.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 33455,
+      "sha256": "646154aac8b8cb7a0ab43af9e3ad7bea71dfdb40d2be5f40c9f56fc07d477e53"
+    },
+    {
+      "id": "Weapon_Sword_044",
+      "file": "/images/equipment/Weapon_Sword_044.png",
+      "sourcePath": "Weapons/Weapon_Sword_044.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 27025,
+      "sha256": "596ce688c57f226c536f58bf01669e0337b8ecbcb61ad97a8e2da688a99febcc"
+    },
+    {
+      "id": "Weapon_Sword_043",
+      "file": "/images/equipment/Weapon_Sword_043.png",
+      "sourcePath": "Weapons/Weapon_Sword_043.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 16997,
+      "sha256": "9d8d02252581c11594cb93c1976cb2e15b31985dc1194f2881e2accca25d5d0f"
+    },
+    {
+      "id": "Weapon_Sword_022",
+      "file": "/images/equipment/Weapon_Sword_022.png",
+      "sourcePath": "Weapons/Weapon_Sword_022.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 17730,
+      "sha256": "4bdef2d0458e26cc3d974c16fded3727f5d2e5688e32d812c266af3d2d70c133"
+    },
+    {
+      "id": "Weapon_Sword_105",
+      "file": "/images/equipment/Weapon_Sword_105.png",
+      "sourcePath": "Weapons/Weapon_Sword_105.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 29765,
+      "sha256": "a82afaca50762c31a8f6451b05a893bec969c756e8c2ba452f43f3e68f2cd406"
+    },
+    {
+      "id": "Weapon_Sword_051",
+      "file": "/images/equipment/Weapon_Sword_051.png",
+      "sourcePath": "Weapons/Weapon_Sword_051.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 25508,
+      "sha256": "86c4da891c5cf107f6d4a20b2298ce8ef26a29aa7d2e8267618e5f7149cd69cf"
+    },
+    {
+      "id": "Weapon_Sword_059",
+      "file": "/images/equipment/Weapon_Sword_059.png",
+      "sourcePath": "Weapons/Weapon_Sword_059.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 24627,
+      "sha256": "f505a412ae3f7eb9c38837b733f3dd9e2964df2f8ffd4beff713f528dd2eac87"
+    },
+    {
+      "id": "Weapon_Sword_106",
+      "file": "/images/equipment/Weapon_Sword_106.png",
+      "sourcePath": "Weapons/Weapon_Sword_106.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 20106,
+      "sha256": "26beecb2b49a0119ab39ddc3a26b45035815a8aa34d863621b29e71ec4a28b84"
+    },
+    {
+      "id": "Weapon_Sword_001",
+      "file": "/images/equipment/Weapon_Sword_001.png",
+      "sourcePath": "Weapons/Weapon_Sword_001.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 16302,
+      "sha256": "9f0ed807ba9e8a472b1266c6559cbfcdcc29ffa164fb147bae9ad671fae602f9"
+    },
+    {
+      "id": "Weapon_Sword_112",
+      "file": "/images/equipment/Weapon_Sword_112.png",
+      "sourcePath": "Weapons/Weapon_Sword_112.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 22185,
+      "sha256": "0c8d093c830e4c09915f41e6a71e1b4d70c7078ace2b24985c870bc89547dfd2"
+    },
+    {
+      "id": "Weapon_Sword_002",
+      "file": "/images/equipment/Weapon_Sword_002.png",
+      "sourcePath": "Weapons/Weapon_Sword_002.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 16541,
+      "sha256": "fb1f7ce91999e5140d3078e944adebfc4006c3ac4b5a1694a7291022b777c8ed"
+    },
+    {
+      "id": "Weapon_Sword_113",
+      "file": "/images/equipment/Weapon_Sword_113.png",
+      "sourcePath": "Weapons/Weapon_Sword_113.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 23124,
+      "sha256": "4fb9aa5de68b3f06b2957343e4c51865cd85d51333eb0383e6b3134135d99486"
+    },
+    {
+      "id": "Weapon_Sword_003",
+      "file": "/images/equipment/Weapon_Sword_003.png",
+      "sourcePath": "Weapons/Weapon_Sword_003.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 18578,
+      "sha256": "ddfaadeb3fb45f7af6c06dc1937b546be616c6b4efff82d565225609ca8390ba"
+    },
+    {
+      "id": "Weapon_Sword_124",
+      "file": "/images/equipment/Weapon_Sword_124.png",
+      "sourcePath": "Weapons/Weapon_Sword_124.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 26116,
+      "sha256": "4854e31c921235c856197dcad4d6764c2d4b204e0cbcc4f573746c01982f6894"
+    },
+    {
+      "id": "Weapon_Sword_024",
+      "file": "/images/equipment/Weapon_Sword_024.png",
+      "sourcePath": "Weapons/Weapon_Sword_024.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 22893,
+      "sha256": "5c5163fa97e06c02dcc2870a4e7ab3a6fbcd46462a470159f2b0edcafc5f2c5a"
+    },
+    {
+      "id": "Weapon_Sword_125",
+      "file": "/images/equipment/Weapon_Sword_125.png",
+      "sourcePath": "Weapons/Weapon_Sword_125.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 27953,
+      "sha256": "6c65513805f5dd37c810b75dcdf6b69ebafee164f801439680093376b133d5dc"
+    },
+    {
+      "id": "Weapon_Sword_025",
+      "file": "/images/equipment/Weapon_Sword_025.png",
+      "sourcePath": "Weapons/Weapon_Sword_025.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 26762,
+      "sha256": "a4cbdcc8e0c8dd4d83c97b78d9874299a1d4f4636af1007a4605685c345bdb0b"
+    },
+    {
+      "id": "Weapon_Sword_127",
+      "file": "/images/equipment/Weapon_Sword_127.png",
+      "sourcePath": "Weapons/Weapon_Sword_127.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 20888,
+      "sha256": "6150153bfa7d66fa9429e15e939d52a6be4dfc150fb8a6f3b2d353bee8f3a1e2"
+    },
+    {
+      "id": "Weapon_Sword_027",
+      "file": "/images/equipment/Weapon_Sword_027.png",
+      "sourcePath": "Weapons/Weapon_Sword_027.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 17872,
+      "sha256": "0896ebf63f567ec0285774f4c7954f388abf57b0de6467799548de02cb10945b"
+    },
+    {
+      "id": "Weapon_Sword_131",
+      "file": "/images/equipment/Weapon_Sword_131.png",
+      "sourcePath": "Weapons/Weapon_Sword_131.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 27724,
+      "sha256": "8be17be03dee846a3950231b2d3fc97c5b8e8562f0c54953d80e58743aa4303b"
+    },
+    {
+      "id": "Weapon_Sword_031",
+      "file": "/images/equipment/Weapon_Sword_031.png",
+      "sourcePath": "Weapons/Weapon_Sword_031.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 21831,
+      "sha256": "cd0573706b27a781fc285c7892e90bc1e44193f22eb5c8f0ea9589724bf29458"
+    },
+    {
+      "id": "Weapon_Sword_129",
+      "file": "/images/equipment/Weapon_Sword_129.png",
+      "sourcePath": "Weapons/Weapon_Sword_129.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 20542,
+      "sha256": "78b242676cb3e690eb96503d23eb320a9713a338c964ad6e54c48d5589e0a097"
+    },
+    {
+      "id": "Weapon_Sword_029",
+      "file": "/images/equipment/Weapon_Sword_029.png",
+      "sourcePath": "Weapons/Weapon_Sword_029.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 15835,
+      "sha256": "a099988868befde79ccbd46fe27dd0971622431cee6d0e967955b9bf178ccf6c"
+    },
+    {
+      "id": "Weapon_Sword_052",
+      "file": "/images/equipment/Weapon_Sword_052.png",
+      "sourcePath": "Weapons/Weapon_Sword_052.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 24234,
+      "sha256": "e237406076054c7acd4b7127d74a5064b66ca866c2bdd9843eb848b8d11fa8ec"
+    },
+    {
+      "id": "Weapon_Sword_114",
+      "file": "/images/equipment/Weapon_Sword_114.png",
+      "sourcePath": "Weapons/Weapon_Sword_114.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 20179,
+      "sha256": "f59411c47217dcb96c559f21336063b7eca04f96be6a342e6a7de5c0ab974085"
+    },
+    {
+      "id": "Weapon_Sword_041",
+      "file": "/images/equipment/Weapon_Sword_041.png",
+      "sourcePath": "Weapons/Weapon_Sword_041.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 17366,
+      "sha256": "02e28171d920005442d67bda7dc2c58d77c2681010dbac073bb1e974b30b2f83"
+    },
+    {
+      "id": "Weapon_Sword_021",
+      "file": "/images/equipment/Weapon_Sword_021.png",
+      "sourcePath": "Weapons/Weapon_Sword_021.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 20427,
+      "sha256": "879b1c6a26a038ef079e1ba4fe990651f254193e9a6db11529e2249d07fc2ad5"
+    },
+    {
+      "id": "Weapon_Sword_058",
+      "file": "/images/equipment/Weapon_Sword_058.png",
+      "sourcePath": "Weapons/Weapon_Sword_058.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 14713,
+      "sha256": "6291c079460337380a41f941fb682870dd00b2085a465cfbb61897c6a9b90aad"
+    },
+    {
+      "id": "Weapon_Sword_147",
+      "file": "/images/equipment/Weapon_Sword_147.png",
+      "sourcePath": "Weapons/Weapon_Sword_147.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 24628,
+      "sha256": "b0e4578e68c3a24b8cfd052fb1e2fff3c44829b5a9e6520e2cf39952e6926249"
+    },
+    {
+      "id": "Weapon_Sword_047",
+      "file": "/images/equipment/Weapon_Sword_047.png",
+      "sourcePath": "Weapons/Weapon_Sword_047.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 20831,
+      "sha256": "b3f22e86a65389c1778372c1bf0b628673365bee4e9362284fdfdfb65b5fc495"
+    },
+    {
+      "id": "Weapon_Sword_057",
+      "file": "/images/equipment/Weapon_Sword_057.png",
+      "sourcePath": "Weapons/Weapon_Sword_057.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 17534,
+      "sha256": "a7a495b21c9fc97d89d8e4bf774bbd59a60d72d0db950b7cc0a7ed4af6f86fa2"
+    },
+    {
+      "id": "Weapon_Sword_103",
+      "file": "/images/equipment/Weapon_Sword_103.png",
+      "sourcePath": "Weapons/Weapon_Sword_103.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 21966,
+      "sha256": "6b2dde0a0cb7847d250108f0962ba15a2d143d9db92888b503d90c08df99e1fb"
+    },
+    {
+      "id": "Weapon_Sword_108",
+      "file": "/images/equipment/Weapon_Sword_108.png",
+      "sourcePath": "Weapons/Weapon_Sword_108.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 26900,
+      "sha256": "b5794ec6d109344b554d348c6d8d6d4b4acf86edc327ff8cc00ba9c4cb8241d2"
+    },
+    {
+      "id": "Weapon_Sword_109",
+      "file": "/images/equipment/Weapon_Sword_109.png",
+      "sourcePath": "Weapons/Weapon_Sword_109.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 39056,
+      "sha256": "17a98d0307dc82f9f25a4d1863f06f6c1803693f2e29bc2b3e2d5366f0634461"
+    },
+    {
+      "id": "Weapon_Sword_107",
+      "file": "/images/equipment/Weapon_Sword_107.png",
+      "sourcePath": "Weapons/Weapon_Sword_107.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 19584,
+      "sha256": "488be5f2afaad671aa20da3666a5715852278e720fd806327a465d3bf288f591"
+    },
+    {
+      "id": "Weapon_Sword_101",
+      "file": "/images/equipment/Weapon_Sword_101.png",
+      "sourcePath": "Weapons/Weapon_Sword_101.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 13254,
+      "sha256": "03443eb872a3beadf48264d8264ab68e770c3bc6ecfb008635b68357fa2c71f6"
+    },
+    {
+      "id": "Weapon_Sword_163",
+      "file": "/images/equipment/Weapon_Sword_163.png",
+      "sourcePath": "Weapons/Weapon_Sword_163.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 22856,
+      "sha256": "fb756b9af34efc75cf197fe7f7475a240c6e365a3cfbc4fa10fb216d99a566c0"
+    },
+    {
+      "id": "Weapon_Sword_164",
+      "file": "/images/equipment/Weapon_Sword_164.png",
+      "sourcePath": "Weapons/Weapon_Sword_164.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 25659,
+      "sha256": "1646b57be2bed6df4f660b7aba57241bb8e3b1cf8fd95758c61580975edb2aa0"
+    },
+    {
+      "id": "Weapon_Sword_161",
+      "file": "/images/equipment/Weapon_Sword_161.png",
+      "sourcePath": "Weapons/Weapon_Sword_161.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 20716,
+      "sha256": "e6c8f20cac590fe73e3294c0f74047be1db00082469f5c1241919e4e308874a3"
+    },
+    {
+      "id": "Weapon_Sword_019",
+      "file": "/images/equipment/Weapon_Sword_019.png",
+      "sourcePath": "Weapons/Weapon_Sword_019.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 19930,
+      "sha256": "f23af98bb26f5435f16e2d1336a953368b79155dda2410c918cd3c58aa7afc6b"
+    },
+    {
+      "id": "Weapon_Sword_020",
+      "file": "/images/equipment/Weapon_Sword_020.png",
+      "sourcePath": "Weapons/Weapon_Sword_020.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 28538,
+      "sha256": "2cec03033577b25966d59796068e4c8ce9a0fed6dcdb229eb1df28a1164e978f"
+    },
+    {
+      "id": "Weapon_Sword_166",
+      "file": "/images/equipment/Weapon_Sword_166.png",
+      "sourcePath": "Weapons/Weapon_Sword_166.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 18184,
+      "sha256": "7cb4a573a7ce849c7c5567e62afe2d58d866759aff53762058ea68a8fcd06413"
+    },
+    {
+      "id": "Weapon_Lsword_045",
+      "file": "/images/equipment/Weapon_Lsword_045.png",
+      "sourcePath": "Weapons/Weapon_Lsword_045.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 17372,
+      "sha256": "0581bfe75ea9c68a2a3e2667682a285ffd3d79cb891ea6a842ecaf854343abf0"
+    },
+    {
+      "id": "Weapon_Lsword_038",
+      "file": "/images/equipment/Weapon_Lsword_038.png",
+      "sourcePath": "Weapons/Weapon_Lsword_038.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 18144,
+      "sha256": "7b6ad1415bee8dc928615e7cc3d5f6d197ff5ba841d6f4f2883d4cc1a026486e"
+    },
+    {
+      "id": "Weapon_Lsword_174",
+      "file": "/images/equipment/Weapon_Lsword_174.png",
+      "sourcePath": "Weapons/Weapon_Lsword_174.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 30055,
+      "sha256": "91acc4f2d8f8ec113befd60c5f02f925e0154ade4b40f9ce15ba4262c020266d"
+    },
+    {
+      "id": "Weapon_Lsword_051",
+      "file": "/images/equipment/Weapon_Lsword_051.png",
+      "sourcePath": "Weapons/Weapon_Lsword_051.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 29001,
+      "sha256": "d6363e9e3e25c2cd913f7929310306068845c63e019ba05f366996331cc9e2d8"
+    },
+    {
+      "id": "Weapon_Lsword_106",
+      "file": "/images/equipment/Weapon_Lsword_106.png",
+      "sourcePath": "Weapons/Weapon_Lsword_106.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 21974,
+      "sha256": "171e878dae9333e9c9c53b4f8a269bafdfa1bc1db728962d1d1fe4aebe615bc0"
+    },
+    {
+      "id": "Weapon_Lsword_001",
+      "file": "/images/equipment/Weapon_Lsword_001.png",
+      "sourcePath": "Weapons/Weapon_Lsword_001.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 17862,
+      "sha256": "460def45e7a8082c7693cbc808c238dbf21432cc73771989e65c9a170f6e322d"
+    },
+    {
+      "id": "Weapon_Lsword_112",
+      "file": "/images/equipment/Weapon_Lsword_112.png",
+      "sourcePath": "Weapons/Weapon_Lsword_112.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 22689,
+      "sha256": "e0d80d751f95fd27e132384fa1a573ce7b6716b9b67c5fbe109aac231beacba0"
+    },
+    {
+      "id": "Weapon_Lsword_002",
+      "file": "/images/equipment/Weapon_Lsword_002.png",
+      "sourcePath": "Weapons/Weapon_Lsword_002.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 17938,
+      "sha256": "1f48f725ecf62c09cb31dbb87f1f2ec5b96e2a52873a3ab4a55321b4dd1c724f"
+    },
+    {
+      "id": "Weapon_Lsword_113",
+      "file": "/images/equipment/Weapon_Lsword_113.png",
+      "sourcePath": "Weapons/Weapon_Lsword_113.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 28616,
+      "sha256": "de5203edb697f70084e81860d600591cc49e4304388c2eeeb38ce9d35125402d"
+    },
+    {
+      "id": "Weapon_Lsword_003",
+      "file": "/images/equipment/Weapon_Lsword_003.png",
+      "sourcePath": "Weapons/Weapon_Lsword_003.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 24360,
+      "sha256": "3c6d206e1515a40f546ac46dd4cd88a9bbf1cd67783defcfd9e66598ac8ba28d"
+    },
+    {
+      "id": "Weapon_Lsword_124",
+      "file": "/images/equipment/Weapon_Lsword_124.png",
+      "sourcePath": "Weapons/Weapon_Lsword_124.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 34362,
+      "sha256": "91da7d31b894dda6a05442c9cb0288513361168066e56f2266da67090717935c"
+    },
+    {
+      "id": "Weapon_Lsword_024",
+      "file": "/images/equipment/Weapon_Lsword_024.png",
+      "sourcePath": "Weapons/Weapon_Lsword_024.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 32177,
+      "sha256": "075820c5f96dbae81d09a60e61a1b36993699affe6c8979c96d8d1bbe55c15ec"
+    },
+    {
+      "id": "Weapon_Lsword_127",
+      "file": "/images/equipment/Weapon_Lsword_127.png",
+      "sourcePath": "Weapons/Weapon_Lsword_127.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 29464,
+      "sha256": "6a80d2086538934bea7444a2aff11ad0d860ec608badfd3bc433c409a2889df4"
+    },
+    {
+      "id": "Weapon_Lsword_027",
+      "file": "/images/equipment/Weapon_Lsword_027.png",
+      "sourcePath": "Weapons/Weapon_Lsword_027.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 25877,
+      "sha256": "823a85c53da555af194bc9855346089c28c1bbc4c40cc73a463ef5a444c5293d"
+    },
+    {
+      "id": "Weapon_Lsword_136",
+      "file": "/images/equipment/Weapon_Lsword_136.png",
+      "sourcePath": "Weapons/Weapon_Lsword_136.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 35759,
+      "sha256": "1e54c34d5bb745c605260a09eddd84534736dcf3dbe4abb8c2125e05c894cbc6"
+    },
+    {
+      "id": "Weapon_Lsword_036",
+      "file": "/images/equipment/Weapon_Lsword_036.png",
+      "sourcePath": "Weapons/Weapon_Lsword_036.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 31152,
+      "sha256": "ca022166d23cbffe76f9a99c600e21ef899f935d36c222e2842d200771a0256e"
+    },
+    {
+      "id": "Weapon_Lsword_054",
+      "file": "/images/equipment/Weapon_Lsword_054.png",
+      "sourcePath": "Weapons/Weapon_Lsword_054.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 31589,
+      "sha256": "aa499c3f343d1223db62ac9b4e2daf6e420407eb291f58e75e614f5461a6ca62"
+    },
+    {
+      "id": "Weapon_Lsword_059",
+      "file": "/images/equipment/Weapon_Lsword_059.png",
+      "sourcePath": "Weapons/Weapon_Lsword_059.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 20672,
+      "sha256": "b6f6fb2af281d10029d1a31d2fd12f3dcc3f7cfd07669a7b753e73dd7ca84ca1"
+    },
+    {
+      "id": "Weapon_Lsword_129",
+      "file": "/images/equipment/Weapon_Lsword_129.png",
+      "sourcePath": "Weapons/Weapon_Lsword_129.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 30672,
+      "sha256": "0f963d454c2af2b8b546e9b0d5cf9de3b0cbc38196d7ace8fd7fa72c00d3f146"
+    },
+    {
+      "id": "Weapon_Lsword_029",
+      "file": "/images/equipment/Weapon_Lsword_029.png",
+      "sourcePath": "Weapons/Weapon_Lsword_029.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 24845,
+      "sha256": "f117b0ae0a5a82b0dc8d5b190f8b195f4439b31a7634cb5db63459a47f38db21"
+    },
+    {
+      "id": "Weapon_Lsword_114",
+      "file": "/images/equipment/Weapon_Lsword_114.png",
+      "sourcePath": "Weapons/Weapon_Lsword_114.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 16387,
+      "sha256": "f5e063e0019ea8f44cd1dcc4d462191df7d09357f3fe7dc9bd625eab36d13f43"
+    },
+    {
+      "id": "Weapon_Lsword_041",
+      "file": "/images/equipment/Weapon_Lsword_041.png",
+      "sourcePath": "Weapons/Weapon_Lsword_041.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 15374,
+      "sha256": "ce3ae1b907bfcc9db860efe6ab9a24fa479f894d07a67977e0d4da7725f021e8"
+    },
+    {
+      "id": "Weapon_Lsword_057",
+      "file": "/images/equipment/Weapon_Lsword_057.png",
+      "sourcePath": "Weapons/Weapon_Lsword_057.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 18887,
+      "sha256": "e824b27c58210eea3d7118870756ae0f139affba4460f524a727b88cb1187780"
+    },
+    {
+      "id": "Weapon_Lsword_060",
+      "file": "/images/equipment/Weapon_Lsword_060.png",
+      "sourcePath": "Weapons/Weapon_Lsword_060.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 29164,
+      "sha256": "f3f37dff03b3bd1eac70baf98ff7929691d827fbe6b2b13984f7aa6ca0e54e78"
+    },
+    {
+      "id": "Weapon_Lsword_020",
+      "file": "/images/equipment/Weapon_Lsword_020.png",
+      "sourcePath": "Weapons/Weapon_Lsword_020.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 20066,
+      "sha256": "2e1772399a1d6af1aad028c7e1b00f8941079eb17febab9199a553173daeaef0"
+    },
+    {
+      "id": "Weapon_Lsword_147",
+      "file": "/images/equipment/Weapon_Lsword_147.png",
+      "sourcePath": "Weapons/Weapon_Lsword_147.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 33123,
+      "sha256": "64ee37a5c153745ba5aa25fc694cf1917434b9dc1386eced682b485b8bb1a9a0"
+    },
+    {
+      "id": "Weapon_Lsword_047",
+      "file": "/images/equipment/Weapon_Lsword_047.png",
+      "sourcePath": "Weapons/Weapon_Lsword_047.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 28822,
+      "sha256": "b6395c14b6016532cfe3f4229ee3e02cef8e0107b99c6c839ef26ea828ade161"
+    },
+    {
+      "id": "Weapon_Lsword_103",
+      "file": "/images/equipment/Weapon_Lsword_103.png",
+      "sourcePath": "Weapons/Weapon_Lsword_103.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 25739,
+      "sha256": "d5afb4ee9f45b9596ece62acb603e79a5de6619fcab4ae6c96a88be9d1748dbc"
+    },
+    {
+      "id": "Weapon_Lsword_108",
+      "file": "/images/equipment/Weapon_Lsword_108.png",
+      "sourcePath": "Weapons/Weapon_Lsword_108.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 34259,
+      "sha256": "a7b30cbf6450131b5fd5bd5059326115f5b8876e5228429ee969bd6e64d9e0cd"
+    },
+    {
+      "id": "Weapon_Lsword_109",
+      "file": "/images/equipment/Weapon_Lsword_109.png",
+      "sourcePath": "Weapons/Weapon_Lsword_109.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 38629,
+      "sha256": "aaf2c8a8f87b2e3278e28e0ccde08053772461286de25dbd90042b968c0d2ca8"
+    },
+    {
+      "id": "Weapon_Lsword_101",
+      "file": "/images/equipment/Weapon_Lsword_101.png",
+      "sourcePath": "Weapons/Weapon_Lsword_101.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 14644,
+      "sha256": "dd47c112ecfb9c874ad38ba21121b70ad2f64502c71426d12e257aa1e6c3e6a1"
+    },
+    {
+      "id": "Weapon_Lsword_163",
+      "file": "/images/equipment/Weapon_Lsword_163.png",
+      "sourcePath": "Weapons/Weapon_Lsword_163.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 25703,
+      "sha256": "48adec0908c84cf6ffc0aed8cb1066fc8d89177d4ed5df6390b455c2ddb7a5b0"
+    },
+    {
+      "id": "Weapon_Lsword_164",
+      "file": "/images/equipment/Weapon_Lsword_164.png",
+      "sourcePath": "Weapons/Weapon_Lsword_164.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 27804,
+      "sha256": "f198ed2017becb740a4522c6222ce2784131df866c9c3a00d3ac90e2e5329226"
+    },
+    {
+      "id": "Weapon_Lsword_161",
+      "file": "/images/equipment/Weapon_Lsword_161.png",
+      "sourcePath": "Weapons/Weapon_Lsword_161.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 20899,
+      "sha256": "91449582dff0cef33aceb234448449148c5710365f90a8415735715f68e7c2e6"
+    },
+    {
+      "id": "Weapon_Lsword_019",
+      "file": "/images/equipment/Weapon_Lsword_019.png",
+      "sourcePath": "Weapons/Weapon_Lsword_019.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 21816,
+      "sha256": "20213f368aebbdc04a437c5f1e29be7ac812db6cef5d8858792a4142707500fd"
+    },
+    {
+      "id": "Weapon_Lsword_166",
+      "file": "/images/equipment/Weapon_Lsword_166.png",
+      "sourcePath": "Weapons/Weapon_Lsword_166.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 26840,
+      "sha256": "d61cc983d880f16fe5f78bd96160c6c2445bf75f0360c13ae41f56e51a573e4f"
+    },
+    {
+      "id": "Weapon_Spear_036",
+      "file": "/images/equipment/Weapon_Spear_036.png",
+      "sourcePath": "Weapons/Weapon_Spear_036.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 26024,
+      "sha256": "9b30bca051a94d1bfe97c67d194d8bd8ae5845f0adafc1d515d230f165ca8e5a"
+    },
+    {
+      "id": "Weapon_Spear_022",
+      "file": "/images/equipment/Weapon_Spear_022.png",
+      "sourcePath": "Weapons/Weapon_Spear_022.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 17028,
+      "sha256": "d275a075e3829feb8decb64b3293bc9b197d827f2c3715ce2e782c4ee5da41cc"
+    },
+    {
+      "id": "Weapon_Spear_038",
+      "file": "/images/equipment/Weapon_Spear_038.png",
+      "sourcePath": "Weapons/Weapon_Spear_038.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 16248,
+      "sha256": "04beaf9ec15767e4552fd297dd80d764fefa49071acec19e373d24d1a75e3adb"
+    },
+    {
+      "id": "Weapon_Spear_173",
+      "file": "/images/equipment/Weapon_Spear_173.png",
+      "sourcePath": "Weapons/Weapon_Spear_173.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 18642,
+      "sha256": "89797491ae14e6ea65ff53928a3b3519a6d38498303a993545b461e267d9b5c2"
+    },
+    {
+      "id": "Weapon_Spear_030",
+      "file": "/images/equipment/Weapon_Spear_030.png",
+      "sourcePath": "Weapons/Weapon_Spear_030.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 18214,
+      "sha256": "b5ed972c612fa776fbd401a377905e0ddb0c522563c53d77d5c08b32ff07dd07"
+    },
+    {
+      "id": "Weapon_Spear_106",
+      "file": "/images/equipment/Weapon_Spear_106.png",
+      "sourcePath": "Weapons/Weapon_Spear_106.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 11992,
+      "sha256": "d97046fbe9567c0bc3026321abc4210900a13adfaea2160238dbe8e7cba5a95c"
+    },
+    {
+      "id": "Weapon_Spear_001",
+      "file": "/images/equipment/Weapon_Spear_001.png",
+      "sourcePath": "Weapons/Weapon_Spear_001.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 11589,
+      "sha256": "2f06dd0f87b39c7814096101c363e9dfade720af9ca11ece4099acb2574826e2"
+    },
+    {
+      "id": "Weapon_Spear_112",
+      "file": "/images/equipment/Weapon_Spear_112.png",
+      "sourcePath": "Weapons/Weapon_Spear_112.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 17183,
+      "sha256": "c0c8ecc4dc7eb859216917c632bd3149827a58be44575832f269b12d9a078f8e"
+    },
+    {
+      "id": "Weapon_Spear_002",
+      "file": "/images/equipment/Weapon_Spear_002.png",
+      "sourcePath": "Weapons/Weapon_Spear_002.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 17058,
+      "sha256": "6a09288ed08cf8b9dd5240eb1eae6966736da561e03b9fe39c944c07215be6bc"
+    },
+    {
+      "id": "Weapon_Spear_113",
+      "file": "/images/equipment/Weapon_Spear_113.png",
+      "sourcePath": "Weapons/Weapon_Spear_113.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 23385,
+      "sha256": "7b7bfc72d9df39837df39ada2cde43b058d7602da4a50f755764672c66a611dd"
+    },
+    {
+      "id": "Weapon_Spear_003",
+      "file": "/images/equipment/Weapon_Spear_003.png",
+      "sourcePath": "Weapons/Weapon_Spear_003.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 18975,
+      "sha256": "53f2c403ba78a792281cc2d8fcd50de6cb2d4927544a0407b63dc09ae609ce80"
+    },
+    {
+      "id": "Weapon_Spear_124",
+      "file": "/images/equipment/Weapon_Spear_124.png",
+      "sourcePath": "Weapons/Weapon_Spear_124.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 33449,
+      "sha256": "bc631f53d11594ffd0cc043ec88655115932fde9f74b30d4b1ae9f7ed724eb22"
+    },
+    {
+      "id": "Weapon_Spear_024",
+      "file": "/images/equipment/Weapon_Spear_024.png",
+      "sourcePath": "Weapons/Weapon_Spear_024.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 31269,
+      "sha256": "68301a622b05a3cafa41fa838871f4f8e46ee10ca582cebcd48c9068e04171f6"
+    },
+    {
+      "id": "Weapon_Spear_125",
+      "file": "/images/equipment/Weapon_Spear_125.png",
+      "sourcePath": "Weapons/Weapon_Spear_125.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 19510,
+      "sha256": "010072aa7a5f45386d1ab4bdfca0e188783f8ca0a15200730fb3290cb27529b7"
+    },
+    {
+      "id": "Weapon_Spear_025",
+      "file": "/images/equipment/Weapon_Spear_025.png",
+      "sourcePath": "Weapons/Weapon_Spear_025.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 19265,
+      "sha256": "bca8c0b90ed782734b5f91d364a4d037fd8aec1f134886159aa59b9df6af9d41"
+    },
+    {
+      "id": "Weapon_Spear_127",
+      "file": "/images/equipment/Weapon_Spear_127.png",
+      "sourcePath": "Weapons/Weapon_Spear_127.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 16547,
+      "sha256": "0831858d94bc3ce2a44eeca010219aa4ba979f27a98523ff941f69dc26b0620f"
+    },
+    {
+      "id": "Weapon_Spear_027",
+      "file": "/images/equipment/Weapon_Spear_027.png",
+      "sourcePath": "Weapons/Weapon_Spear_027.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 16207,
+      "sha256": "9c9778f86fd05b22468d2326a6459a5cbce78cc66dbf00933c6dbf2f37747b67"
+    },
+    {
+      "id": "Weapon_Spear_050",
+      "file": "/images/equipment/Weapon_Spear_050.png",
+      "sourcePath": "Weapons/Weapon_Spear_050.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 21083,
+      "sha256": "b18f051e04dd6714bf851f88fdfe96e0402e8d6383b09f3d97723eda3a980e4a"
+    },
+    {
+      "id": "Weapon_Spear_132",
+      "file": "/images/equipment/Weapon_Spear_132.png",
+      "sourcePath": "Weapons/Weapon_Spear_132.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 18900,
+      "sha256": "58ed30b4e4c0d97c000984a51ff69e974ee1999c68150f3d44e3127e4b593b93"
+    },
+    {
+      "id": "Weapon_Spear_032",
+      "file": "/images/equipment/Weapon_Spear_032.png",
+      "sourcePath": "Weapons/Weapon_Spear_032.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 18411,
+      "sha256": "9977b3de09a54431c4e42a5dba17fa3821a7a6ef29a60a7f69e3bcb3a29aa474"
+    },
+    {
+      "id": "Weapon_Spear_129",
+      "file": "/images/equipment/Weapon_Spear_129.png",
+      "sourcePath": "Weapons/Weapon_Spear_129.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 19745,
+      "sha256": "27ae691ab8e8d672c1d471ecddfd671b6014bf65827bb0f5639fea66b1463478"
+    },
+    {
+      "id": "Weapon_Spear_029",
+      "file": "/images/equipment/Weapon_Spear_029.png",
+      "sourcePath": "Weapons/Weapon_Spear_029.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 19104,
+      "sha256": "cd128d63f282d12682b6c9dcc200123b4c16f2df218bc0ad1049e9beef623c07"
+    },
+    {
+      "id": "Weapon_Spear_021",
+      "file": "/images/equipment/Weapon_Spear_021.png",
+      "sourcePath": "Weapons/Weapon_Spear_021.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 18938,
+      "sha256": "c4f718048f4536e77e1ca146c86b41160de73ae8cd258fe9595e9d3c117a1d35"
+    },
+    {
+      "id": "Weapon_Spear_147",
+      "file": "/images/equipment/Weapon_Spear_147.png",
+      "sourcePath": "Weapons/Weapon_Spear_147.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 32171,
+      "sha256": "46c7f6672abcfd5f28fc6cd0196bba2eb1022c80cd9fba2106a25c5d4db8d79c"
+    },
+    {
+      "id": "Weapon_Spear_047",
+      "file": "/images/equipment/Weapon_Spear_047.png",
+      "sourcePath": "Weapons/Weapon_Spear_047.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 29269,
+      "sha256": "565326af04d947171fbb1d03612217bcd530b3e84b943eaad9147832ca7456dc"
+    },
+    {
+      "id": "Weapon_Spear_103",
+      "file": "/images/equipment/Weapon_Spear_103.png",
+      "sourcePath": "Weapons/Weapon_Spear_103.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 20278,
+      "sha256": "fb6659871c6a14dcde3d32d82a0abb1fea6dbe0b21871feb7553fe615dcf41fa"
+    },
+    {
+      "id": "Weapon_Spear_108",
+      "file": "/images/equipment/Weapon_Spear_108.png",
+      "sourcePath": "Weapons/Weapon_Spear_108.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 23101,
+      "sha256": "aa4e0631ec893bd0d0e94ed044dd8150f95155b1538a30a637ceabdbf05a1711"
+    },
+    {
+      "id": "Weapon_Spear_109",
+      "file": "/images/equipment/Weapon_Spear_109.png",
+      "sourcePath": "Weapons/Weapon_Spear_109.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 27864,
+      "sha256": "b5bd0fe561b0b4dc52513ab3b305bb732c730fc780348fafb5a00c77b006c3cf"
+    },
+    {
+      "id": "Weapon_Spear_101",
+      "file": "/images/equipment/Weapon_Spear_101.png",
+      "sourcePath": "Weapons/Weapon_Spear_101.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 12733,
+      "sha256": "185b7951792e3ab624bf4ebc80eaa815e51bde81ac4ea5599cba4061d4327af5"
+    },
+    {
+      "id": "Weapon_Spear_163",
+      "file": "/images/equipment/Weapon_Spear_163.png",
+      "sourcePath": "Weapons/Weapon_Spear_163.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 16518,
+      "sha256": "9c18a80b49c780771f7e47f218b78907afe395ee4fc72f1f80bc5865a1c94fc5"
+    },
+    {
+      "id": "Weapon_Spear_164",
+      "file": "/images/equipment/Weapon_Spear_164.png",
+      "sourcePath": "Weapons/Weapon_Spear_164.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 17664,
+      "sha256": "6346b515f704e8af3e4f461279b644f7bf151f10c6b4725d91c956078b35cb4d"
+    },
+    {
+      "id": "Weapon_Spear_161",
+      "file": "/images/equipment/Weapon_Spear_161.png",
+      "sourcePath": "Weapons/Weapon_Spear_161.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 16660,
+      "sha256": "2e9caf8eda050b21796d593b6ae41d59c8e1a8ac4cf3069b8609e8cf36f0f755"
+    },
+    {
+      "id": "Weapon_Spear_166",
+      "file": "/images/equipment/Weapon_Spear_166.png",
+      "sourcePath": "Weapons/Weapon_Spear_166.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 17930,
+      "sha256": "ab1ff76653fa1781d2eb75cbc55dfb99e148e6be58b475771c8550e4a69efa29"
+    },
+    {
+      "id": "Weapon_Sword_070_Broken",
+      "file": "/images/equipment/Weapon_Sword_070_Broken.png",
+      "sourcePath": "Weapons/Weapon_Sword_070_Broken.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 23589,
+      "sha256": "a0ac67aebd537147c1909abc679ce3d627e67c167a276d67b6fa4da45101662e"
+    },
+    {
+      "id": "Weapon_Bow_107",
+      "file": "/images/equipment/Weapon_Bow_107.png",
+      "sourcePath": "Weapons/Weapon_Bow_107.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 20664,
+      "sha256": "8065614f129afab7b4c32d08cd963a24bd7c4e9990fb5471c550c7885a5425d9"
+    },
+    {
+      "id": "Weapon_Bow_038",
+      "file": "/images/equipment/Weapon_Bow_038.png",
+      "sourcePath": "Weapons/Weapon_Bow_038.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 27485,
+      "sha256": "a83eabcc56dbd4b1a9b224ba46a3b432b00b1dc881cf1eafa2bf898817bd4c5a"
+    },
+    {
+      "id": "Weapon_Bow_001",
+      "file": "/images/equipment/Weapon_Bow_001.png",
+      "sourcePath": "Weapons/Weapon_Bow_001.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 24377,
+      "sha256": "916f7770bb179ba111acb44f5122b0bfcf359fd24e64d63082aecca64cf3da0f"
+    },
+    {
+      "id": "Weapon_Bow_002",
+      "file": "/images/equipment/Weapon_Bow_002.png",
+      "sourcePath": "Weapons/Weapon_Bow_002.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 35100,
+      "sha256": "c969b6e77dd5568ac946b0a9e258f6f83772b21d114b5d9e93997155d303ef10"
+    },
+    {
+      "id": "Weapon_Bow_035",
+      "file": "/images/equipment/Weapon_Bow_035.png",
+      "sourcePath": "Weapons/Weapon_Bow_035.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 41692,
+      "sha256": "64e17b7e1d144efe8d2e2aa550a90bca7323f3c946cabdca7c27924a278cffe6"
+    },
+    {
+      "id": "Weapon_Bow_036",
+      "file": "/images/equipment/Weapon_Bow_036.png",
+      "sourcePath": "Weapons/Weapon_Bow_036.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 38328,
+      "sha256": "b00f5d6780667172e3f41f8a86aa75a2fee414416976b3ce7d2f41de3618a37e"
+    },
+    {
+      "id": "Weapon_Bow_013",
+      "file": "/images/equipment/Weapon_Bow_013.png",
+      "sourcePath": "Weapons/Weapon_Bow_013.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 34472,
+      "sha256": "c3f5f4a5d169ff8268717f61e9ffab254e6cc9f0d8acb0f0a84174b287643ecd"
+    },
+    {
+      "id": "Weapon_Bow_014",
+      "file": "/images/equipment/Weapon_Bow_014.png",
+      "sourcePath": "Weapons/Weapon_Bow_014.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 29576,
+      "sha256": "00145cb7d5926fefcc10dfaf275e4edfd74cf1a63f22be47a16439c488492237"
+    },
+    {
+      "id": "Weapon_Bow_016",
+      "file": "/images/equipment/Weapon_Bow_016.png",
+      "sourcePath": "Weapons/Weapon_Bow_016.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 32242,
+      "sha256": "7ed4be2df6b4d6d867bbcad1b0513e3865a0e90846a250e442c01eeee1aff820"
+    },
+    {
+      "id": "Weapon_Bow_017",
+      "file": "/images/equipment/Weapon_Bow_017.png",
+      "sourcePath": "Weapons/Weapon_Bow_017.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 36460,
+      "sha256": "f26ae0d5fce73ff0e7f9abc3c17dc09389dcd54fb5f2d33e68be04fc2217481c"
+    },
+    {
+      "id": "Weapon_Bow_028",
+      "file": "/images/equipment/Weapon_Bow_028.png",
+      "sourcePath": "Weapons/Weapon_Bow_028.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 43871,
+      "sha256": "ceb6c5dd1a32aaa7e06db18eefe284b3e07e62b21a9f9383922c33cb9b104aec"
+    },
+    {
+      "id": "Weapon_Bow_015",
+      "file": "/images/equipment/Weapon_Bow_015.png",
+      "sourcePath": "Weapons/Weapon_Bow_015.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 28778,
+      "sha256": "ea93603d3f5ef72b9b14e941cb308fb556a7de70fe76d8eee629fa0fb711ce78"
+    },
+    {
+      "id": "Weapon_Bow_029",
+      "file": "/images/equipment/Weapon_Bow_029.png",
+      "sourcePath": "Weapons/Weapon_Bow_029.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 19958,
+      "sha256": "f3a33a6504ef56df415caa14d71b2e8fc8a4a70d4fd9ccc9611ff10734c14963"
+    },
+    {
+      "id": "Weapon_Bow_033",
+      "file": "/images/equipment/Weapon_Bow_033.png",
+      "sourcePath": "Weapons/Weapon_Bow_033.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 36111,
+      "sha256": "37cc893fa626345d398de70a1554a3659a6b005a9bc88f3c0b4ae6d82738a0df"
+    },
+    {
+      "id": "Weapon_Bow_072",
+      "file": "/images/equipment/Weapon_Bow_072.png",
+      "sourcePath": "Weapons/Weapon_Bow_072.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 34267,
+      "sha256": "22c3015ea67249d42696184f0c6c0100da6373685b305a9e3f2925ece4e2cc76"
+    },
+    {
+      "id": "Weapon_Bow_004",
+      "file": "/images/equipment/Weapon_Bow_004.png",
+      "sourcePath": "Weapons/Weapon_Bow_004.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 23048,
+      "sha256": "360149f78a5d7afd0d42c8022ed894cffbfe8376bd49c7bb455f5335bb31419f"
+    },
+    {
+      "id": "Weapon_Bow_003",
+      "file": "/images/equipment/Weapon_Bow_003.png",
+      "sourcePath": "Weapons/Weapon_Bow_003.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 30184,
+      "sha256": "779910f287c2cef73fd4603a6f21981fd69ca0f0a4e773418c2b6982e38e4573"
+    },
+    {
+      "id": "Weapon_Bow_027",
+      "file": "/images/equipment/Weapon_Bow_027.png",
+      "sourcePath": "Weapons/Weapon_Bow_027.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 37093,
+      "sha256": "d5c0686219bb260d5b2488f33e79682c2082905ed0fae700edc6b0694379dc82"
+    },
+    {
+      "id": "Weapon_Bow_006",
+      "file": "/images/equipment/Weapon_Bow_006.png",
+      "sourcePath": "Weapons/Weapon_Bow_006.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 31638,
+      "sha256": "9b8a105891863990ad27be3fcd7e3f5b0ce31b2b507bca0615ee19c7f769f84f"
+    },
+    {
+      "id": "Weapon_Bow_011",
+      "file": "/images/equipment/Weapon_Bow_011.png",
+      "sourcePath": "Weapons/Weapon_Bow_011.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 36784,
+      "sha256": "7b7e3df4e287c6f4f1a7d362f4a454fa04047536f51db5796d529841d83eac35"
+    },
+    {
+      "id": "Weapon_Bow_030",
+      "file": "/images/equipment/Weapon_Bow_030.png",
+      "sourcePath": "Weapons/Weapon_Bow_030.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 45679,
+      "sha256": "d7cbb29b326eb0273c795136a786758ab270dc76d5dddf2ac1b24b970914452f"
+    },
+    {
+      "id": "Weapon_Bow_009",
+      "file": "/images/equipment/Weapon_Bow_009.png",
+      "sourcePath": "Weapons/Weapon_Bow_009.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 31761,
+      "sha256": "06d13909b0ada7cf27c0f3555e29336c56dd97db9ab6ddfb0d83365e0de7c789"
+    },
+    {
+      "id": "Weapon_Bow_026",
+      "file": "/images/equipment/Weapon_Bow_026.png",
+      "sourcePath": "Weapons/Weapon_Bow_026.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 38599,
+      "sha256": "ed68be3b9a47d4ed03d1237633866bd533e983d5405e8e877da95f60178595ec"
+    },
+    {
+      "id": "Weapon_Bow_032",
+      "file": "/images/equipment/Weapon_Bow_032.png",
+      "sourcePath": "Weapons/Weapon_Bow_032.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 41768,
+      "sha256": "0b16be6f6379d0c8a659614ca09093c27cd3cacf8d7f51ef20bab4347d1cfd26"
+    },
+    {
+      "id": "Weapon_Bow_040",
+      "file": "/images/equipment/Weapon_Bow_040.png",
+      "sourcePath": "Weapons/Weapon_Bow_040.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 39259,
+      "sha256": "e7f1982b45796e6e51019b2775c12d12723776da6dbc3d9aa3644608fa5891d1"
+    },
+    {
+      "id": "Weapon_Bow_104",
+      "file": "/images/equipment/Weapon_Bow_104.png",
+      "sourcePath": "Weapons/Weapon_Bow_104.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 29818,
+      "sha256": "5c6d765b2c45c61a5c9fead9dc077f659602a85f0b66952ca14c3c608d08e2d9"
+    },
+    {
+      "id": "Weapon_Bow_105",
+      "file": "/images/equipment/Weapon_Bow_105.png",
+      "sourcePath": "Weapons/Weapon_Bow_105.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 39273,
+      "sha256": "62d5f13436ca4538ca308f6a18f8d29ad728cc5ea662606c444fbb07e524abf9"
+    },
+    {
+      "id": "Weapon_Bow_106",
+      "file": "/images/equipment/Weapon_Bow_106.png",
+      "sourcePath": "Weapons/Weapon_Bow_106.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 42657,
+      "sha256": "9f9621048976273cb02fafabc8c7227de802c2dbbe666c83d1e307095dfd8924"
+    },
+    {
+      "id": "Weapon_Bow_101",
+      "file": "/images/equipment/Weapon_Bow_101.png",
+      "sourcePath": "Weapons/Weapon_Bow_101.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 43399,
+      "sha256": "52d05550558e2d602bd7beeaf5b9895e1384613e93c4499ffba395186247c9cc"
+    },
+    {
+      "id": "Weapon_Bow_166",
+      "file": "/images/equipment/Weapon_Bow_166.png",
+      "sourcePath": "Weapons/Weapon_Bow_166.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 19365,
+      "sha256": "135e841456e72c5913bbd8cefa62f034e1834faf71498040a3220f8b28556c08"
+    },
+    {
+      "id": "Weapon_Shield_030",
+      "file": "/images/equipment/Weapon_Shield_030.png",
+      "sourcePath": "Weapons/Weapon_Shield_030.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 44374,
+      "sha256": "4abe3901162c025ee1ee230232e3e9a40666a7f82ffab4da06c87d7aa6ade834"
+    },
+    {
+      "id": "Weapon_Shield_040",
+      "file": "/images/equipment/Weapon_Shield_040.png",
+      "sourcePath": "Weapons/Weapon_Shield_040.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 40815,
+      "sha256": "b3bff980abb04224ddb809e8c4a8ba7ba2c0875ab2c50767aa56296ce6fe8687"
+    },
+    {
+      "id": "Weapon_Shield_107",
+      "file": "/images/equipment/Weapon_Shield_107.png",
+      "sourcePath": "Weapons/Weapon_Shield_107.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 62660,
+      "sha256": "b1ddb2ec4cc51ece2c6cc777b66bffedf837a2030548bf4c9eb07869b1b8e147"
+    },
+    {
+      "id": "Weapon_Shield_001",
+      "file": "/images/equipment/Weapon_Shield_001.png",
+      "sourcePath": "Weapons/Weapon_Shield_001.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 48949,
+      "sha256": "b9561c359d6467d9207002d8494f1afb8aa613040cd160889ae4b23de6bc0d5d"
+    },
+    {
+      "id": "Weapon_Shield_034",
+      "file": "/images/equipment/Weapon_Shield_034.png",
+      "sourcePath": "Weapons/Weapon_Shield_034.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 45243,
+      "sha256": "d841a4241ba82b7d154a8a3d4e9770d48672ce412bb718b4cbe2bcb6a491d20e"
+    },
+    {
+      "id": "Weapon_Shield_031",
+      "file": "/images/equipment/Weapon_Shield_031.png",
+      "sourcePath": "Weapons/Weapon_Shield_031.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 48197,
+      "sha256": "c2e9fe74943d3be8d73e150e7588275fdfbfe2c78aa5fdebe0cfb1be5f213a8c"
+    },
+    {
+      "id": "Weapon_Shield_032",
+      "file": "/images/equipment/Weapon_Shield_032.png",
+      "sourcePath": "Weapons/Weapon_Shield_032.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 49875,
+      "sha256": "8ff1342c5eba09815605967a0899f246e63835459d93d1d9c34acfbc99e1de61"
+    },
+    {
+      "id": "Weapon_Shield_035",
+      "file": "/images/equipment/Weapon_Shield_035.png",
+      "sourcePath": "Weapons/Weapon_Shield_035.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 45397,
+      "sha256": "caca6fd8bf315ba995b71d20d74610541e31ef86abb1deb259ddf2bc099463d3"
+    },
+    {
+      "id": "Weapon_Shield_002",
+      "file": "/images/equipment/Weapon_Shield_002.png",
+      "sourcePath": "Weapons/Weapon_Shield_002.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 49144,
+      "sha256": "e0522b45b0f6e191db46d87e2203670035cd7af8fe5cfe8ec2ad7ec69080a6f4"
+    },
+    {
+      "id": "Weapon_Shield_003",
+      "file": "/images/equipment/Weapon_Shield_003.png",
+      "sourcePath": "Weapons/Weapon_Shield_003.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 49681,
+      "sha256": "fbd8c88e808bf2a7e57a77efeee20b05371c1cfe2d7afa39e82d56cd540fae72"
+    },
+    {
+      "id": "Weapon_Shield_022",
+      "file": "/images/equipment/Weapon_Shield_022.png",
+      "sourcePath": "Weapons/Weapon_Shield_022.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 47770,
+      "sha256": "fff8de5438f682e2cab83ca2030f24258f5a8e9c29f00a462c72e3bbcf404b1d"
+    },
+    {
+      "id": "Weapon_Shield_023",
+      "file": "/images/equipment/Weapon_Shield_023.png",
+      "sourcePath": "Weapons/Weapon_Shield_023.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 57040,
+      "sha256": "97fc590ce6a8e7555cc06f20c687088ad18b315cab3449bed3d6d83696e27fa1"
+    },
+    {
+      "id": "Weapon_Shield_025",
+      "file": "/images/equipment/Weapon_Shield_025.png",
+      "sourcePath": "Weapons/Weapon_Shield_025.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 48957,
+      "sha256": "887168770c03c70bcffd513398f71dba612994cb6222fc1680f0bb4101c157a1"
+    },
+    {
+      "id": "Weapon_Shield_042",
+      "file": "/images/equipment/Weapon_Shield_042.png",
+      "sourcePath": "Weapons/Weapon_Shield_042.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 45899,
+      "sha256": "6c16a554cd74cc01ef4a4f8666afe23ebb9a2347a87a6101926648a376cdc455"
+    },
+    {
+      "id": "Weapon_Shield_026",
+      "file": "/images/equipment/Weapon_Shield_026.png",
+      "sourcePath": "Weapons/Weapon_Shield_026.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 70060,
+      "sha256": "720db5b9196f3bbe519345cb7cbd0873199c820dfe7e90e52a0c5a7ef748aed9"
+    },
+    {
+      "id": "Weapon_Shield_036",
+      "file": "/images/equipment/Weapon_Shield_036.png",
+      "sourcePath": "Weapons/Weapon_Shield_036.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 44522,
+      "sha256": "40a31fc9e2c6c9d3d2aefd49d162725afba2f96bdf1d4ebc88cf5397b4977b1b"
+    },
+    {
+      "id": "Weapon_Shield_037",
+      "file": "/images/equipment/Weapon_Shield_037.png",
+      "sourcePath": "Weapons/Weapon_Shield_037.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 58751,
+      "sha256": "74eea628482e7633127098e4a02e2aae74612e0bd116372a99b5e28fa1b387f7"
+    },
+    {
+      "id": "Weapon_Shield_041",
+      "file": "/images/equipment/Weapon_Shield_041.png",
+      "sourcePath": "Weapons/Weapon_Shield_041.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 31721,
+      "sha256": "35a93cb56e47fbe7ec2d1303d2d9d49212b06a4e4557666e3332bfc52992a216"
+    },
+    {
+      "id": "Weapon_Shield_057",
+      "file": "/images/equipment/Weapon_Shield_057.png",
+      "sourcePath": "Weapons/Weapon_Shield_057.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 47401,
+      "sha256": "fab289abd378696989986491020d1e998da52ca49bd6443be4b7f83520442f94"
+    },
+    {
+      "id": "Weapon_Shield_021",
+      "file": "/images/equipment/Weapon_Shield_021.png",
+      "sourcePath": "Weapons/Weapon_Shield_021.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 47514,
+      "sha256": "a181a2805a6ec3fe0c665f51fe8d704edda73c7b0f8138d404a9536d2b3e92c0"
+    },
+    {
+      "id": "Weapon_Shield_033",
+      "file": "/images/equipment/Weapon_Shield_033.png",
+      "sourcePath": "Weapons/Weapon_Shield_033.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 43550,
+      "sha256": "810ca5041daf19aa62f612a6e498e87ad6b133a34fe69d999b0b25cc2cf7259e"
+    },
+    {
+      "id": "Weapon_Shield_004",
+      "file": "/images/equipment/Weapon_Shield_004.png",
+      "sourcePath": "Weapons/Weapon_Shield_004.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 61644,
+      "sha256": "4b0f93e7d51c9cc0a259141839ef41ea529cc050c7bd8ffeb1ace402aad5a388"
+    },
+    {
+      "id": "Weapon_Shield_005",
+      "file": "/images/equipment/Weapon_Shield_005.png",
+      "sourcePath": "Weapons/Weapon_Shield_005.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 64149,
+      "sha256": "68225c3369069006e9ef62f5b8a63ebe7b17d95ba5774a6e8f2bf1b4f6be8713"
+    },
+    {
+      "id": "Weapon_Shield_006",
+      "file": "/images/equipment/Weapon_Shield_006.png",
+      "sourcePath": "Weapons/Weapon_Shield_006.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 77088,
+      "sha256": "14c70f6107fc527690927bb945829a63afb25a48346eb39628a00aab6fa4e56a"
+    },
+    {
+      "id": "Weapon_Shield_007",
+      "file": "/images/equipment/Weapon_Shield_007.png",
+      "sourcePath": "Weapons/Weapon_Shield_007.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 47738,
+      "sha256": "f5bcccfef5461518f4c845e4d9ad9d4205faaa3c60c42eb8126022af151f3e74"
+    },
+    {
+      "id": "Weapon_Shield_008",
+      "file": "/images/equipment/Weapon_Shield_008.png",
+      "sourcePath": "Weapons/Weapon_Shield_008.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 47160,
+      "sha256": "916ba7a23a96906243acba858cd0f3013a734d11a08a5ee85bf6dce88df1a692"
+    },
+    {
+      "id": "Weapon_Shield_009",
+      "file": "/images/equipment/Weapon_Shield_009.png",
+      "sourcePath": "Weapons/Weapon_Shield_009.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 58589,
+      "sha256": "87b67a75117227cd50c8c08e00f7124429617fc1825dbb533c9475ae2c471d75"
+    },
+    {
+      "id": "Weapon_Shield_101",
+      "file": "/images/equipment/Weapon_Shield_101.png",
+      "sourcePath": "Weapons/Weapon_Shield_101.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 35210,
+      "sha256": "f6a23d50e3bbe2905013407184685b1fbe458b008a1b2fbf92942bc7097cf9ed"
+    },
+    {
+      "id": "Weapon_Shield_102",
+      "file": "/images/equipment/Weapon_Shield_102.png",
+      "sourcePath": "Weapons/Weapon_Shield_102.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 61199,
+      "sha256": "905d96c173b0d577c753b6dd2eb6c8098af2da533007aa54187844007199735a"
+    },
+    {
+      "id": "Weapon_Shield_103",
+      "file": "/images/equipment/Weapon_Shield_103.png",
+      "sourcePath": "Weapons/Weapon_Shield_103.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 65674,
+      "sha256": "a66d9e56b23d2c48f453ee950400964c38f99ace40ca22e719b063551c7990d0"
+    },
+    {
+      "id": "Weapon_Shield_016",
+      "file": "/images/equipment/Weapon_Shield_016.png",
+      "sourcePath": "Weapons/Weapon_Shield_016.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 35721,
+      "sha256": "1074f548c95d1cce53076a04cff0270d013c90131cf6d49b6d200349b6bdb5d2"
+    },
+    {
+      "id": "Weapon_Shield_017",
+      "file": "/images/equipment/Weapon_Shield_017.png",
+      "sourcePath": "Weapons/Weapon_Shield_017.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 51418,
+      "sha256": "e3062beac8ad68a2356ddc112d98e4d1872be3b7d9824bdefef1a6cf5f88876b"
+    },
+    {
+      "id": "Weapon_Shield_018",
+      "file": "/images/equipment/Weapon_Shield_018.png",
+      "sourcePath": "Weapons/Weapon_Shield_018.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 56383,
+      "sha256": "3da6042acda7a5976d9d05bcf7a4e06080daca2107a768a3e37a2cff85979636"
+    },
+    {
+      "id": "Armor_1043_Upper",
+      "file": "/images/equipment/Armor_1043_Upper.png",
+      "sourcePath": "Armor/TOTK/Armor_1043_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 46521,
+      "sha256": "d7da1ce569528493b85d72ad8ff7c23c4557107a579f77474f30d6fafd8bc627"
+    },
+    {
+      "id": "Armor_1043_Lower",
+      "file": "/images/equipment/Armor_1043_Lower.png",
+      "sourcePath": "Armor/TOTK/Armor_1043_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 31589,
+      "sha256": "7075dd7a701e24270a0a9e4d504fae83b04da5bd87379a1dbe47c0eedad8b695"
+    },
+    {
+      "id": "Armor_1044_Lower",
+      "file": "/images/equipment/Armor_1044_Lower.png",
+      "sourcePath": "Armor/TOTK/Armor_1044_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 35482,
+      "sha256": "29f5d2f27f66b0b20a60dca2d2d75a2b37759ba7b4f8d0137a612e8f18c0a962"
+    },
+    {
+      "id": "Armor_001_Head",
+      "file": "/images/equipment/Armor_001_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_001_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 38932,
+      "sha256": "f25cf6c4eeb03452b82c657921a53f903540ec07bd095e2e67413c59caead7b1"
+    },
+    {
+      "id": "Armor_001_Upper",
+      "file": "/images/equipment/Armor_001_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_001_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 68596,
+      "sha256": "2f60071ec0696290ce67aa1347250159c3752cb63cb2d883c18fa7ae523be0d7"
+    },
+    {
+      "id": "Armor_001_Lower",
+      "file": "/images/equipment/Armor_001_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_001_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 28347,
+      "sha256": "7bf1d58b0b35a8863743ccdef5a31ad48d20e04a4b2ef2da04a99d12abb3d07e"
+    },
+    {
+      "id": "Armor_020_Head",
+      "file": "/images/equipment/Armor_020_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_020_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 41013,
+      "sha256": "5f41bfe6f6749a7d127f3f9a8231c7c102c385b9cbea5190d057626004d750ec"
+    },
+    {
+      "id": "Armor_020_Upper",
+      "file": "/images/equipment/Armor_020_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_020_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 77287,
+      "sha256": "1e3b9fb451d704dcd3a4309ed110ecaa5b9745c3430890a0475f5acdd082a35a"
+    },
+    {
+      "id": "Armor_020_Lower",
+      "file": "/images/equipment/Armor_020_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_020_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 42525,
+      "sha256": "04a6826a5f6a3d6238dbe2d813443f9626a02ccb99b60dbef58fd7ed20b35959"
+    },
+    {
+      "id": "Armor_009_Head",
+      "file": "/images/equipment/Armor_009_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_009_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 38794,
+      "sha256": "94e3986aeee579c8fdebfc1a4e32eba609a623615bd67b8c6e78e29918285c99"
+    },
+    {
+      "id": "Armor_009_Upper",
+      "file": "/images/equipment/Armor_009_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_009_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 62806,
+      "sha256": "8c7e73abbb53a1e1de2ed824a2b726b4d9ee7cf23f648b5c150e70f96e1a0ed2"
+    },
+    {
+      "id": "Armor_009_Lower",
+      "file": "/images/equipment/Armor_009_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_009_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 36536,
+      "sha256": "0b669dacf2a3e8e1a071cd5643f5fc7816760e44608f874f5fb210997b3ec4c8"
+    },
+    {
+      "id": "Armor_011_Head",
+      "file": "/images/equipment/Armor_011_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_011_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 46524,
+      "sha256": "a33db1007ec8d89a603ae03fc4d52af251bc0a5e8224246a920dea89c9c5d73e"
+    },
+    {
+      "id": "Armor_011_Upper",
+      "file": "/images/equipment/Armor_011_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_011_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 71945,
+      "sha256": "0845c8ff5f56df9a4abd226b9041119f1ab3fb1f6c4e68dc99daa576137c1b9a"
+    },
+    {
+      "id": "Armor_011_Lower",
+      "file": "/images/equipment/Armor_011_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_011_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 45710,
+      "sha256": "3268e77890d7b92b859b672a778c27477c5c94c7b69fee357eb4ea3f69faf8a3"
+    },
+    {
+      "id": "Armor_006_Head",
+      "file": "/images/equipment/Armor_006_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_006_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 30216,
+      "sha256": "6b586e282e81173518e833bf4eff8d111650ecdd960bad5ab52d3ac97e2e35b6"
+    },
+    {
+      "id": "Armor_006_Upper",
+      "file": "/images/equipment/Armor_006_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_006_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 64456,
+      "sha256": "182a24580fbcf8c6e07e90c0003af63838028b0ccd43c84c6845189f51fb0e5a"
+    },
+    {
+      "id": "Armor_006_Lower",
+      "file": "/images/equipment/Armor_006_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_006_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 43466,
+      "sha256": "2149573d06e1694ce2617eab4697c4ed2deeacab5883f533f6e874f741566bb6"
+    },
+    {
+      "id": "Armor_008_Head",
+      "file": "/images/equipment/Armor_008_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_008_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 39870,
+      "sha256": "ff6c8f46a1410aedbc9b8317677abcac8653b41eb3454688f9204b5e20087c25"
+    },
+    {
+      "id": "Armor_008_Upper",
+      "file": "/images/equipment/Armor_008_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_008_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 61901,
+      "sha256": "b868cee2c188a7be3b54f2d1e12c55c06919c35367547fba534a19ee20702bdd"
+    },
+    {
+      "id": "Armor_008_Lower",
+      "file": "/images/equipment/Armor_008_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_008_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 39611,
+      "sha256": "7daaa8a55173cf81d374d1b975e8a68b0373e074489f361550d41425acf49268"
+    },
+    {
+      "id": "Armor_046_Head",
+      "file": "/images/equipment/Armor_046_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_046_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 44180,
+      "sha256": "02950e78e10736965469aa64f1ea88ed34fc1e9de02db9731e7fe09cf2c9f9d7"
+    },
+    {
+      "id": "Armor_046_Upper",
+      "file": "/images/equipment/Armor_046_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_046_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 54142,
+      "sha256": "945e9f617a2b3765bce71f66c38dd96c0ea0de7675903b8aedacdf26a322dd8c"
+    },
+    {
+      "id": "Armor_046_Lower",
+      "file": "/images/equipment/Armor_046_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_046_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 36853,
+      "sha256": "0e2bbe132491055000b1210a75e3007d7291811043d1ce03fef5a9b78bce582b"
+    },
+    {
+      "id": "Armor_012_Head",
+      "file": "/images/equipment/Armor_012_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_012_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 43624,
+      "sha256": "067e1b82d73fff651c7479f468e99a3915253696deb13f3ab193c959530eefaa"
+    },
+    {
+      "id": "Armor_012_Upper",
+      "file": "/images/equipment/Armor_012_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_012_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 56775,
+      "sha256": "850e76db07940dcc850f66f1abb08ae19ad645812034548e429a88647e2a4461"
+    },
+    {
+      "id": "Armor_012_Lower",
+      "file": "/images/equipment/Armor_012_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_012_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 32554,
+      "sha256": "582ce963f1edda33222ed97181407d64a61f3c05d66986aecc4b2cd594bdbfb8"
+    },
+    {
+      "id": "Armor_014_Head",
+      "file": "/images/equipment/Armor_014_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_014_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 34231,
+      "sha256": "0eaa1f0f0c5386a80ebbe3ed891153d6c19a91c7fc8a255f7237eca1a8d91fb6"
+    },
+    {
+      "id": "Armor_014_Upper",
+      "file": "/images/equipment/Armor_014_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_014_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 55105,
+      "sha256": "43a75a18499e281cf385b741618316ebe854d9fc7ca79821fe1db27dafaae812"
+    },
+    {
+      "id": "Armor_014_Lower",
+      "file": "/images/equipment/Armor_014_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_014_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 32234,
+      "sha256": "ca43393954051f94225d44f5d3544a0d673d6a1f9d54fea92f10b922f0d5513a"
+    },
+    {
+      "id": "Armor_048_Head",
+      "file": "/images/equipment/Armor_048_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_048_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 60574,
+      "sha256": "eead4b672daa8db8600ffa2bb5b405b8ffd01f5577f1e520dae2e6e09f4b1067"
+    },
+    {
+      "id": "Armor_048_Upper",
+      "file": "/images/equipment/Armor_048_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_048_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 67313,
+      "sha256": "498edff7b5b669be115a194e79d1ad6035cdd6739e53d4665942e833a875c9af"
+    },
+    {
+      "id": "Armor_048_Lower",
+      "file": "/images/equipment/Armor_048_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_048_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 43079,
+      "sha256": "f85b944007ddc30a8cf580d385fcf1d8d7775bf0fc79f68a65971fe2394fc1b4"
+    },
+    {
+      "id": "Armor_017_Head",
+      "file": "/images/equipment/Armor_017_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_017_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 34814,
+      "sha256": "b050f0bc524aee49cfd9ae440336045ade6ef49c88d35405ab133a56a4cdd0c8"
+    },
+    {
+      "id": "Armor_017_Upper",
+      "file": "/images/equipment/Armor_017_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_017_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 48698,
+      "sha256": "22a0c998917d03897246b6949ef0c34b71a97f6faa3480764fb21dc53f363b7d"
+    },
+    {
+      "id": "Armor_017_Lower",
+      "file": "/images/equipment/Armor_017_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_017_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 32294,
+      "sha256": "7c36f086c76eb09436efa44b20a8c503b197032c717c5ff89c89a18f2eae6060"
+    },
+    {
+      "id": "Armor_179_Head",
+      "file": "/images/equipment/Armor_179_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_179_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 33683,
+      "sha256": "07abecd923c928e38bb7118a864e9effd2f63bbbc8d8a00f536ea4ce0c8fb8b6"
+    },
+    {
+      "id": "Armor_179_Upper",
+      "file": "/images/equipment/Armor_179_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_179_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 61329,
+      "sha256": "f71c43e8a94ac7f53f0435ac9a6b50343ec1104a55ccf568f6bf50bada7f4192"
+    },
+    {
+      "id": "Armor_179_Lower",
+      "file": "/images/equipment/Armor_179_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_179_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 29952,
+      "sha256": "789d33eae7b76c70c62362fa8abd8218370bd603f86cd2da7120e6a3aa285581"
+    },
+    {
+      "id": "Armor_1046_Head",
+      "file": "/images/equipment/Armor_1046_Head.png",
+      "sourcePath": "Armor/TOTK/Armor_1046_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 36593,
+      "sha256": "60d338e50e5809315a42b2c0c673d72b981a06a6a4059cc192faa2d53843c7f1"
+    },
+    {
+      "id": "Armor_1046_Upper",
+      "file": "/images/equipment/Armor_1046_Upper.png",
+      "sourcePath": "Armor/TOTK/Armor_1046_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 44555,
+      "sha256": "dcec9f079edc8dfa2c442da54f5336b2360c533018743e8fcfe4d6683dd8e2d5"
+    },
+    {
+      "id": "Armor_1046_Lower",
+      "file": "/images/equipment/Armor_1046_Lower.png",
+      "sourcePath": "Armor/TOTK/Armor_1046_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 36236,
+      "sha256": "7b2107ca98e08d7fc17f77dc61a289dc769a77fefe7ba056181c4caf66a970aa"
+    },
+    {
+      "id": "Armor_1006_Head",
+      "file": "/images/equipment/Armor_1006_Head.png",
+      "sourcePath": "Armor/TOTK/Armor_1006_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 62280,
+      "sha256": "31a27424c47ea1afb9dd1efd9ce3a72d4e4d4f9238515d30120f5937d93a8a40"
+    },
+    {
+      "id": "Armor_1006_Upper",
+      "file": "/images/equipment/Armor_1006_Upper.png",
+      "sourcePath": "Armor/TOTK/Armor_1006_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 74727,
+      "sha256": "7b6a23f397bac0d67592c58ce453979827020c9594206863589737f4a92915a4"
+    },
+    {
+      "id": "Armor_1006_Lower",
+      "file": "/images/equipment/Armor_1006_Lower.png",
+      "sourcePath": "Armor/TOTK/Armor_1006_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 42393,
+      "sha256": "d002c007ae75a565c19d719ce703203b80da912592b6683ae2ca4a325c64c9a9"
+    },
+    {
+      "id": "Armor_1141_Head",
+      "file": "/images/equipment/Armor_1141_Head.png",
+      "sourcePath": "Armor/TOTK/Armor_1141_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 37287,
+      "sha256": "e6ba8b36aa4092705574b1f421ecdecdc39f0ec942a85205dc3dec98f351bd5e"
+    },
+    {
+      "id": "Armor_1141_Upper",
+      "file": "/images/equipment/Armor_1141_Upper.png",
+      "sourcePath": "Armor/TOTK/Armor_1141_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 72685,
+      "sha256": "e1b7d38f0bd253a665f84fa6d6adeb8749b10ee3b3c88344fd140f1de5c8d41c"
+    },
+    {
+      "id": "Armor_1141_Lower",
+      "file": "/images/equipment/Armor_1141_Lower.png",
+      "sourcePath": "Armor/TOTK/Armor_1141_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 37097,
+      "sha256": "ab4b89c2561996689723b2453d11be685aeea21b673b4a9e1e438e50b4f7ea49"
+    },
+    {
+      "id": "Armor_1051_Head",
+      "file": "/images/equipment/Armor_1051_Head.png",
+      "sourcePath": "Armor/TOTK/Armor_1051_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 62688,
+      "sha256": "dc2009e35eb75baed13e1e6534b7f7eca937c2b2de333e2f9d7d6b62718f4790"
+    },
+    {
+      "id": "Armor_1051_Upper",
+      "file": "/images/equipment/Armor_1051_Upper.png",
+      "sourcePath": "Armor/TOTK/Armor_1051_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 64078,
+      "sha256": "f051d0e73b015bf87f75d38fcaa5543101f0c7cb7b69089996decf9ef1d7ac74"
+    },
+    {
+      "id": "Armor_1051_Lower",
+      "file": "/images/equipment/Armor_1051_Lower.png",
+      "sourcePath": "Armor/TOTK/Armor_1051_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 59481,
+      "sha256": "913ce82680b16f412bb3a28a114897450040ec5d65e36cb820c13991aeb440e4"
+    },
+    {
+      "id": "Armor_1086_Head",
+      "file": "/images/equipment/Armor_1086_Head.png",
+      "sourcePath": "Armor/TOTK/Armor_1086_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 71193,
+      "sha256": "5bf7abfd080b4c272e8bcfdd39ccbad64013f511585255bbc9d6726fe0138062"
+    },
+    {
+      "id": "Armor_1086_Upper",
+      "file": "/images/equipment/Armor_1086_Upper.png",
+      "sourcePath": "Armor/TOTK/Armor_1086_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 69702,
+      "sha256": "626c8b330e3b9a9b86b08e36721c6877a44282ff5a817a2de2b1e482c2594d29"
+    },
+    {
+      "id": "Armor_1086_Lower",
+      "file": "/images/equipment/Armor_1086_Lower.png",
+      "sourcePath": "Armor/TOTK/Armor_1086_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 37698,
+      "sha256": "3bcc464dbeb89386f4ebf8361db6a1229b8a301380c2365923303ad9352fcbef"
+    },
+    {
+      "id": "Armor_1061_Head",
+      "file": "/images/equipment/Armor_1061_Head.png",
+      "sourcePath": "Armor/TOTK/Armor_1061_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 70048,
+      "sha256": "95401929183d1002d97c54aab37f4748fd6d8f883cf1727ffd72f2580349f97c"
+    },
+    {
+      "id": "Armor_1061_Upper",
+      "file": "/images/equipment/Armor_1061_Upper.png",
+      "sourcePath": "Armor/TOTK/Armor_1061_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 49716,
+      "sha256": "e4e1cde417e4f5eba0307dbddf60a7a4009163cfa8b2a79c5d2fe8d8d1914f53"
+    },
+    {
+      "id": "Armor_1061_Lower",
+      "file": "/images/equipment/Armor_1061_Lower.png",
+      "sourcePath": "Armor/TOTK/Armor_1061_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 31900,
+      "sha256": "a4fb120753fb2b17df9042083be5193c9ef55aa263ce121424ffecb21c1951f5"
+    },
+    {
+      "id": "Armor_1066_Head",
+      "file": "/images/equipment/Armor_1066_Head.png",
+      "sourcePath": "Armor/TOTK/Armor_1066_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 37579,
+      "sha256": "b04d957773feb8c066c8ddfd548ecf33cb07f163f821b56a869093191957c059"
+    },
+    {
+      "id": "Armor_1066_Upper",
+      "file": "/images/equipment/Armor_1066_Upper.png",
+      "sourcePath": "Armor/TOTK/Armor_1066_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 52425,
+      "sha256": "f1a7966046053dc6975414ca073524d7d1e796ad0decb586c2b6c78221cd1133"
+    },
+    {
+      "id": "Armor_1066_Lower",
+      "file": "/images/equipment/Armor_1066_Lower.png",
+      "sourcePath": "Armor/TOTK/Armor_1066_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 27830,
+      "sha256": "58c0e533cd5a288de69d44a51afbb39c5c8f339b2bd6083b3125f90cf7659477"
+    },
+    {
+      "id": "Armor_1071_Head",
+      "file": "/images/equipment/Armor_1071_Head.png",
+      "sourcePath": "Armor/TOTK/Armor_1071_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 48515,
+      "sha256": "9c720679d1338a78e7e4b5f8ea0af04ea217d8b9408daf51489e0f2461e989fe"
+    },
+    {
+      "id": "Armor_1071_Upper",
+      "file": "/images/equipment/Armor_1071_Upper.png",
+      "sourcePath": "Armor/TOTK/Armor_1071_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 50731,
+      "sha256": "836351ab401630d5b28da23bd34ade10fb15bf693fc7798a6c06ffe05a07495a"
+    },
+    {
+      "id": "Armor_1071_Lower",
+      "file": "/images/equipment/Armor_1071_Lower.png",
+      "sourcePath": "Armor/TOTK/Armor_1071_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 30094,
+      "sha256": "aefda89562e8a75b315cfd9ee03a8a6aba0d96d79cf7bd251b79e84c8fc7fa4d"
+    },
+    {
+      "id": "Armor_1300_Head",
+      "file": "/images/equipment/Armor_1300_Head.png",
+      "sourcePath": "Armor/TOTK/Armor_1300_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 37155,
+      "sha256": "0f309153d2e5b5f9a2d97c6daa6bc8c03a6208518b2f6314a63b86af2e21c377"
+    },
+    {
+      "id": "Armor_1300_Upper",
+      "file": "/images/equipment/Armor_1300_Upper.png",
+      "sourcePath": "Armor/TOTK/Armor_1300_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 47672,
+      "sha256": "478a418bddd4602580b71a1e1889fb0e7e67301e664a47a0c2f90eec11a0ef99"
+    },
+    {
+      "id": "Armor_1300_Lower",
+      "file": "/images/equipment/Armor_1300_Lower.png",
+      "sourcePath": "Armor/TOTK/Armor_1300_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 28857,
+      "sha256": "271a0e91874d5161fef0f349ef3ca0f9c4b1c2bdd0b282e14859a2b379b60b3f"
+    },
+    {
+      "id": "Armor_182_Head",
+      "file": "/images/equipment/Armor_182_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_182_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 67168,
+      "sha256": "22e1259e7346b9bf1bb8b54405ae1d14b266ee4cc4578e77a371173cdf7e58d1"
+    },
+    {
+      "id": "Armor_183_Head",
+      "file": "/images/equipment/Armor_183_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_183_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 65385,
+      "sha256": "d8c0d22386733d13c417da1e126b99aa3e62e88d9b32058f6e3ed0c190d1479a"
+    },
+    {
+      "id": "Armor_181_Head",
+      "file": "/images/equipment/Armor_181_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_181_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 77013,
+      "sha256": "dd8a8b12e2801e00102a0fcc77e839d33d1235090183dec59ae56138e1aee751"
+    },
+    {
+      "id": "Armor_184_Head",
+      "file": "/images/equipment/Armor_184_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_184_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 63529,
+      "sha256": "1ebccbdf1ffa9887220bf46065a6b5c269ff59c0135d92a4d86b03ad94d23da5"
+    },
+    {
+      "id": "Armor_1091_Head",
+      "file": "/images/equipment/Armor_1091_Head.png",
+      "sourcePath": "Armor/TOTK/Armor_1091_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 76466,
+      "sha256": "fa7b6dc114d616f5278459c25f929cdc7262eeabf4b50ed2cbd1f028a9cd35aa"
+    },
+    {
+      "id": "Armor_1091_Upper",
+      "file": "/images/equipment/Armor_1091_Upper.png",
+      "sourcePath": "Armor/TOTK/Armor_1091_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 63242,
+      "sha256": "8e8cdd4d66a2f896ef022223b3888427ff29c14a82e47f65c8cf0dbd1805e0e1"
+    },
+    {
+      "id": "Armor_1091_Lower",
+      "file": "/images/equipment/Armor_1091_Lower.png",
+      "sourcePath": "Armor/TOTK/Armor_1091_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 36171,
+      "sha256": "e838dc72e04768ec68f42372ff47b18a2882120c761905b2025be01bc2272e3d"
+    },
+    {
+      "id": "Armor_024_Head",
+      "file": "/images/equipment/Armor_024_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_024_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 39561,
+      "sha256": "f56a70b3eeb567195ff41d01befd9ac56cecf57e0dc2be7c87a4412eebeb6966"
+    },
+    {
+      "id": "Armor_025_Head",
+      "file": "/images/equipment/Armor_025_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_025_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 27485,
+      "sha256": "08e0658844b3eb4469d92c6447ccc83583b26464e69d5eb2b8a474b899d96599"
+    },
+    {
+      "id": "Armor_026_Head",
+      "file": "/images/equipment/Armor_026_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_026_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 30697,
+      "sha256": "afb02a028c8703f1b3d2e686050dc15783bee180c87e0970f2757eb0414f744b"
+    },
+    {
+      "id": "Armor_027_Head",
+      "file": "/images/equipment/Armor_027_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_027_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 32325,
+      "sha256": "a52cd18e05f7aa4ccd0fdd144d2db981b0576eb2ac521f0ea2963a6650aad184"
+    },
+    {
+      "id": "Armor_028_Head",
+      "file": "/images/equipment/Armor_028_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_028_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 37220,
+      "sha256": "7a4553eabe33615c1e3144cdb41bccc8e48db28979b2f17ffc005010cdfc698c"
+    },
+    {
+      "id": "Armor_029_Head",
+      "file": "/images/equipment/Armor_029_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_029_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 36349,
+      "sha256": "627fb584d06715609f552ad9df2795f85c7f7931425091089f322dd03cedede6"
+    },
+    {
+      "id": "Armor_1151_Head",
+      "file": "/images/equipment/Armor_1151_Head.png",
+      "sourcePath": "Armor/TOTK/Armor_1151_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 11649,
+      "sha256": "ebd82366b944207c4a728abd221e2de4778a299dc7d2f2dce8ac692b513b6ead"
+    },
+    {
+      "id": "Armor_1076_Head",
+      "file": "/images/equipment/Armor_1076_Head.png",
+      "sourcePath": "Armor/TOTK/Armor_1076_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 55773,
+      "sha256": "8d17a3895303cfadc806fa79bcaac7c3011682a8768b6b138149236012a88c75"
+    },
+    {
+      "id": "Armor_115_Head",
+      "file": "/images/equipment/Armor_115_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_115_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 49285,
+      "sha256": "cd1c3b93bdff89612147ee583bad70187a8e334e9917c477dc6659f095008eaa"
+    },
+    {
+      "id": "Armor_049_Lower",
+      "file": "/images/equipment/Armor_049_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_049_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 34358,
+      "sha256": "589773a04896891087e909d594c72e409b3826329dda609899a39f35e18203b6"
+    },
+    {
+      "id": "Armor_141_Lower",
+      "file": "/images/equipment/Armor_141_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_141_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 39368,
+      "sha256": "c642df95f0d6dc621e5f4f3674eec0bc260d4493aba526c8b3cf8b5d2c4ecb21"
+    },
+    {
+      "id": "Armor_022_Head",
+      "file": "/images/equipment/Armor_022_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_022_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 55038,
+      "sha256": "dba5511a7f3f08954d364ae985e57af639e7c8364597ccf1e076f81034eee8f9"
+    },
+    {
+      "id": "Armor_1125_Head",
+      "file": "/images/equipment/Armor_1125_Head.png",
+      "sourcePath": "Armor/TOTK/Armor_1125_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 66053,
+      "sha256": "34b9ee43fb0bf50859be97759acfc41dcd1c594e92b3ff082be72393acbdac6d"
+    },
+    {
+      "id": "Armor_045_Head",
+      "file": "/images/equipment/Armor_045_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_045_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 49424,
+      "sha256": "fa64ee07e492ff20b4b383f1be4be3b05f19670bbaf7acb15d54c1296c53ecbd"
+    },
+    {
+      "id": "Armor_055_Head",
+      "file": "/images/equipment/Armor_055_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_055_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 48695,
+      "sha256": "565637624ee3ff30d374d6f8dc785e4cb7d71c1ef6ebf22823b56f6f07be2dbb"
+    },
+    {
+      "id": "Armor_056_Head",
+      "file": "/images/equipment/Armor_056_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_056_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 57002,
+      "sha256": "3eb79d8b69d389108748af89942e5bed66bc32f6c438c2d49fc28bf8c15312e9"
+    },
+    {
+      "id": "Armor_116_Upper",
+      "file": "/images/equipment/Armor_116_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_116_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 57414,
+      "sha256": "3dc850845307aaf8f68f437a265be9601eff4707e3aa4bb0fa243ddeba86e417"
+    },
+    {
+      "id": "Armor_1106_Upper",
+      "file": "/images/equipment/Armor_1106_Upper.png",
+      "sourcePath": "Armor/TOTK/Armor_1106_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 69683,
+      "sha256": "a30e37d24bb4f5e90e286f47b629226bfd3afa333534daf35867c3875f085b47"
+    },
+    {
+      "id": "Armor_175_Upper",
+      "file": "/images/equipment/Armor_175_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_175_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 42700,
+      "sha256": "2307f860c175b7ef26a50081f9c457da1bf259281873def2a5d5dcd3abff4846"
+    },
+    {
+      "id": "Armor_177_Head",
+      "file": "/images/equipment/Armor_177_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_177_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 35562,
+      "sha256": "ea68356b1b9b17938028d105f10e55eceae1a3a5b3428ba0e1bf099c2a6e76a3"
+    },
+    {
+      "id": "Armor_178_Head",
+      "file": "/images/equipment/Armor_178_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_178_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 43541,
+      "sha256": "6b9b05b1f3a0401fbf1e0669020b9ddaa271898a07386c16a15aa954ec165aed"
+    },
+    {
+      "id": "Armor_173_Head",
+      "file": "/images/equipment/Armor_173_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_173_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 64186,
+      "sha256": "fdddca3d6b12bbfd1378e7b0a5bf680bf11b860afa1968f82c5ee8095d575864"
+    },
+    {
+      "id": "Armor_172_Head",
+      "file": "/images/equipment/Armor_172_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_172_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 67641,
+      "sha256": "657e4ee9d93c061b5a8b791c16bdd4f0272ce10065e418129e3940408e899977"
+    },
+    {
+      "id": "Armor_176_Head",
+      "file": "/images/equipment/Armor_176_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_176_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 55287,
+      "sha256": "1f017c95f6190f26a18c2a6c13a4de01c430e43f2d58ddd08d2207d0eb019779"
+    },
+    {
+      "id": "Armor_174_Head",
+      "file": "/images/equipment/Armor_174_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_174_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 28049,
+      "sha256": "7460f7785d1c2944177ef707688fe6c73b8ee7e30744e4360c80e2e7468277d8"
+    },
+    {
+      "id": "Armor_174_Upper",
+      "file": "/images/equipment/Armor_174_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_174_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 38413,
+      "sha256": "59ae7dba53bfe5a39be9cc42537bda0c7f174dc0a26a15c7ee59515398dececa"
+    },
+    {
+      "id": "Armor_174_Lower",
+      "file": "/images/equipment/Armor_174_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_174_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 24932,
+      "sha256": "ad179ed6ed1db0a47b311ba53f6b816d21f84e9e06996e3b31b830b046a46d1e"
+    },
+    {
+      "id": "Armor_171_Head",
+      "file": "/images/equipment/Armor_171_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_171_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 45742,
+      "sha256": "84e677b6b4c5fd5aeee8043419b11a848b5835535636a27444ea4c7d29230467"
+    },
+    {
+      "id": "Armor_171_Upper",
+      "file": "/images/equipment/Armor_171_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_171_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 68018,
+      "sha256": "01ceb4390f8962474e6493918537c06e47f89941778d12b201de631d5cdfcd0f"
+    },
+    {
+      "id": "Armor_171_Lower",
+      "file": "/images/equipment/Armor_171_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_171_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 34297,
+      "sha256": "9d6ef3b489ce27017a0c55f54cff9a9848f0ce257bcb46085ab68def34b046d4"
+    },
+    {
+      "id": "Armor_180_Head",
+      "file": "/images/equipment/Armor_180_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_180_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 54160,
+      "sha256": "0790cf34a68a05426db64e354f151984acb8f0683db41d9c57ffc127a27d82be"
+    },
+    {
+      "id": "Armor_180_Upper",
+      "file": "/images/equipment/Armor_180_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_180_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 67352,
+      "sha256": "44abcdb52488838b17dd3941c2d2894d5ea2e50b26921bda14568fa00bdf3a3f"
+    },
+    {
+      "id": "Armor_180_Lower",
+      "file": "/images/equipment/Armor_180_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_180_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 42225,
+      "sha256": "b22cc7aaf2636b0abb554b9f9191fb2a144b3377f6e41fb6742e411379c5ad26"
+    },
+    {
+      "id": "Armor_220_Head",
+      "file": "/images/equipment/Armor_220_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_220_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 41213,
+      "sha256": "a04c9651d0564704c9ee722ef008eddc9caa7daf0b593eb4743206aacbefecfc"
+    },
+    {
+      "id": "Armor_160_Head",
+      "file": "/images/equipment/Armor_160_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_160_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 32877,
+      "sha256": "4f52b2252ac1408b11456dc4fdf9453935192810dd552151c94d65f038b46a20"
+    },
+    {
+      "id": "Armor_160_Upper",
+      "file": "/images/equipment/Armor_160_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_160_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 43841,
+      "sha256": "5abb77767833f3265785625671e79ad22ab1f3ea15351f4393ba732f521ab988"
+    },
+    {
+      "id": "Armor_160_Lower",
+      "file": "/images/equipment/Armor_160_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_160_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 26607,
+      "sha256": "ce26958fe958ad4a462237789f012cf724f3f86aeeee276ed5388aae6c17ae33"
+    },
+    {
+      "id": "Armor_225_Head",
+      "file": "/images/equipment/Armor_225_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_225_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 41332,
+      "sha256": "72244d271dde3e6be67f7d8b7ec3e251b69413a9f77e557ec4ca872f1709cf3e"
+    },
+    {
+      "id": "Armor_225_Upper",
+      "file": "/images/equipment/Armor_225_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_225_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 63005,
+      "sha256": "4dc999def6a44b69f87238f8f72502b758e8f0624960e1f6cb6e6ffadec4372e"
+    },
+    {
+      "id": "Armor_225_Lower",
+      "file": "/images/equipment/Armor_225_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_225_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 27430,
+      "sha256": "f3f66e02e7a4d369a8332a12415aea805ac3da59f1f8d69b3e0ef18661b00179"
+    },
+    {
+      "id": "Armor_1096_Head",
+      "file": "/images/equipment/Armor_1096_Head.png",
+      "sourcePath": "Armor/TOTK/Armor_1096_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 38410,
+      "sha256": "6980d4404b1aef53d42d1df3a4d7d350e0ade10c80db0433a8a12c471e3e3f97"
+    },
+    {
+      "id": "Armor_1096_Upper",
+      "file": "/images/equipment/Armor_1096_Upper.png",
+      "sourcePath": "Armor/TOTK/Armor_1096_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 35494,
+      "sha256": "6878d64601b956f595ac82c9fed0a84677e5a16b586b29bc0059e87c68cb90a9"
+    },
+    {
+      "id": "Armor_1096_Lower",
+      "file": "/images/equipment/Armor_1096_Lower.png",
+      "sourcePath": "Armor/TOTK/Armor_1096_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 28735,
+      "sha256": "c0fa636cb0131c75dc66b9b1c0e06267f6583639aaa23edc6830283ba1a5d174"
+    },
+    {
+      "id": "Armor_005_Head",
+      "file": "/images/equipment/Armor_005_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_005_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 35903,
+      "sha256": "d400023bf45d22b78a450117ed2aa1718be54cf9c763fba3f67d458a110e1af2"
+    },
+    {
+      "id": "Armor_005_Upper",
+      "file": "/images/equipment/Armor_005_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_005_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 45970,
+      "sha256": "d3e6ce785af05dbc15710b70df9276212bec6163ea16c5ca319386715d047658"
+    },
+    {
+      "id": "Armor_005_Lower",
+      "file": "/images/equipment/Armor_005_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_005_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 27859,
+      "sha256": "d19b94aae42bce179ad65496f7f35d810ebc486f8f53c045fa38f387b9bf89a6"
+    },
+    {
+      "id": "Armor_230_Head",
+      "file": "/images/equipment/Armor_230_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_230_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 37370,
+      "sha256": "f8d4fa9fbd9fb78cb0e66300924e5573b36851e1b25e1ea4d9f9423ecf456a68"
+    },
+    {
+      "id": "Armor_230_Upper",
+      "file": "/images/equipment/Armor_230_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_230_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 45496,
+      "sha256": "1b70e84de13a062c529c3ecf9ef33d0cafa084afb7a666d85abee81db4e0f896"
+    },
+    {
+      "id": "Armor_230_Lower",
+      "file": "/images/equipment/Armor_230_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_230_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 25338,
+      "sha256": "3a41a333ab118246b6b7c0f4766b396f5b1d0c6ccd36f345e42268d7eaa97134"
+    },
+    {
+      "id": "Armor_200_Head",
+      "file": "/images/equipment/Armor_200_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_200_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 30026,
+      "sha256": "98e807ab7b46aa7b81a23aed7dc12fa1781c3c11b14d21a613bd55c5c25aadae"
+    },
+    {
+      "id": "Armor_200_Upper",
+      "file": "/images/equipment/Armor_200_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_200_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 51056,
+      "sha256": "b781c66998bdce7abaa69897bfcd84bf8731061740c47ddab4229a171b634c0f"
+    },
+    {
+      "id": "Armor_200_Lower",
+      "file": "/images/equipment/Armor_200_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_200_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 28096,
+      "sha256": "60a1b94592cd8b48618fc455ad90cb207651f2e74447d57aab03cae675a1f682"
+    },
+    {
+      "id": "Armor_205_Head",
+      "file": "/images/equipment/Armor_205_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_205_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 31623,
+      "sha256": "916d7b6905b87b0dece48d7890f6ac01e1bb701377cfa98d08504893895ab1e1"
+    },
+    {
+      "id": "Armor_205_Upper",
+      "file": "/images/equipment/Armor_205_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_205_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 40100,
+      "sha256": "c08cf090c3ea2db262a9f804d825d32a7eef1750e623d68275672b89a95d89ab"
+    },
+    {
+      "id": "Armor_205_Lower",
+      "file": "/images/equipment/Armor_205_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_205_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 27007,
+      "sha256": "aef1cfc115195896b92a10ca3c4e900a59b93945443fc3202b6a3cb2bb7046c0"
+    },
+    {
+      "id": "Armor_210_Head",
+      "file": "/images/equipment/Armor_210_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_210_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 33999,
+      "sha256": "ff7d73ec22004c815ade9bf810ccf6ef4843bd4e4f1c4e5d0c798da3e9268b4d"
+    },
+    {
+      "id": "Armor_210_Upper",
+      "file": "/images/equipment/Armor_210_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_210_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 54925,
+      "sha256": "e96d5a8132bc4c762a5fd7536adbfedfd816f6d6422e5e617851d5fd3fc00173"
+    },
+    {
+      "id": "Armor_210_Lower",
+      "file": "/images/equipment/Armor_210_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_210_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 29041,
+      "sha256": "0b4336171fbc34979c49a4514681c1c43a348043c7daa09fec95d13b5b18e64c"
+    },
+    {
+      "id": "Armor_215_Head",
+      "file": "/images/equipment/Armor_215_Head.png",
+      "sourcePath": "Armor/BOTW/Armor_215_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 34282,
+      "sha256": "f3039672d678b70bfb07131b222a1381b0632483ec0e8cd78563af5453572f06"
+    },
+    {
+      "id": "Armor_215_Upper",
+      "file": "/images/equipment/Armor_215_Upper.png",
+      "sourcePath": "Armor/BOTW/Armor_215_Upper.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 49019,
+      "sha256": "4fca0c8491f79efc77fe7e78f0dc786b2f7ceb17f496ffb6d8440a1af290f606"
+    },
+    {
+      "id": "Armor_215_Lower",
+      "file": "/images/equipment/Armor_215_Lower.png",
+      "sourcePath": "Armor/BOTW/Armor_215_Lower.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 27128,
+      "sha256": "f80e4efa88a41aaa85907e02f5990fa325e741c856682f498e3045f7198d8f86"
+    },
+    {
+      "id": "Armor_1036_Head",
+      "file": "/images/equipment/Armor_1036_Head.png",
+      "sourcePath": "Armor/TOTK/Armor_1036_Head.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 94529,
+      "sha256": "9bce3e97a4c0841fa047866a29c1bcb1bb6c8d4b3d20321f5aa5afb26c9a897f"
+    }
+  ]
+}

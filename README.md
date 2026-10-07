@@ -25,6 +25,7 @@ npm run preview    # 预览 dist/，默认端口 4178
 ## 当前功能
 
 - 手机优先的中文界面，底部地图 / 装备 / 怪物 / 收藏导航。
+- 海拉鲁探险手册主题：玉石绿、暖纸色、金色刻线和原创古代圆环；310 件基础装备使用对应的本地物品图标。
 - 天空、地表、地底切换，拖动、双指缩放、最高 64 倍放大与复位。
 - 西诺克斯（含骷髅）69 个、人马 34 个固定对象记录，其他怪物按种类标记与筛选。
 - 神庙、树根、呀哈哈、洞窟入口、水井入口、深穴、龙之泪、贤者的遗志、古旧地图、宝箱等探索分类。
@@ -43,6 +44,8 @@ npm run preview    # 预览 dist/，默认端口 4178
 装备基础属性已接入并对照两份原始数据表，详细来源见 `docs/equipment-sources.md`。双手武器与长枪采用游戏显示攻击值；魔王之弓显示红心条件范围，大师之剑标注特殊状态。基础耐久不包含词条与融合增加值，完整融合计算尚未实现。没有独立属性资料的旧剧情 / NPC 名称只用于保留历史收藏，不纳入 310 件基础图鉴。
 
 装备属性 CSV 位于 `public/data/equipment.csv`，可在装备页下载。当前剩余耐久继续由用户手动记录。
+
+手机实际截图：[地表地图](docs/previews/map-mobile.png)、[天空神庙](docs/previews/sky-mobile.png)、[地底人马](docs/previews/depths-mobile.png)、[装备图鉴](docs/previews/equipment-mobile.png)。视觉资源来源与核验方式见 [ui-assets.md](docs/ui-assets.md)。开发服务运行时可用 `node scripts/capture-preview.mjs` 更新截图。
 
 ## 目录
 
@@ -63,12 +66,15 @@ public/
   maps/              三层真实概览瓦片
   data/              完整坐标索引、来源清单与 CSV
   icons/             项目自有图标
+  ui/                原创圆环与几何刻线 SVG
+  images/equipment/  按 Actor ID 核验的本地装备图标
 docs/
   requirements.md    需求基线与验收标准
   data-contract.md   资料格式、来源与核验规则
   roadmap.md         分阶段研发计划
   sources.md         来源、范围、投影与更新方式
   plans/             设计与实现计划
+  previews/          真实手机页面截图
 tests/
   e2e/               手机交互测试
 ```
@@ -80,6 +86,7 @@ tests/
 ```bash
 python3 scripts/sync-data.py --tiles
 python3 scripts/sync-equipment.py
+python3 scripts/sync-equipment-icons.py
 ```
 
 仅使用 Python 标准库。脚本下载公开资料、保存 SHA-256 清单，生成地点索引、坐标 CSV 和装备属性库，并校验关键数量与数值。装备更新会下载原始数据表与名称资料；原始快照保存在 `.cache/equipment/`，可用 `python3 scripts/sync-equipment.py --offline` 重建。来源变更导致断言失败时，先核对数据再更新基线。

@@ -35,6 +35,7 @@ export interface PointOfInterest {
 
 export interface Equipment {
   id: string;
+  iconId?: string;
   name: string;
   category: EquipmentCategory;
   attack: number | null;

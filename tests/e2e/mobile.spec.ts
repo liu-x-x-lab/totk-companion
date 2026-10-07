@@ -102,6 +102,8 @@ test('中文装备固定数值、英文搜索和基础耐久自动预填', async
   await expect(shield.getByRole('heading', { name: '海利亚盾', exact: true })).toBeVisible();
   await expect(shield.getByTestId('equipment-power')).toHaveText('90');
   await expect(shield.getByTestId('equipment-durability')).toHaveText('800');
+  await expect(shield.locator('.equipment-art img')).toHaveAttribute('src', '/images/equipment/Weapon_Shield_030.png');
+  await expect.poll(() => shield.locator('.equipment-art img').evaluate(image => (image as HTMLImageElement).naturalWidth)).toBeGreaterThan(0);
   await page.screenshot({ path: 'test-results/mobile-equipment.png', fullPage: true });
   await shield.getByRole('button', { name: '新增手动耐久记录' }).click();
   await expect(shield.getByLabel('最大耐久', { exact: true })).toHaveValue('800');
@@ -180,6 +182,7 @@ test('旧强化防具收藏保持 ID，能打开对应星级数值', async ({ pa
   await page.getByRole('button', { name: '查看装备', exact: true }).click();
   await expect(page.getByTestId('equipment-Armor_003_Head').getByTestId('equipment-power')).toHaveText('8');
   await expect(page.getByTestId('equipment-Armor_003_Head')).toContainText('当前星级防御');
+  await expect(page.getByTestId('equipment-Armor_003_Head').locator('.equipment-art img')).toHaveAttribute('src', '/images/equipment/Armor_001_Head.png');
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('totk-companion:player:v1')!).favorites[0])).toBe('equipment:Armor_003_Head');
 });
 
@@ -192,6 +195,19 @@ test('装备 CSV 可下载，包含真实属性而非空字段', async ({ page }
   const csv = readFileSync('test-results/equipment.csv', 'utf8');
   expect(csv.split('\n').length - 2).toBe(310);
   expect(csv).toContain('Weapon_Shield_030,海利亚盾,Hylian Shield,shield,standard,,,,90,800');
+});
+
+test('装备图标暂不可用时显示类别符号，装备数值和收藏仍可使用', async ({ page }) => {
+  await page.route('**/images/equipment/Weapon_Shield_030.png', route => route.fulfill({ status: 404, body: 'Unavailable' }));
+  await loaded(page); await goTo(page, '装备');
+  await page.getByRole('searchbox', { name: '搜索装备' }).fill('海利亚盾');
+  const shield = page.getByTestId('equipment-Weapon_Shield_030');
+  await expect(shield.locator('.equipment-art svg')).toBeVisible();
+  await expect(shield.locator('.equipment-art img')).toHaveCount(0);
+  await expect(shield.getByTestId('equipment-durability')).toHaveText('800');
+  await shield.getByRole('button', { name: '收藏海利亚盾', exact: true }).click();
+  await goTo(page, '收藏');
+  await expect(page.getByRole('heading', { name: '海利亚盾', exact: true })).toBeVisible();
 });
 
 test('线上高清底图瓦片服务可用',async({request})=>{

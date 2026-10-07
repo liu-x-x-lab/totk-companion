@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none">
+  <g stroke="#9fbeaa" stroke-width="1.2">
+    <circle cx="128" cy="128" r="122" opacity=".25"/>
+    <circle cx="128" cy="128" r="113" opacity=".45"/>
+    <circle cx="128" cy="128" r="88" opacity=".35"/>
+    <circle cx="128" cy="128" r="81" stroke-dasharray="2 8" opacity=".55"/>
+    <path d="M128 6v23m0 198v23M6 128h23m198 0h23M42 42l16 16m140 140 16 16M42 214l16-16M198 58l16-16" opacity=".55"/>
+    <path d="m119 20 9 8 9-8m-18 216 9-8 9 8M20 119l8 9-8 9m216-18-8 9 8 9"/>
+    <path d="M91 29v12l-11 5v11M58 63l9 5v13l-10 6M29 96h13l4 11h11M29 163h12l5 11h11M65 197l5-9h13l6 10M96 227v-13l11-4v-11M163 227v-12l11-5v-11M197 191l-9-5v-13l10-6M227 160h-13l-4-11h-11M227 93h-12l-5-11h-11M191 58l-5 9h-13l-6-10M160 29v13l-11 4v11" opacity=".6"/>
+    <path d="M72 128c22-34 90-34 112 0-22 34-90 34-112 0Z" opacity=".5"/>
+    <path d="m128 97 24 31-24 31-24-31Z"/>
+    <circle cx="128" cy="128" r="9"/>
+    <path d="M128 66v16m0 92v16M66 128h16m92 0h16" opacity=".5"/>
+  </g>
+  <g stroke="#d5be78" stroke-width="2" opacity=".55">
+    <path d="M14 128a114 114 0 0 1 49-94M128 14a114 114 0 0 1 94 49M242 128a114 114 0 0 1-49 94M128 242a114 114 0 0 1-94-49"/>
+  </g>
+</svg>

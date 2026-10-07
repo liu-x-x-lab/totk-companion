@@ -45,6 +45,10 @@ interface DataSource {
 
 装备包含 `items`（310 个基础条目）、`aliases`（413 个强化 / 外观 ID）和 `legacyNames`（52 个无独立属性的历史名称）。`decodeEquipment` 验证后扩展为 775 个可解析 ID；普通图鉴只显示 `catalogEntry: true` 的条目。历史收藏定位时可显示对应别名，原 ID 与玩家备份格式保持不变。
 
+## 装备图标
+
+装备显示层可包含 `iconId`，基础装备采用自己的 Actor ID，强化 / 外观条目继承对应基础装备 ID。它不替代存档中的装备 ID，也不改变防御或耐久。图标来源单独记录在 `equipment-icons-manifest.json`，包含固定上游提交与 Git 树、原始路径、图片尺寸、文件大小和 SHA-256；没有独立核验图标的历史条目不设置 `iconId`。
+
 ## 玩家记录
 
 手动耐久记录包含独立实例 ID、装备 ID、最大耐久、当前耐久和创建时间。用户可创建同一装备的多个实例。验证 `1 <= maximum <= 9999` 与 `0 <= current <= maximum`，不根据演示资料自动声称游戏中的当前耐久。
