@@ -2,6 +2,8 @@
 
 接入日期：2026-10-07。来源为公开的 TotK Object Map / ZeldaMods 社区数据，不是主机实时状态。
 
+装备属性、基础耐久与强化材料使用独立资料表，见 `docs/equipment-sources.md`。
+
 - 项目与资料入口：`https://github.com/zeldamods/objmap-totk`、`https://objmap-totk.zeldamods.org/`。
 - 固定对象查询：`https://radar-totk.zeldamods.org/objs/MainAndMinusField/`，使用 `actor:^Enemy_` 等明确对象查询，`limit=-1`，覆盖 MainField（包括 Sky 区域）和 MinusField。
 - 补充查询：`actor:^MiasmaSwarm`，保留不以 Enemy_ 开头的瘴气之手 / 幻影加侬据点；不是当前已生成的每个个体。

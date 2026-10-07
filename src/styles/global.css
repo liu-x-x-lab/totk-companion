@@ -123,6 +123,28 @@ svg { display: block; }
 .equipment-stats small { color: #90957f; font-size: 10px; }
 .equipment-stats strong { font-size: 14px; font-weight: 550; }
 .equipment-description { font-size: 11px; color: #78846d; line-height: 1.9; }
+.gear-original-name { font-size: 10px; color: #8b927e; margin: 4px 0 0; overflow-wrap: anywhere; }
+.equipment-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 4px 0 14px; font-size: 11px; color: #7a896c; }
+.equipment-toolbar label { display: flex; align-items: center; gap: 8px; }
+.equipment-toolbar select { width: 110px; font-size: 13px; }
+.equipment-stats strong { font-size: 23px; color: #31573d; }
+.equipment-details { margin: 12px 0; border-top: 1px solid #e8ebdf; font-size: 11px; color: #718165; line-height: 1.8; }
+.equipment-details summary { min-height: 44px; padding: 11px 0; cursor: pointer; color: #4c7048; }
+.equipment-details p { margin: 8px 0; }
+.gear-footnote { font-size: 10px; color: #91977f; }
+.gear-special-note { padding: 8px 10px; border-radius: 6px; background: #f3eddb; color: #827143; font-size: 11px; line-height: 1.9; margin: 8px 0; }
+.gear-actor { overflow-wrap: anywhere; }
+.bow-meta { font-size: 11px; color: #6b7e61; margin: 8px 0; }
+.modifier-values { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 12px; margin: 10px 0; }
+.modifier-values > div { display: flex; justify-content: space-between; gap: 8px; }
+.modifier-values dd { margin: 0; color: #4e6746; }
+.armor-upgrades { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 11px; }
+.armor-upgrades th, .armor-upgrades td { padding: 8px 5px; border-bottom: 1px solid #e5e9da; text-align: left; vertical-align: top; overflow-wrap: anywhere; }
+.armor-upgrades th:first-child { width: 22%; }
+.armor-upgrades th:nth-child(2) { width: 17%; }
+.armor-upgrades th { font-weight: 500; color: #48653f; }
+.armor-upgrades td > span { display: block; }
+.gear-download { margin-top: 20px; text-decoration: none; }
 .outline-button, .primary-button, .secondary-button { display: flex; align-items: center; justify-content: center; gap: 7px; padding: 11px 15px; font-size: 12px; font-weight: 500; border-radius: 7px; }
 .outline-button { background: transparent; border: 1px solid #ced9c2; color: #466940; }
 .primary-button { background: var(--green); color: #f8f7e9; }

@@ -1,5 +1,7 @@
-import type { Equipment, EquipmentCategory, PointOfInterest } from '../types/domain';
+import type { Equipment, PointOfInterest } from '../types/domain';
 import { catalogById } from './catalog';
+import { decodeEquipment } from './equipment';
+import type { EquipmentPack } from './equipment';
 
 export interface CompanionRepository {
   load(signal?: AbortSignal): Promise<{ points: PointOfInterest[]; equipment: Equipment[]; manifest: DataManifest }>;
@@ -19,7 +21,7 @@ async function json(path: string, signal?: AbortSignal) {
 export const repository: CompanionRepository = {
   isDemo: false,
   async load(signal) {
-    const [pack, manifest, names] = await Promise.all([json('/data/points.json',signal),json('/data/manifest.json',signal),json('/data/equipment-names.json',signal)]) as [{schemaVersion:number;strings:string[];rows:Row[]},DataManifest,Record<string,string>];
+    const [pack, manifest, gear] = await Promise.all([json('/data/points.json',signal),json('/data/manifest.json',signal),json('/data/equipment.json',signal)]) as [{schemaVersion:number;strings:string[];rows:Row[]},DataManifest,EquipmentPack];
     if(pack.schemaVersion!==1 || !Array.isArray(pack.rows) || manifest.total!==pack.rows.length) throw new Error('资料格式或完整性校验失败。');
     const source = { name:'TotK Object Map · 社区固定地点资料',status:'unverified' as const,url:'https://objmap-totk.zeldamods.org/',checkedAt:manifest.updatedAt };
     const points = pack.rows.map(([id,name,key,layer,x,y,z,region,actor,objid,contents]): PointOfInterest => {
@@ -30,11 +32,7 @@ export const repository: CompanionRepository = {
         mapPosition:{x:(x+6000)/12000,y:(z+5000)/10000},gameCoordinates:{x,y:-z,z:y},rawCoordinates:[x,y,z],originalName,actorName:pack.strings[actor],sourceObjectId:objid??undefined,
         contents:contents?.map((index)=>pack.strings[index]),region:pack.strings[region]||definition.label,description:'源数据中的固定放置位置。出现状态与等级可能受剧情、时间和游戏进度影响。',source };
     });
-    const equipment = Object.entries(names).map(([id,name]):Equipment=>{
-      const lowered = id.toLowerCase();
-      const category:EquipmentCategory = lowered.startsWith('armor')?'armor':lowered.includes('lsword')?'two-handed':lowered.includes('spear')?'spear':lowered.includes('bow')?'bow':lowered.includes('shield')?'shield':'one-handed';
-      return {id,name,category,attack:null,defense:null,baseDurability:null,description:'已接入真实装备名称。基础属性与强化 / 融合规则等待独立资料核验，可手动记录耐久。',source};
-    });
+    const equipment = decodeEquipment(gear);
     return {points,equipment,manifest};
   },
 };

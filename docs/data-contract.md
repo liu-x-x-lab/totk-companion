@@ -1,6 +1,6 @@
 # 数据契约与接入规则
 
-当前版本从 `public/data/points.json` 读取真实地点，仓库接口定义在 `src/data/repository.ts`。页面从仓库异步读取，不直接绑定第三方网站结构。示例文件 `demo.ts` 不进入运行仓库；社区来源为 `unverified`，不声称逐点完成游戏内核验。
+当前版本从 `public/data/points.json` 读取地点、从 `public/data/equipment.json` 读取装备，仓库接口定义在 `src/data/repository.ts`。页面从仓库异步读取，不直接绑定第三方网站结构。示例文件 `demo.ts` 不进入运行仓库；地点社区来源为 `unverified`，装备 `verified` 表示已对照资料表与解析结果，不声称逐点或逐件完成游戏内核验。
 
 ## 来源
 
@@ -14,7 +14,7 @@ interface DataSource {
 }
 ```
 
-真实来源除以上字段还应在数据清单中记录许可或使用条件、上游版本、更新日期和资源校验和。当前来源和坐标约定见 `docs/sources.md`；装备关键属性需独立核验后补充。
+真实来源除以上字段还应在数据清单中记录许可或使用条件、上游版本、更新日期和资源校验和。地点来源和坐标约定见 `docs/sources.md`；装备来源、版本边界与对照差异见 `docs/equipment-sources.md`。
 
 ## 地图
 
@@ -37,13 +37,19 @@ interface DataSource {
 
 ## 装备
 
-类别包括 `one-handed`、`two-handed`、`spear`、`bow`、`shield`、`armor`。装备字段：ID、名称、类别、可空攻击力、防御力、基础耐久、说明、来源。
+类别包括 `one-handed`、`two-handed`、`spear`、`bow`、`shield`、`armor`。保留原始 Actor ID、中文名、英文名、形态、游戏显示攻击、内部基础攻击、盾 / 防具防御、基础耐久、说明与来源。
 
-所有未知属性以 `null` 表示。防具的基础耐久为 `null`，后续添加防御、强化等级和强化材料。融合规则独立建模，不能默认所有武器和材料使用一个耐久公式。
+所有未知或不适用属性以 `null` 表示，已知的 0 不转成未知。`variant` 为 `standard` / `pristine` / `decayed`；同名腐朽与无腐蚀武器保留不同 ID。`attackRange` 表示条件攻击范围，魔王之弓不填写任意固定 `attack`。
+
+防具 `baseDurability` 为 `null`，`armorLevels` 保存 0–4 星防御、升级材料和卢比费用；不可强化防具只保存 0 星。全身防具用 `armorSlot: full`，费用与材料保留整体值。`modifiers` 保存带对应词条后的数值区间，不当作额外增量；`fuseExtraDurability` 为武器参数上限，完整融合规则另行建模。
+
+装备包含 `items`（310 个基础条目）、`aliases`（413 个强化 / 外观 ID）和 `legacyNames`（52 个无独立属性的历史名称）。`decodeEquipment` 验证后扩展为 775 个可解析 ID；普通图鉴只显示 `catalogEntry: true` 的条目。历史收藏定位时可显示对应别名，原 ID 与玩家备份格式保持不变。
 
 ## 玩家记录
 
 手动耐久记录包含独立实例 ID、装备 ID、最大耐久、当前耐久和创建时间。用户可创建同一装备的多个实例。验证 `1 <= maximum <= 9999` 与 `0 <= current <= maximum`，不根据演示资料自动声称游戏中的当前耐久。
+
+新记录的最大值与当前值默认预填已知基础耐久，用户可以修改；这只是表单默认值，不是读取主机当前耐久。
 
 本地记录格式：
 

@@ -47,7 +47,7 @@ export function App() {
 
   return <div className="app-shell">
     <header className="app-header"><div className="brand"><img src="/icons/app.svg" width="39" height="39" alt=""/><div><strong>海拉鲁探险手册</strong><span>王国之泪 · 随身探索助手</span></div></div><span className="prototype-badge"><i/>三层地图</span></header>
-    <div className="demo-banner"><Icon name="spark" size={15}/><span>{manifest?`已载入 ${manifest.total.toLocaleString()} 条地点 · 社区资料 · 装备属性待核验`:'正在载入地点资料…'}</span></div>
+    <div className="demo-banner"><Icon name="spark" size={15}/><span>{manifest?`已载入 ${manifest.total.toLocaleString()} 条地点 · ${equipment.filter((item)=>item.catalogEntry!==false).length} 件基础装备`:'正在载入地点资料…'}</span></div>
     {dataError&&<div className="storage-warning" role="alert">{dataError}<button className="text-button" onClick={()=>setRetry((value)=>value+1)}>重新加载</button></div>}
     {store.storageWarning && <div className="storage-warning" role="alert">{store.storageWarning}</div>}
     <main id="main-content">

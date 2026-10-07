@@ -16,3 +16,11 @@
 4. 更新 `src/app/App.tsx`、`src/features/saved/SavedPage.tsx` 和 `src/styles/global.css`，移除已不适用的全局“属性待核验”，显示装备资料范围和来源。
 5. 添加 `src/data/equipment-data.test.ts` 并扩展 `tests/e2e/mobile.spec.ts`；用海利亚盾 90 / 800、旅人之剑 7 / 20、双手剑与长枪显示值、防具 0–4 星等独立预期核验。
 6. 更新 README、需求、数据契约、来源与路线；运行 `npm run check`、`npm run test:e2e`、`git diff --check` 后提交。
+
+## 完成记录
+
+2026-10-07：已完成 310 个基础条目的导入和中文展示，包含 547 个防具等级记录；原 775 个名称 ID 保留。已校验游戏显示攻击值、武器形态、耐久预填、旧收藏和装备 CSV。
+
+`npm run check` 通过类型检查、35 项业务测试和生产构建；21 项手机浏览器测试通过，最终星级防御标签修改后对应旧收藏测试再次通过。已检查装备与强化材料的手机截图。联网更新脚本成功运行，更新结果与已测试的条目、别名、历史名称一致；310 行 CSV 逐字段对照 JSON 通过。
+
+来源差异与特殊数值已记录到 `docs/equipment-sources.md`、界面与数据清单。完整融合计算及逐版本游戏内复核为后续范围。

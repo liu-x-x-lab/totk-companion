@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 const goTo=(page:Page,label:string)=>page.getByRole('navigation',{name:'主导航'}).getByRole('button',{name:label,exact:true}).click();
 const sourceManifest=JSON.parse(readFileSync(new URL('../../public/data/manifest.json',import.meta.url),'utf8'))as{total:number;layers:Record<string,number>};
 const loaded=async(page:Page)=>{await page.goto('/');await expect(page.getByText(`已载入 ${sourceManifest.total.toLocaleString()} 条地点`,{exact:false})).toBeVisible();};
-const swordName="Traveler's Sword";
+const swordName='旅人之剑';
 const swordId='equipment-Weapon_Sword_001';
 const openSword=async(page:Page)=>{await goTo(page,'装备');await page.getByRole('searchbox',{name:'搜索装备'}).fill(swordName);return page.getByTestId(swordId);};
 const tile=readFileSync(new URL('../../public/maps/Ground/2/0/0.webp',import.meta.url));
@@ -93,6 +93,106 @@ test('存储不可用时可继续收藏，损坏记录不会被空数据覆盖',
   await page.addInitScript(()=>Object.defineProperty(window,'localStorage',{get(){throw new DOMException('Disabled','SecurityError');}}));await loaded(page);await expect(page.getByRole('alert')).toContainText('本次会话');const sword=await openSword(page);await sword.getByRole('button',{name:`收藏${swordName}`,exact:true}).click();await goTo(page,'收藏');await expect(page.getByRole('heading',{name:swordName,exact:true})).toBeVisible();
 });
 test('损坏记录保留原文以便恢复',async({page})=>{await page.addInitScript(()=>localStorage.setItem('totk-companion:player:v1','corrupted-data'));await loaded(page);await expect(page.getByRole('alert')).toContainText('读取失败');expect(await page.evaluate(()=>localStorage.getItem('totk-companion:player:v1'))).toBe('corrupted-data');});
+
+test('中文装备固定数值、英文搜索和基础耐久自动预填', async ({ page }) => {
+  await loaded(page); await goTo(page, '装备');
+  await expect(page.getByTestId('equipment-count')).toHaveText('310 / 310 件');
+  await page.getByRole('searchbox', { name: '搜索装备' }).fill('HYLIAN SHIELD');
+  const shield = page.getByTestId('equipment-Weapon_Shield_030');
+  await expect(shield.getByRole('heading', { name: '海利亚盾', exact: true })).toBeVisible();
+  await expect(shield.getByTestId('equipment-power')).toHaveText('90');
+  await expect(shield.getByTestId('equipment-durability')).toHaveText('800');
+  await page.screenshot({ path: 'test-results/mobile-equipment.png', fullPage: true });
+  await shield.getByRole('button', { name: '新增手动耐久记录' }).click();
+  await expect(shield.getByLabel('最大耐久', { exact: true })).toHaveValue('800');
+  await expect(shield.getByLabel('剩余耐久', { exact: true })).toHaveValue('800');
+  await shield.getByRole('button', { name: '保存记录', exact: true }).click();
+  await expect(shield.getByLabel('记录剩余耐久')).toHaveText('800 / 800');
+});
+
+test('腐朽和无腐蚀武器分别筛选，游戏显示攻击与内部值区分', async ({ page }) => {
+  await loaded(page); await goTo(page, '装备');
+  const search = page.getByRole('searchbox', { name: '搜索装备' });
+  await search.fill('旅人之剑');
+  await page.getByLabel('筛选武器形态').selectOption('pristine');
+  await expect(page.getByTestId('equipment-Weapon_Sword_001').getByTestId('equipment-durability')).toHaveText('20');
+  await expect(page.getByTestId('equipment-Weapon_Sword_106')).toHaveCount(0);
+  await page.getByLabel('筛选武器形态').selectOption('decayed');
+  await expect(page.getByTestId('equipment-Weapon_Sword_106').getByTestId('equipment-durability')).toHaveText('16');
+  await expect(page.getByTestId('equipment-Weapon_Sword_001')).toHaveCount(0);
+  await page.getByLabel('筛选武器形态').selectOption('all'); await search.fill('Weapon_Lsword_001');
+  const claymore = page.getByTestId('equipment-Weapon_Lsword_001');
+  await expect(claymore.getByTestId('equipment-power')).toHaveText('9');
+  await claymore.getByText('查看词条与装备资料', { exact: true }).click();
+  await expect(claymore).toContainText('内部基础攻击参数：10');
+  await expect(claymore).toContainText('融合额外耐久上限：+25');
+});
+
+test('防具展示各星级防御与升级材料，360px 展开后不溢出', async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 800 });
+  await loaded(page); await goTo(page, '装备');
+  await page.getByRole('searchbox', { name: '搜索装备' }).fill('海利亚兜帽');
+  const hood = page.getByTestId('equipment-Armor_001_Head');
+  await expect(hood.getByTestId('equipment-power')).toHaveText('3');
+  await expect(hood.getByTestId('equipment-durability')).toHaveText('20');
+  await expect(hood.getByRole('button', { name: '新增手动耐久记录' })).toHaveCount(0);
+  await hood.getByText('查看强化防御与材料', { exact: true }).click();
+  const table = hood.getByRole('table');
+  await expect(table.getByRole('row', { name: /★★★★/ })).toContainText('白银波克布林的犄角 × 5');
+  await expect(table.getByRole('row', { name: /★★★★/ })).toContainText('500 卢比');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: 'test-results/mobile-armor.png', fullPage: true });
+});
+
+test('全身防具的材料费用独立保存，不统一假设每级 10 卢比', async ({ page }) => {
+  await loaded(page); await goTo(page, '装备');
+  await page.getByRole('searchbox', { name: '搜索装备' }).fill('古代勇者之魂');
+  const full = page.getByTestId('equipment-Armor_1036_Head');
+  await expect(full.getByTestId('equipment-power')).toHaveText('12');
+  await expect(full.getByTestId('equipment-durability')).toHaveText('84');
+  await expect(full).toContainText('全身防具');
+  await full.getByText('查看强化防御与材料', { exact: true }).click();
+  await expect(full.getByRole('table').getByRole('row', { name: /^★\s/ })).toContainText('30 卢比');
+});
+
+test('条件攻击力与弓的每箭攻击明确展示', async ({ page }) => {
+  await loaded(page); await goTo(page, '装备');
+  const search = page.getByRole('searchbox', { name: '搜索装备' });
+  await search.fill('Weapon_Bow_166');
+  const demon = page.getByTestId('equipment-Weapon_Bow_166');
+  await expect(demon.getByTestId('equipment-power')).toHaveText('2–60');
+  await expect(demon).toContainText('红心上限');
+  await expect(demon.getByTestId('equipment-durability')).toHaveText('42');
+  await search.fill('兽神弓');
+  const lynel = page.getByTestId('equipment-Weapon_Bow_032');
+  await expect(lynel.getByTestId('equipment-power')).toHaveText('32');
+  await expect(lynel).toContainText('每次 3 支箭');
+  await search.fill('大师之剑');
+  const master = page.getByTestId('equipment-Weapon_Sword_070');
+  await expect(master.getByTestId('equipment-power')).toHaveText('30');
+  await expect(master.getByTestId('equipment-durability')).toHaveText('40');
+});
+
+test('旧强化防具收藏保持 ID，能打开对应星级数值', async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem('totk-companion:player:v1', JSON.stringify({ schemaVersion: 1, favorites: ['equipment:Armor_003_Head'], durabilityRecords: [] })));
+  await loaded(page); await goTo(page, '收藏');
+  await expect(page.getByRole('heading', { name: '海利亚兜帽（★★）', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: '查看装备', exact: true }).click();
+  await expect(page.getByTestId('equipment-Armor_003_Head').getByTestId('equipment-power')).toHaveText('8');
+  await expect(page.getByTestId('equipment-Armor_003_Head')).toContainText('当前星级防御');
+  expect(await page.evaluate(() => JSON.parse(localStorage.getItem('totk-companion:player:v1')!).favorites[0])).toBe('equipment:Armor_003_Head');
+});
+
+test('装备 CSV 可下载，包含真实属性而非空字段', async ({ page }) => {
+  await loaded(page); await goTo(page, '装备');
+  const downloading = page.waitForEvent('download');
+  await page.getByRole('link', { name: '下载装备属性 CSV', exact: true }).click();
+  const download = await downloading;
+  await download.saveAs('test-results/equipment.csv');
+  const csv = readFileSync('test-results/equipment.csv', 'utf8');
+  expect(csv.split('\n').length - 2).toBe(310);
+  expect(csv).toContain('Weapon_Shield_030,海利亚盾,Hylian Shield,shield,standard,,,,90,800');
+});
 
 test('线上高清底图瓦片服务可用',async({request})=>{
   for(const layer of ['Ground','Sky','Depths']){

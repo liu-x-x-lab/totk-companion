@@ -42,6 +42,29 @@ export interface Equipment {
   baseDurability: number | null;
   description: string;
   source: DataSource;
+  originalName?: string;
+  catalogEntry?: boolean;
+  variant?: 'standard' | 'pristine' | 'decayed';
+  rawAttack?: number | null;
+  attackRange?: [number, number] | null;
+  attackNote?: string;
+  durabilityNote?: string;
+  arrowsPerShot?: number;
+  bowRange?: number;
+  fuseExtraDurability?: number | null;
+  fuseDurabilityNote?: string;
+  effects?: string[];
+  modifiers?: Partial<Record<'attackUp' | 'attackUpPlus' | 'guardUp' | 'guardUpPlus' | 'durabilityUp' | 'durabilityUpPlus', [number, number]>>;
+  armorSlot?: 'head' | 'upper' | 'lower' | 'full';
+  armorLevels?: ArmorLevel[];
+  upgradeLevel?: number;
+}
+
+export interface ArmorLevel {
+  level: number;
+  defense: number;
+  rupees: number;
+  materials: { id: string | null; name: string; originalName: string; quantity: number }[];
 }
 
 export interface DurabilityRecord {
