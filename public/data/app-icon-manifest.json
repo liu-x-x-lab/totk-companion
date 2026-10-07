@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "original-explorer-emblem-v1",
+  "checkedAt": "2026-10-07T23:35:16.649Z",
+  "source": "Project-authored original SVG paths; Android VectorDrawable and PNGs exported from the same source.",
+  "generator": "scripts/sync-app-icon.mjs",
+  "originalFile": "public/icons/app.svg",
+  "imageGenerationAttempt": {
+    "tool": "built-in image_gen",
+    "usableNewFileReturned": false,
+    "prompt": "Original square exploration atlas icon: deep jade background, gold engraved ring, folded map, ivory explorer's sword and mint navigation spark; no characters, lettering or existing franchise symbols."
+  },
+  "productionAssetType": "original-vector",
+  "gameVersion": null,
+  "webAssets": [
+    {
+      "file": "/icons/app.svg",
+      "bytes": 1622,
+      "sha256": "641111ce09003799cfe96c51ffced49435650943df627e1210fd7cddcc0b032a"
+    },
+    {
+      "file": "/icons/app-192.png",
+      "bytes": 9766,
+      "sha256": "a6326c5d3194f8f12c58cb934d1246572667afbbb4f1a151071d013a364e7f52"
+    },
+    {
+      "file": "/icons/app-512.png",
+      "bytes": 28838,
+      "sha256": "019a4cab69a8d1f91554ae00dece4e66f28cf628485d07bfcf8124db354e77e9"
+    }
+  ],
+  "androidForeground": {
+    "file": "android/res/drawable/ic_emblem.xml",
+    "sha256": "99b8e3336268ceb1041e6295580c96f65fbaad0cfbfbe4f09a4387c312df00dc"
+  },
+  "backgroundColor": "#173e37",
+  "preview": "docs/previews/app-icon-variants.png"
+}

@@ -38,7 +38,7 @@ svg { display: block; }
 .app-header::before { content: ''; position: absolute; z-index: -1; pointer-events: none; width: 200px; height: 200px; top: -63px; right: -49px; background: url('/ui/ancient-ring.svg') center / contain no-repeat; opacity: .32; transform: rotate(-18deg); }
 .app-header::after { content: ''; position: absolute; pointer-events: none; height: 8px; bottom: 0; left: 0; right: 0; background: url('/ui/engraved-rule.svg') repeat-x center; opacity: .55; }
 .brand { display: flex; align-items: center; gap: 11px; min-width: 0; }
-.brand img { width: 36px; height: 36px; flex-shrink: 0; }
+.brand img { width: 36px; height: 36px; flex-shrink: 0; border-radius: 8px; }
 .brand strong { display: block; font-family: 'Songti SC', serif; font-size: 14px; letter-spacing: 1px; }
 .brand span { display: block; margin-top: 5px; color: #b1c9b8; font-size: 8px; letter-spacing: 1px; }
 .prototype-badge { display: flex; align-items: center; gap: 6px; padding: 7px 8px; border: 1px solid #a9c4a64d; border-radius: 3px; font-size: 10px; white-space: nowrap; color: #d9e7d3; background: #143c3266; }

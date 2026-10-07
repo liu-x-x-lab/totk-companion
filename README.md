@@ -32,6 +32,7 @@ python3 scripts/serve-releases.py --port 8788  # 局域网 APK 下载页
 - 253 项任务目录，35 篇离线教程覆盖全部 23 主线和 12 项实用任务；接取、前置、准备、阶段操作、地图跳转与手动进度。218 项仅索引明确标注待整理。
 - 收藏、地点点亮与完成、手动耐久、任务阶段、升级计划和材料数量统一备份；旧备份兼容，导入预览后确认替换。
 - 玉石绿、纸色、金色刻线与原创古代圆环；紧凑而可读的手机文字，触控至少 44px。
+- 原创探索 App 徽章，网页、主屏幕 Manifest 与 Android 自适应桌面图标同步，保留小尺寸清晰度。
 
 资料是社区固定放置记录，不表示当前游戏中的实时生成、等级、剧情状态或巨龙位置。装备耐久为基础值，实际剩余耐久手动填写；完整融合规则和主机存档读取不在本轮实现范围。任务教程和克洛格类型提示为整理的行动摘要，未进行游戏内逐点实测。神庙视频核对了完整名称与分集标题，未逐集观看。资料来源见 [sources.md](docs/sources.md)、[equipment-sources.md](docs/equipment-sources.md)、[quest-sources.md](docs/quest-sources.md)、[shrine-video-sources.md](docs/shrine-video-sources.md)、[korok-sources.md](docs/korok-sources.md)。
 
@@ -44,6 +45,8 @@ python3 scripts/serve-releases.py --port 8788  # 局域网 APK 下载页
 [满屏地图](docs/previews/map-mobile.png) · [沉浸地图](docs/previews/map-immersive-mobile.png) · [装备](docs/previews/equipment-mobile.png) · [任务手册](docs/previews/quests-mobile.png) · [阶段教程](docs/previews/quest-guide-mobile.png) · [升级计划](docs/previews/armor-planner-mobile.png) · [合并材料](docs/previews/armor-materials-mobile.png)
 
 [神庙点亮](docs/previews/map-shrine-lit-mobile.png) · [神庙视频入口](docs/previews/map-shrine-video-mobile.png) · [搬运克洛格](docs/previews/map-korok-carry-mobile.png)
+
+[App 图标及裁切预览](docs/previews/app-icon-variants.png) · [实际手机页头](docs/previews/app-logo-mobile.png)
 
 ## 项目结构
 
@@ -75,6 +78,7 @@ python3 scripts/sync-quests.py
 python3 scripts/sync-map-icons.py
 python3 scripts/sync-shrine-guides.py
 python3 scripts/sync-korok-guides.py
+node scripts/sync-app-icon.mjs
 ```
 
 地图资源脚本使用 Pillow 校验图片与完整边界；其余生成脚本主要使用 Python 标准库。原始快照在 `.cache/`，输出保留 SHA-256。来源变动导致断言失败时先核对资料，不直接放宽完整性条件。React、TypeScript 和 Vite 前端，不需要后端。

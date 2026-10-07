@@ -34,4 +34,13 @@ python3 scripts/sync-equipment-icons.py
 - 保留 44 px 点击范围，取消原圆底座；未点亮较暗，点亮恢复色彩并显示清楚的完成徽记。图标保持固定屏幕尺寸。
 - 同步：`python3 scripts/sync-map-icons.py`，离线复现加 `--offline`。
 
-用户要求塞尔达公主 App 图标：内置 imagegen 未返回可用文件，重试被绘图工具自动审核拒绝且未说明具体原因。当前保留原 App 图标，原创精灵公主替代方案等待用户选择，未声称已生成或接入。
+## 原创 App 图标
+
+用户已允许改用其他元素。0.1.3 的生产图标由项目原创绘制：玉石绿底色、断续暖金圆环、折叠地图、探索剑与导航光点。没有采用上次角色图；先前的审核拒绝没有说明具体原因，不将其断言为版权原因。
+
+- 源文件：`public/icons/app.svg`。所有形状均为本项目绘制，未截取游戏徽章或角色素材。
+- 导出：`public/icons/app-192.png`、`app-512.png` 和 `android/res/drawable/ic_emblem.xml`，网页与安卓使用相同路径和配色。安卓前景背景分离，主体留在中央安全区域。
+- 同步：`node scripts/sync-app-icon.mjs`，使用项目已有 Chromium 导出 PNG；清单 `public/data/app-icon-manifest.json` 保存源文件和导出资源 SHA-256。构建时核对清单与安卓前景。
+- 预览：`docs/previews/app-icon-variants.png` 为完整图标、两种裁切和 48 / 72 / 96 px 视觉检查，不是安卓真机截图。
+- `docs/previews/app-logo-mobile.png` 来自实际 React 装备页，390 × 844 CSS px；页头图标保持原 36 px 尺寸，已核对服务提供的图标内容与本地清单一致。
+- 本次内置 imagegen 也尝试了原创元素方案，但未返回可读的新文件。最终资源属于原创矢量绘制，没有调用 CLI / API，也没有把矢量或旧图标标为本次 AI 生成位图。
