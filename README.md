@@ -2,10 +2,13 @@
 
 主要在安卓手机使用的中文探索助手。地图、地点、装备和已有任务教程全部随离线 APK 打包，无需账号或服务器。
 
+源码采用 **GPL-3.0-only**，见 [LICENSE](LICENSE) 与 [NOTICE](NOTICE)。地图、游戏图片、文字及其他第三方内容保留原有权利和条款，详情见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+
 ## 启动与构建
 
 ```bash
-cd /data/totk-companion
+git clone https://github.com/liu-x-x-lab/totk-companion.git
+cd totk-companion
 npm ci
 npm run dev                # 0.0.0.0:5178，手机局域网预览
 npm run check              # 类型、业务测试、生产构建

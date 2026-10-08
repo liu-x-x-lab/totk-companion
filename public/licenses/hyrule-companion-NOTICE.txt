@@ -1,0 +1,19 @@
+Hyrule Companion / 海拉鲁探险手册
+Copyright (C) 2026 liu-x-x-lab and contributors.
+
+Original source code and original UI assets authored for this project are
+licensed under the GNU General Public License, version 3 only (GPL-3.0-only).
+The full license is included in LICENSE.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+more details.
+
+Third-party software, community symbols, game maps, images, names, extracted
+text, and source datasets retain their respective copyrights and licenses.
+See THIRD_PARTY_NOTICES.md and the attribution documents in docs/.
+
+This is an unofficial companion project. Nintendo and the other rights
+holders retain all rights to their games, trademarks, images, and text.
+The project's source license does not grant rights to those materials.
