@@ -12,6 +12,7 @@
 2. 修改 `src/features/map/clustering.ts`：按倍率分配屏幕网格预算；在世界像素上划分网格，拖动不改变网格原点；仅合并触控过近的普通组；保留选中点和每条可见记录；增加根据组范围计算目标相机的函数。
 3. 修改 `src/features/map/MapCanvas.tsx`、`src/features/map/MapPage.tsx`、`src/styles/global.css`：远景区域图标、中近景 `99+`、可用视野定位；通过指针开始 / 结束记录实现双击，拖动和多指清除候选；更新提示。
 4. 执行 `node --experimental-strip-types --experimental-test-isolation=none --test src/data/world-data.test.ts`、地图 E2E 子集，再执行 `npm run check` 与 `npm run test:e2e`。只在失败或新风险时追加验证。
+   截图后补充 `src/features/map/labels.ts` 的重要地名避让与 `labels.test.ts` 的地区文字回归；重新跑上述必要检查并重拍 / 打包。
 5. 用 `.cache/verification/zoom-density.mjs optimized` 重拍前后对照，并在 `docs/previews/` 保存优化后的真实远景 / 区域截图和参数。
 6. 更新 `package.json`、`package-lock.json` 与 `android/AndroidManifest.xml` 至 0.1.4 / 5，执行 `python3 scripts/build-android.py`。此流程自带资源完整性和生产断网检查，不读取签名文件。
 7. 恢复仅服务 `releases/` 的 8788 局域网下载服务，验证 APK 全量 SHA-256 与下载页。更新需求 / 验收文档，提交源代码并给出覆盖安装下载地址。

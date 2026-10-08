@@ -316,6 +316,7 @@ a { color:#557647; }
 .bottom-nav button { font-size: 11px; }
 .map-marker > span { font-size: 14px; }
 .cluster-marker > span { font-size: 12px; }
+.overview-cluster > span { width: 32px; min-width: 32px; padding: 0; color: #f4df9e; border-color: #dcc487; box-shadow: 0 0 0 3px #183d3655, 0 2px 5px #132f2b66; }
 
 /* 地图独占视口，工具和资料面板浮在画布上。 */
 .app-shell.map-mode { max-width: none; height: 100dvh; min-height: 0; padding: 0; overflow: hidden; }

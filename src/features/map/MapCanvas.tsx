@@ -6,7 +6,7 @@ import { formatCoordinates, pointDefinition } from '../../data/catalog';
 import { baseScale, constrainCamera, coverCamera, focusCamera, focusPairCamera, MAX_ZOOM, MIN_ZOOM, pinchCamera, resizeCamera, WORLD_HEIGHT, WORLD_SIZE, zoomCamera } from './geometry';
 import { korokMapPosition } from '../../data/korok-guides';
 import type { Camera, Viewport } from './geometry';
-import { clusterPoints, createPointIndex } from './clustering';
+import { clusterFocusCamera, clusterPoints, createPointIndex, OVERVIEW_ZOOM } from './clustering';
 import { CameraMotion } from './camera-motion';
 import { Tiles } from './Tiles';
 import type { TilesHandle } from './Tiles';
@@ -27,6 +27,9 @@ export function MapCanvas({ layer, points, labels, selectedPoint, completedPoint
   const pointers = useRef(new Map<number, MapPoint>());
   const starts = useRef(new Map<number, MapPoint>());
   const dragged = useRef(false);
+  const tapEligible = useRef(false);
+  const tapStarted = useRef(0);
+  const lastTap = useRef<{ point: MapPoint; time: number } | null>(null);
   const gestureRect = useRef<DOMRect | null>(null);
   const idle = useRef<number | null>(null);
   const [viewport, setViewport] = useState<Viewport>({ width: 360, height: 400 });
@@ -92,12 +95,13 @@ export function MapCanvas({ layer, points, labels, selectedPoint, completedPoint
   }, [motion, viewport.width, viewport.height]);
 
   useLayoutEffect(() => {
-    pointers.current.clear(); starts.current.clear(); gestureRect.current = null; setClusterItems([]);
+    pointers.current.clear(); starts.current.clear(); gestureRect.current = null; lastTap.current = null; setClusterItems([]);
     const next = resizeCamera(motion.camera, previousViewport.current, viewport);
     previousViewport.current = viewport; motion.move(next); motion.flush();
   }, [viewport.width, viewport.height]);
 
-  useEffect(() => { pointers.current.clear(); starts.current.clear(); gestureRect.current = null; setClusterItems([]); motion.flush(); }, [layer]);
+  useEffect(() => { pointers.current.clear(); starts.current.clear(); gestureRect.current = null; lastTap.current = null; setClusterItems([]); motion.flush(); }, [layer]);
+  useEffect(() => { lastTap.current = null; setClusterItems([]); }, [points]);
 
   useLayoutEffect(() => {
     pairRef.current=pair;
@@ -111,6 +115,15 @@ export function MapCanvas({ layer, points, labels, selectedPoint, completedPoint
 
   function jump(next: Camera) { motion.move(next); motion.flush(); }
   function animate(next: Camera) { motion.animate(next, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 180); }
+  function focusArea() {
+    const element = viewportRef.current, frame = element?.getBoundingClientRect(), page = element?.closest('.map-page');
+    const toolbar = page?.querySelector('.map-toolbar')?.getBoundingClientRect();
+    const sheet = page?.querySelector('.map-bottom-panel')?.getBoundingClientRect();
+    const controls = page?.classList.contains('panel-expanded') ? page.querySelector('.map-controls')?.getBoundingClientRect() : undefined;
+    const top = frame && toolbar ? Math.max(0, toolbar.bottom - frame.top + 12) : 0;
+    const bottom = frame && sheet ? Math.min(sheet.top, controls?.top ?? sheet.top) - frame.top - 12 : viewport.height;
+    return bottom - top >= 44 ? { top, bottom } : { top: 0, bottom: viewport.height };
+  }
   useEffect(() => {
     if (!focusTarget || focusTarget.point.layer !== layer) return;
     const element = viewportRef.current, frame = element?.getBoundingClientRect(), page = element?.closest('.map-page');
@@ -145,7 +158,12 @@ export function MapCanvas({ layer, points, labels, selectedPoint, completedPoint
   function pointerDown(event: ReactPointerEvent<HTMLDivElement>) {
     if ((event.pointerType === 'mouse' && event.button !== 0) || pointers.current.size >= 2) return;
     motion.stop(); if (idle.current !== null) { window.clearTimeout(idle.current); idle.current = null; }
-    if (pointers.current.size === 0) { dragged.current = false; gestureRect.current = event.currentTarget.getBoundingClientRect(); }
+    if (pointers.current.size === 0) {
+      dragged.current = false; gestureRect.current = event.currentTarget.getBoundingClientRect();
+      tapStarted.current = performance.now();
+      tapEligible.current = !(event.target as Element).closest('button');
+      if (!tapEligible.current) lastTap.current = null;
+    } else { tapEligible.current = false; lastTap.current = null; }
     const point = localPoint(event); starts.current.set(event.pointerId, point); pointers.current.set(event.pointerId, point);
     // A short press on a marker still clicks; capture after movement begins.
     if (!(event.target as Element).closest('button')) { event.preventDefault(); event.currentTarget.setPointerCapture(event.pointerId); }
@@ -155,6 +173,7 @@ export function MapCanvas({ layer, points, labels, selectedPoint, completedPoint
     const start = starts.current.get(event.pointerId)!, point = localPoint(event);
     if (pointers.current.size < 2 && !dragged.current && Math.hypot(point.x - start.x, point.y - start.y) < 5) return;
     dragged.current = true; event.preventDefault();
+    lastTap.current = null;
     if (!event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.setPointerCapture(event.pointerId);
     const before = [...pointers.current.values()]; pointers.current.set(event.pointerId, point);
     const after = [...pointers.current.values()], min = baseScale(viewport);
@@ -164,15 +183,29 @@ export function MapCanvas({ layer, points, labels, selectedPoint, completedPoint
   }
   function pointerEnd(event: ReactPointerEvent<HTMLDivElement>) {
     if (!pointers.current.has(event.pointerId)) return;
+    const point = localPoint(event);
+    const isTap = event.type === 'pointerup' && tapEligible.current && !dragged.current && pointers.current.size === 1 && performance.now() - tapStarted.current <= 280;
     pointers.current.delete(event.pointerId); starts.current.delete(event.pointerId);
     if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId);
-    if (!pointers.current.size) { gestureRect.current = null; motion.flush(); }
+    if (!pointers.current.size) {
+      gestureRect.current = null; motion.flush();
+      if (isTap) {
+        const previous = lastTap.current, time = performance.now();
+        if (previous && time - previous.time <= 320 && Math.hypot(point.x - previous.point.x, point.y - previous.point.y) <= 28) {
+          lastTap.current = null;
+          const live = motion.camera, currentZoom = live.scale / baseScale(viewport), area = focusArea();
+          animate(focusCamera({ x: (point.x - live.x) / live.scale / WORLD_SIZE, y: (point.y - live.y) / live.scale / WORLD_HEIGHT }, viewport,
+            Math.max(OVERVIEW_ZOOM, Math.min(MAX_ZOOM, currentZoom * 2)), { x: viewport.width / 2, y: (area.top + area.bottom) / 2 }));
+        } else lastTap.current = { point, time };
+      } else lastTap.current = null;
+    }
   }
   function zoom(factor: number) {
     const min = baseScale(viewport);
     animate(constrainCamera(zoomCamera(motion.destination, factor, { x: viewport.width / 2, y: viewport.height / 2 }, min, min * MAX_ZOOM), viewport));
   }
   const zoomLevel = camera.scale / baseScale(viewport);
+  const overview = zoomLevel < OVERVIEW_ZOOM;
   return <div className={`map-frame map-${layer}`}>
     <div ref={viewportRef} className="map-viewport" role="group" aria-label="可拖动和双指缩放的游戏地图" data-testid="map-viewport"
       onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={pointerEnd} onPointerCancel={pointerEnd} onLostPointerCapture={pointerEnd}
@@ -190,26 +223,27 @@ export function MapCanvas({ layer, points, labels, selectedPoint, completedPoint
           const point = cluster.points[0], definition = pointDefinition(point), isGroup = cluster.points.length > 1;
           const gameSymbol = !isGroup && (point.category === 'shrine' || point.category === 'root');
           const completed = cluster.points.every(item=>completedPointIds.has(item.id));
-          return <button key={isGroup ? cluster.id : point.id} className={`map-marker ${isGroup ? 'cluster-marker' : ''} ${gameSymbol ? 'game-symbol-marker' : ''} ${completed?'is-completed':''} ${selectedId === point.id && !isGroup ? 'selected' : ''}`}
+          return <button key={isGroup ? cluster.id : point.id} className={`map-marker ${isGroup ? `cluster-marker ${overview ? 'overview-cluster' : ''}` : ''} ${gameSymbol ? 'game-symbol-marker' : ''} ${completed?'is-completed':''} ${selectedId === point.id && !isGroup ? 'selected' : ''}`}
             data-map-x={cluster.x} data-map-y={cluster.y}
             aria-label={isGroup ? `放大查看${cluster.points.length}个地点` : `查看${point.name}，坐标${formatCoordinates(point)}${completed?'，已完成':''}`} aria-pressed={!isGroup && selectedId === point.id}
             onClick={() => {
               if (!isGroup) { onSelect(point.id); return; }
               const liveZoom = motion.camera.scale / baseScale(viewport);
-              if (liveZoom < MAX_ZOOM - .01) animate(focusCamera({ x: cluster.x, y: cluster.y }, viewport, Math.min(MAX_ZOOM, liveZoom * 2)));
+              const area = focusArea();
+              if (liveZoom < MAX_ZOOM - .01) animate(clusterFocusCamera(cluster, motion.camera, viewport, area.top, area.bottom));
               else setClusterItems(cluster.points);
-            }}><span style={{ background: gameSymbol ? undefined : isGroup ? '#294e3a' : definition.color }}>{isGroup ? cluster.points.length : definition.glyph ?? <Icon name={definition.icon} size={gameSymbol ? 32 : 19} />}</span>{completed&&<i className="completion-marker"><Icon name="check" size={11}/></i>}</button>;
+            }}><span style={{ background: gameSymbol ? undefined : isGroup ? '#294e3a' : definition.color }}>{isGroup ? overview ? <Icon name="layers" size={19}/> : cluster.points.length > 99 ? '99+' : cluster.points.length : definition.glyph ?? <Icon name={definition.icon} size={gameSymbol ? 32 : 19} />}</span>{completed&&<i className="completion-marker"><Icon name="check" size={11}/></i>}</button>;
         })}
       </div>
     </div>
-    <span className="map-demo-label">真实地形 · TotK Object Map</span>
+    <span className="map-demo-label" data-testid="map-zoom-hint">{overview ? '远景 · 点区域标记或双击放大' : '真实地形 · TotK Object Map'}</span>
     <div className="map-compass" aria-hidden="true"><span>N</span><i /></div>
     <div className="map-controls"><button ref={plusRef} aria-label="放大地图" onClick={() => zoom(1.5)} disabled={zoomLevel >= MAX_ZOOM - .01}><Icon name="plus" /></button>
       <output ref={zoomRef} aria-label="地图缩放比例" data-testid="zoom-level">{Math.round(zoomLevel * 100)}%</output>
       <button ref={minusRef} aria-label="缩小地图" onClick={() => zoom(1 / 1.5)} disabled={zoomLevel <= MIN_ZOOM + .01}><Icon name="minus" /></button>
       <button aria-label="恢复地图视野" className="reset-map" onClick={() => animate(coverCamera(viewport))}><Icon name="target" /></button>
       <button aria-label="显示地图地名" className="map-label-toggle" aria-pressed={showLabels} onClick={() => setShowLabels(!showLabels)}>地名</button></div>
-    <div className="map-footer"><span ref={centerRef} /><span>{points.length.toLocaleString()} 处 · 聚合后放大展开</span></div>
+    <div className="map-footer"><span ref={centerRef} /><span>{points.length.toLocaleString()} 处 · 放大后展开地点</span></div>
     {clusterItems.length > 0 && <div className="cluster-panel" role="dialog" aria-label="重合地点"><div className="card-heading"><h2>此处有 {clusterItems.length} 个对象</h2><button className="icon-button" aria-label="关闭重合地点" onClick={() => setClusterItems([])}><Icon name="close" /></button></div><div>{clusterItems.map((point) => <button key={point.id} className="location-row" onClick={() => { onSelect(point.id); setClusterItems([]); }}><span><strong>{point.name}</strong><small>{formatCoordinates(point)}</small></span></button>)}</div></div>}
   </div>;
 }

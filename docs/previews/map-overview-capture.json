@@ -1,0 +1,68 @@
+{
+  "capturedAt": "2026-10-08T04:02:28.671Z",
+  "scale": "css",
+  "source": "Real React app captured by Chromium, mobile viewport; no mockup overlays",
+  "baseline": "map-overview-before-390.png (0.1.3, 108 count markers at 100%)",
+  "frames": [
+    {
+      "file": "map-overview-360.png",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "zoom": "100%",
+      "filtered": "33,678 处",
+      "markers": 20
+    },
+    {
+      "file": "map-region-360.png",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "zoom": "400%",
+      "filtered": "33,678 处",
+      "markers": 52
+    },
+    {
+      "file": "map-overview-immersive-360.png",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "zoom": "100%",
+      "filtered": "33,678 处",
+      "markers": 20
+    },
+    {
+      "file": "map-overview-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "zoom": "100%",
+      "filtered": "33,678 处",
+      "markers": 20
+    },
+    {
+      "file": "map-region-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "zoom": "400%",
+      "filtered": "33,678 处",
+      "markers": 51
+    },
+    {
+      "file": "map-overview-immersive-390.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "zoom": "100%",
+      "filtered": "33,678 处",
+      "markers": 20
+    }
+  ]
+}

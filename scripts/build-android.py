@@ -195,7 +195,8 @@ def main():
 <style>*{{box-sizing:border-box}}body{{margin:0;background:#173e37;color:#263e35;font:15px/1.8 system-ui,sans-serif}}main{{max-width:540px;margin:36px auto;padding:30px 24px;background:#f5f0e2;border:1px solid #baa36a;border-radius:8px}}h1{{font:700 25px/1.4 serif;color:#244a3a;margin:0 0 12px}}p{{margin:12px 0}}small{{color:#657461}}.download{{display:block;padding:16px;text-align:center;background:#275e46;color:#f8efce;border:1px solid #b5a871;border-radius:5px;text-decoration:none;font-weight:600;margin:22px 0}}a{{color:#3c7050}}code{{font-size:11px;overflow-wrap:anywhere}}.note{{padding:12px;background:#e5ebdc;border:1px solid #c5ceb5;border-radius:4px}}</style></head>
 <body><main><img src="/app-icon.png" width="72" height="72" alt="" style="display:block;border-radius:18px;margin-bottom:16px"><small>王国之泪 · 随身探索助手</small><h1>海拉鲁探险手册</h1><p>三层离线地图、中文地名、装备耐久、阶段任务和防具升级备料。</p>
 <p>App 图标已更新为原创探索徽章，网页与安卓桌面同步。</p>
-<p>地图优化：逐帧缩放、高清瓦片预取、加载时保留地形，地名和图标保持固定清晰尺寸。</p>
+<p>地图优化：远景显示少量区域图标，放大后逐步展开地点。点区域标记一次进入至少 4 倍视野，也可双击地图放大。保留完整筛选与地点记录。</p>
+<p>逐帧缩放、高清瓦片预取、加载时保留地形，地名和图标保持固定清晰尺寸。</p>
 <p>新增：手动点亮与完成记录、只看未完成、神庙与树根矢量符号。900 个呀哈哈任务按类型筛选，100 个搬运克洛格任务显示起点、朋友位置和方向连线。</p>
 <p>152 座神庙各有对应的 B 站攻略分集，并提供抖音名称搜索；视频需联网，在外部平台播放。</p>
 <a class="download" href="/{apk.name}" download>下载安卓离线 APK · {apk_record['bytes'] / 1024 / 1024:.1f} MiB</a>

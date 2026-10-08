@@ -44,6 +44,8 @@ python3 scripts/serve-releases.py --port 8788  # 局域网 APK 下载页
 
 [满屏地图](docs/previews/map-mobile.png) · [沉浸地图](docs/previews/map-immersive-mobile.png) · [装备](docs/previews/equipment-mobile.png) · [任务手册](docs/previews/quests-mobile.png) · [阶段教程](docs/previews/quest-guide-mobile.png) · [升级计划](docs/previews/armor-planner-mobile.png) · [合并材料](docs/previews/armor-materials-mobile.png)
 
+0.1.4 手机远景聚合不再铺满数字，点击区域标记或双击即可进入细节。真实 390 px 页面：[优化前](docs/previews/map-overview-before-390.png) · [远景](docs/previews/map-overview-390.png) · [点一次放大](docs/previews/map-region-390.png) · [收起工具](docs/previews/map-overview-immersive-390.png)。
+
 [神庙点亮](docs/previews/map-shrine-lit-mobile.png) · [神庙视频入口](docs/previews/map-shrine-video-mobile.png) · [搬运克洛格](docs/previews/map-korok-carry-mobile.png)
 
 [App 图标及裁切预览](docs/previews/app-icon-variants.png) · [实际手机页头](docs/previews/app-logo-mobile.png)

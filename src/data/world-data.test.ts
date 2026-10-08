@@ -3,12 +3,13 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { catalogById,formatCoordinates } from './catalog.ts';
 import { matchesPoint } from './search.ts';
-import { clusterPoints, createPointIndex } from '../features/map/clustering.ts';
-import { baseScale,coverCamera,WORLD_SIZE,WORLD_HEIGHT } from '../features/map/geometry.ts';
+import { clusterFocusCamera, clusterPoints, createPointIndex } from '../features/map/clustering.ts';
+import { baseScale,coverCamera,focusCamera,WORLD_SIZE,WORLD_HEIGHT } from '../features/map/geometry.ts';
 import type { PointOfInterest } from '../types/domain';
 
 const pack=JSON.parse(readFileSync(new URL('../../public/data/points.json',import.meta.url),'utf8'))as{rows:[string,number,string,string,number,number,number,number,number,number|null][];strings:string[]};
 const manifest=JSON.parse(readFileSync(new URL('../../public/data/manifest.json',import.meta.url),'utf8'))as{total:number;counts:Record<string,number>};
+const approximately=(actual:number,expected:number)=>assert.ok(Math.abs(actual-expected)<.000001,`${actual} should equal ${expected}`);
 describe('真实世界资料与地图投影',()=>{
   it('全部源记录有唯一稳定 ID、有限坐标和可显示分类',()=>{
     assert.equal(pack.rows.length,manifest.total);assert.equal(new Set(pack.rows.map((row)=>row[0])).size,pack.rows.length);
@@ -49,6 +50,61 @@ describe('真实世界资料与地图投影',()=>{
       assert.equal(retained.size,visible.length);
       assert.ok(visible.every((entry)=>retained.has(entry.id)));
       assert.equal(groups.find((group)=>group.points.some((entry)=>entry.id===selected.id))!.points.length,1);
+    }
+  });
+  it('真实三层手机远景最多 32 个标记，包含全部视野记录与独立选中点',()=>{
+    for(const width of [360,390])for(const layer of ['surface','sky','depths']as const){
+      const viewport={width,height:770},camera=coverCamera(viewport);
+      const points=pack.rows.filter(row=>row[3]===layer).map(row=>({...point,id:row[0],layer,mapPosition:{x:(row[4]+6000)/12000,y:(row[6]+5000)/10000}}));
+      const visible=points.filter(entry=>{
+        const x=entry.mapPosition.x*WORLD_SIZE*camera.scale+camera.x,y=entry.mapPosition.y*WORLD_HEIGHT*camera.scale+camera.y;
+        return x>=-44&&x<=width+44&&y>=-44&&y<=viewport.height+44;
+      });
+      const selected=visible[Math.floor(visible.length/2)];
+      const groups=clusterPoints(createPointIndex(points).query(camera,viewport),camera,viewport,selected.id);
+      assert.ok(groups.length<=32,`${width}px ${layer}: ${groups.length} 个远景标记`);
+      const retained=groups.flatMap(group=>group.points.map(entry=>entry.id)).sort();
+      assert.deepEqual(retained,visible.map(entry=>entry.id).sort());
+      assert.equal(groups.find(group=>group.points.some(entry=>entry.id===selected.id))!.points.length,1);
+    }
+  });
+  it('相邻网格边缘的 44px 触控区域合并，不丢点也不拆开选中对象',()=>{
+    const viewport={width:360,height:400},camera={x:0,y:0,scale:1};
+    const points=[79,81,130,161].map((x,i)=>({...point,id:`border-${i}`,mapPosition:{x:x/WORLD_SIZE,y:210/WORLD_HEIGHT}}));
+    const groups=clusterPoints(points,camera,viewport,null,80);
+    for(let i=0;i<groups.length;i++)for(let j=i+1;j<groups.length;j++){
+      const dx=Math.abs(groups[i].x-groups[j].x)*WORLD_SIZE,dy=Math.abs(groups[i].y-groups[j].y)*WORLD_HEIGHT;
+      assert.ok(dx>=52||dy>=52,`相邻触控区域太近：${dx}, ${dy}`);
+    }
+    assert.deepEqual(groups.flatMap(group=>group.points.map(entry=>entry.id)).sort(),points.map(entry=>entry.id).sort());
+    const selected=clusterPoints(points,camera,viewport,'border-1',80);
+    assert.equal(selected.find(group=>group.points.some(entry=>entry.id==='border-1'))!.points.length,1);
+  });
+  it('远景合并的地点放大后逐步展开，原始坐标不变',()=>{
+    const viewport={width:390,height:770};
+    const points=Array.from({length:9},(_,i)=>({...point,id:`near-${i}`,mapPosition:{x:.488+(i%3)*.012,y:.488+Math.floor(i/3)*.012}}));
+    const before=JSON.stringify(points);
+    const distant=clusterPoints(points,coverCamera(viewport),viewport,null);
+    const nearby=clusterPoints(points,focusCamera({x:.5,y:.5},viewport,16),viewport,null);
+    assert.ok(nearby.length>distant.length);
+    assert.equal(nearby.reduce((count,group)=>count+group.points.length,0),points.length);
+    assert.equal(JSON.stringify(points),before);
+  });
+  it('聚合定位进入可用区域中心，快速展开并限制最高倍率和地图边界',()=>{
+    const viewport={width:390,height:770},top=242,bottom=680;
+    const points=[{...point,mapPosition:{x:.48,y:.51}},{...point,id:'focus-second',mapPosition:{x:.49,y:.52}}];
+    const cluster={id:'focus-cluster',x:.485,y:.515,points};
+    const distant=clusterFocusCamera(cluster,coverCamera(viewport),viewport,top,bottom);
+    assert.ok(distant.scale/baseScale(viewport)>=4);
+    approximately(distant.x+cluster.x*WORLD_SIZE*distant.scale,viewport.width/2);
+    approximately(distant.y+cluster.y*WORLD_HEIGHT*distant.scale,(top+bottom)/2);
+    const nearby=clusterFocusCamera(cluster,focusCamera(cluster,viewport,48),viewport,top,bottom);
+    assert.equal(nearby.scale/baseScale(viewport),64);
+    for(const target of [{x:0,y:0},{x:1,y:1}]){
+      const edge={...cluster,...target,points:points.map(entry=>({...entry,mapPosition:target}))};
+      const camera=clusterFocusCamera(edge,coverCamera(viewport),viewport,top,bottom);
+      assert.ok(camera.x<=0&&camera.y<=0);
+      assert.ok(camera.x+WORLD_SIZE*camera.scale>=viewport.width&&camera.y+WORLD_HEIGHT*camera.scale>=viewport.height);
     }
   });
   it('三层本地概览瓦片已保存，路径与图层一致',()=>{

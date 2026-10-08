@@ -64,6 +64,35 @@ try {
   await expect(page.locator('.demo-banner')).toContainText(`已载入 ${manifest.total.toLocaleString()} 条地点`);
   await expect(page.getByTestId('map-label-layer')).toContainText('中央海拉鲁');
   await expect(page.getByTestId('map-label-layer')).toContainText('监视堡垒');
+  const quick = page.getByRole('group', { name: '地图快捷筛选' });
+  await quick.getByRole('button', { name: '全部元素', exact: true }).click();
+  await expect(page.getByTestId('filtered-count')).toHaveText(`${manifest.layers.surface.toLocaleString()} 处`);
+  if (await page.locator('.map-marker').count() > 32) throw new Error('Offline overview is too dense');
+  if (!await page.locator('.cluster-marker').evaluateAll(elements => elements.every(element => !/\d/.test(element.textContent ?? '')))) throw new Error('Offline overview still displays cluster counts');
+  const accessible = await page.locator('.cluster-marker').evaluateAll(elements => elements.findIndex(element => {
+    const box = element.getBoundingClientRect(), toolbar = document.querySelector('.map-toolbar').getBoundingClientRect(), sheet = document.querySelector('.map-bottom-panel').getBoundingClientRect();
+    return box.x >= 8 && box.right <= innerWidth - 8 && box.y > toolbar.bottom + 8 && box.bottom < sheet.top - 8
+      && document.elementFromPoint(box.x + box.width / 2, box.y + box.height / 2)?.closest('button') === element;
+  }));
+  if (accessible < 0) throw new Error('Offline overview has no accessible region marker');
+  await page.locator('.cluster-marker').nth(accessible).tap();
+  await expect.poll(async () => Number((await page.getByTestId('zoom-level').innerText()).replace('%', ''))).toBeGreaterThanOrEqual(400);
+  await expect(page.getByTestId('map-world')).toHaveAttribute('data-tiles-ready', 'true');
+  await page.getByRole('button', { name: '恢复地图视野', exact: true }).click();
+  await expect(page.getByTestId('zoom-level')).toHaveText('100%');
+  const blank = await page.evaluate(() => {
+    const toolbar = document.querySelector('.map-toolbar').getBoundingClientRect(), sheet = document.querySelector('.map-bottom-panel').getBoundingClientRect();
+    for (let y = (toolbar.bottom + sheet.top) / 2; y < sheet.top - 40; y += 36) for (let x = 60; x < innerWidth - 80; x += 36) {
+      const element = document.elementFromPoint(x, y);
+      if (element?.closest('[data-testid="map-viewport"]') && !element.closest('button')) return { x, y };
+    }
+    throw new Error('No blank map area for offline double tap');
+  });
+  await page.touchscreen.tap(blank.x, blank.y); await page.touchscreen.tap(blank.x, blank.y);
+  await expect.poll(async () => Number((await page.getByTestId('zoom-level').innerText()).replace('%', ''))).toBeGreaterThanOrEqual(400);
+  await expect(page.getByTestId('map-world')).toHaveAttribute('data-tiles-ready', 'true');
+  await page.getByRole('button', { name: '恢复地图视野', exact: true }).click();
+  await expect(page.getByTestId('zoom-level')).toHaveText('100%');
   for (let i = 0; i < 11; i++) await page.getByRole('button', { name: '放大地图', exact: true }).click();
   await expect(page.getByTestId('zoom-level')).toHaveText('6400%');
   for (const [layer, folder] of [['地表', 'Ground'], ['天空', 'Sky'], ['地底', 'Depths']]) {
@@ -151,7 +180,7 @@ try {
   if (external.length || errors.length) throw new Error(JSON.stringify({ external, errors }));
   const report = { checkedAt: new Date().toISOString(), browserOffline: true, origin, mapTiles: resources.total,
     devicePixelRatio: 3, renderer: 'viewport-clipped native image tiles, decoded cache and unscaled DOM overlays',
-    tested: ['All three layers and four corners at native level 7', 'Decoded image coverage at DPR 3 including every viewport edge', 'Offline Chinese labels and place search', 'Offline Chinese shrine catalog, specific video chapter metadata, search links and local vector symbol (video viewing requires network)', 'Offline Korok carry start/destination coordinates and direction line', 'Manual shrine and Korok completion badges survive reload', 'Depths Lynel filter and coordinates', 'Fixed equipment durability and local icon', 'Three-piece armor material aggregation, owned quantities and persistence', 'Offline quest tutorials, stage progress, map links and persistence'],
+    tested: ['Sparse count-free overview, tap-region zoom and blank-map double tap fully offline', 'All three layers and four corners at native level 7', 'Decoded image coverage at DPR 3 including every viewport edge', 'Offline Chinese labels and place search', 'Offline Chinese shrine catalog, specific video chapter metadata, search links and local vector symbol (video viewing requires network)', 'Offline Korok carry start/destination coordinates and direction line', 'Manual shrine and Korok completion badges survive reload', 'Depths Lynel filter and coordinates', 'Fixed equipment durability and local icon', 'Three-piece armor material aggregation, owned quantities and persistence', 'Offline quest tutorials, stage progress, map links and persistence'],
     distinctAssetsRequested: loaded.size, externalRequests: external, errors,
     nativeDeviceTest: 'No Android device attached; native installation and document chooser not yet tested on a device' };
   await mkdir(resolve(root, '.cache/verification'), { recursive: true });

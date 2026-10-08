@@ -54,4 +54,12 @@ describe('中文地图地名', () => {
     const visible = layoutLabels([label], camera, viewport, [{ x: .404041, y: .620495 }, { x: .404012, y: .623905 }]);
     assert.equal(visible.length, 1); assert.notEqual(visible[0].offset, -36);
   });
+  it('远景地区名称避开同位置的区域图标，不能让标记压住文字', () => {
+    const viewport = { width: 390, height: 770 };
+    const region = pack.labels.find(label => label.messageId === 'MapRegion_HyrulePrairie')!;
+    const camera = focusCamera(region.mapPosition, viewport, 1);
+    const visible = layoutLabels([region], camera, viewport, [region.mapPosition]);
+    assert.equal(visible.length, 1);
+    assert.ok(Math.abs(visible[0].offset) >= 40);
+  });
 });

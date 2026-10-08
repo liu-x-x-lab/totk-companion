@@ -34,12 +34,19 @@ export function layoutLabels(labels: readonly MapLabel[], camera: Camera, viewpo
     if (x < 6 || x + width > viewport.width - 6) continue;
     if (result.some(({ label: placed }) => Math.hypot((placed.mapPosition.x - label.mapPosition.x) * WORLD_SIZE * camera.scale, (placed.mapPosition.y - label.mapPosition.y) * WORLD_HEIGHT * camera.scale) < 12)) continue;
     // 源标签常取多个入口的中点。避让附近标记时尝试其他方向，不能直接丢掉地名。
-    for (const offset of label.kind === 'region' ? [0] : [-36, -60, 36, -84, 60]) {
-      const y = label.mapPosition.y * WORLD_HEIGHT * camera.scale + camera.y + offset - height / 2;
-      if (y < 6 || y + height > viewport.height - 6) continue;
-      const overlaps = (box: typeof markerBoxes[number]) => x < box.x + box.width + 5 && x + width + 5 > box.x && y < box.y + box.height + 5 && y + height + 5 > box.y;
-      if (occupied.some(overlaps) || !important && markerBoxes.some(overlaps)) continue;
-      result.push({ label, size, offset }); occupied.push({ x, y, width, height }); break;
+    const offsets = label.kind === 'region' ? [0, -40, 40, -64, 64] : [-36, -60, 36, -84, 60];
+    // Important names also avoid icons. Only fall back to overlapping a marker
+    // if every available position is blocked, so a dense region keeps its name.
+    let placed = false;
+    for (const allowMarkerOverlap of important ? [false, true] : [false]) {
+      for (const offset of offsets) {
+        const y = label.mapPosition.y * WORLD_HEIGHT * camera.scale + camera.y + offset - height / 2;
+        if (y < 6 || y + height > viewport.height - 6) continue;
+        const overlaps = (box: typeof markerBoxes[number]) => x < box.x + box.width + 5 && x + width + 5 > box.x && y < box.y + box.height + 5 && y + height + 5 > box.y;
+        if (occupied.some(overlaps) || !allowMarkerOverlap && markerBoxes.some(overlaps)) continue;
+        result.push({ label, size, offset }); occupied.push({ x, y, width, height }); placed = true; break;
+      }
+      if (placed) break;
     }
   }
   return result;
